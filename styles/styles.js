@@ -13,17 +13,30 @@ export default StyleSheet.create({
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
   },
-
+  text: {
+    color: 'black',
+    padding: 20,
+    fontFamily: 'Roboto',
+    paddingBottom: 20,
+    fontSize: 20,
+  },
+  button: {
+    color: '#023020'
+  },
+  navi: {
+    backgroundColor: '#c9f1fd',
+    color: 'red'
+  },
   header: {
     flexDirection: 'row',
-    backgroundColor: '#FFC300',
+    backgroundColor: '#c9f1fd',
   },
-
-  logo: {
-    margin: 50,
+  logoHomepage: {
+    margin: 30,
     flex: 1,
-    aspectRatio: 3.5,
-    resizeMode: 'contain'
+    aspectRatio: 2,
+    resizeMode: 'contain',
+    backgroundColor: '#c9f1fd'
   },
   team: {
     fontSize: 15,
@@ -40,14 +53,4 @@ export default StyleSheet.create({
     color: 'white',
     fontFamily: 'Orbitronbold',
   },
-  text: {
-    color: 'white',
-    padding: 20,
-    fontFamily: 'Roboto',
-    paddingBottom: 20,
-    fontSize: 20,
-  },
-
-
-
 });
