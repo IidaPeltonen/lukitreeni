@@ -6,25 +6,31 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "./components/Homescreen";
-import AboutScreen from "./components/Aboutscreen";
-import ContactScreen from './components/ContactScreen';
+import Words from "./components/Words";
+import Sentences from './components/Sentences'
+import Numbers from './components/Numbers'
+import Letters from './components/Letters'
 import styles from "./styles/styles";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 <Drawer.Navigator initialRouteName="Home">
-  <Stack.Screen name="Home" component={HomeScreen} />
-  <Stack.Screen name="About" component={AboutScreen} />
-  <Stack.Screen name="Contact" component={ContactScreen} />
+  <Stack.Screen name="Etusivu" component={HomeScreen} />
+  <Stack.Screen name="Sanat" component={Words} />
+  <Stack.Screen name="Lauseet" component={Sentences} />
+  <Stack.Screen name="Numerot" component={Numbers} />
+  <Stack.Screen name="Kirjaimet" component={Letters} />
 </Drawer.Navigator>
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.navi}>
       <Drawer.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-        <Stack.Screen name="Contact" component={ContactScreen} />
+        <Stack.Screen name="Etusivu" component={HomeScreen} />
+        <Stack.Screen name="Sanat" component={Words} />
+        <Stack.Screen name="Lauseet" component={Sentences} />
+        <Stack.Screen name="Numerot" component={Numbers} />
+        <Stack.Screen name="Kirjaimet" component={Letters} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
