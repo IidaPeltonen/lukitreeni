@@ -12,7 +12,6 @@ export default function HomeScreen({ navigation }) {
     setNoUser(false)
     let user = name
     setName(user)
-    console.log('name: ' + name)
   }
 
   if (noUser === true) {
@@ -23,9 +22,9 @@ export default function HomeScreen({ navigation }) {
             style={styles.logoHomepage} />
         </View>
         <View style={styles.welcome}>
-        <Text style={styles.textName}>Anna nimesi</Text>
+        <Text style={styles.textHeader}>Anna nimesi</Text>
         <TextInput
-          style={styles.textNameInput}
+          style={styles.textHeaderInput}
           keyboardType='default'
           onChangeText={Text => setName(Text)}
         />

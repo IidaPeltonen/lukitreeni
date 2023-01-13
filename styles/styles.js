@@ -19,12 +19,16 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   logoHomepage: {
-    //margin: 30,
-    //flex: 1,
     aspectRatio: 2,
     resizeMode: 'contain',
     backgroundColor: '#c9f1fd',
     marginBottom: 100,
+    alignSelf: 'center'
+  },
+  logo: {
+    aspectRatio: 2,
+    resizeMode: 'contain',
+    backgroundColor: '#c9f1fd',
     alignSelf: 'center'
   },
   navi: {
@@ -32,13 +36,13 @@ export default StyleSheet.create({
     color: 'red'
   },
   //nimenantotekstietusivulla
-  textName: {
+  textHeader: {
     fontSize: 30,
     fontFamily: 'Calibri-bold',
     marginLeft: 20,
   },
   //nimen input
-  textNameInput: {
+  textHeaderInput: {
     height: 70,
     margin: 12,
     borderBottomWidth: 3,
@@ -74,19 +78,8 @@ export default StyleSheet.create({
   end: {
     marginTop: 200
   },
-  title: {
-    fontSize: 27,
-    color: 'white',
-    fontFamily: 'Calibri',
-  },
-
-  title2: {
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'Calibri',
-  },
   footer: {
-        backgroundColor: '#c9f1fd',
+    backgroundColor: '#c9f1fd',
     borderRadius: 3,
     padding: 10,
     position: 'absolute',
@@ -95,4 +88,21 @@ export default StyleSheet.create({
     left: 0,
     right: 0
   },
+  //tasovalinnan tekstit
+  choise: {
+    alignSelf: 'center',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  //väliviivat tasovalintaan
+  lineBold: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    marginBottom: 10,
+  },
+  line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+  }
 });
