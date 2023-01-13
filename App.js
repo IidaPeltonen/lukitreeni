@@ -1,7 +1,7 @@
 // App.js
 import * as React from "react";
 import "react-native-gesture-handler"; //this should be the first import in your code
-import { Image, Text } from "react-native";
+import { Image, Text, Pressable } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -26,6 +26,10 @@ export default function App() {
     'Segoe': require('./assets/fonts/Segoe-UI.ttf'),
   })
 
+  if(!fontsLoaded) {
+    return null;
+    }
+
   return (
     <NavigationContainer style={styles.navi}>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{
@@ -37,7 +41,11 @@ export default function App() {
         <Stack.Screen name="Lauseet" component={Sentences} />
         <Stack.Screen name="Numerot" component={Numbers} />
         <Stack.Screen name="Kirjaimet" component={Letters} />
-      </Drawer.Navigator>
+        <Stack.Screen name=" " component={''} />
+        <Stack.Screen name="  " component={''} />
+        <Stack.Screen name="   " component={''} />
+        <Stack.Screen name="    " component={''} />
+        </Drawer.Navigator>
     </NavigationContainer>
   );
 }

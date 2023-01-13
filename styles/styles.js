@@ -37,13 +37,50 @@ export default StyleSheet.create({
     flex: 1,
     aspectRatio: 2,
     resizeMode: 'contain',
-    backgroundColor: '#c9f1fd'
+    backgroundColor: '#c9f1fd',
+    marginBottom: 100
   },
-  //nimenantoenttä etusivulla
+  //nimenantotekstietusivulla
   textName: {
     fontSize: 30,
-    fontFamily: 'calibri-bold',
-    marginLeft: 20
+    fontFamily: 'Calibri-bold',
+    marginLeft: 20,
+  },
+  //nimen input
+  textNameInput: {
+    height: 70,
+    margin: 12,
+    borderBottomWidth: 3,
+    padding: 10,
+    width: 500,
+    fontSize: 25,
+    marginBottom: 50
+  },
+  start: {
+    maxWidth: 200,
+    marginLeft: 20,
+    backgroundColor: '#023020',
+    alignItems: 'center'
+  },
+  startText: {
+  fontSize: 20,
+   color: 'white',
+   padding: 10,
+  },
+  welcome: {
+    alignContent: 'center',
+    alignSelf: 'center'
+  },
+  user: {
+    fontSize: 30,
+    fontFamily: 'Calibri-bold',
+  },
+  plain: {
+    fontSize: 20,
+    fontFamily: 'Calibri',
+  },
+  end: {
+    marginTop: 200
   },
   title: {
     fontSize: 27,
