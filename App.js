@@ -11,20 +11,21 @@ import Sentences from './components/Sentences'
 import Numbers from './components/Numbers'
 import Letters from './components/Letters'
 import styles from "./styles/styles";
-import logo from "./components/logo.jpg"
+import { useFonts } from 'expo-font';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-{/* <Drawer.Navigator initialRouteName="Home">
-  <Stack.Screen name="Etusivu" component={HomeScreen} />
-  <Stack.Screen name="Sanat" component={Words} />
-  <Stack.Screen name="Lauseet" component={Sentences} />
-  <Stack.Screen name="Numerot" component={Numbers} />
-  <Stack.Screen name="Kirjaimet" component={Letters} />
-</Drawer.Navigator> */}
-
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Calibri-bold': require('./assets/fonts/calibri-bold.ttf'),
+    'Calibri': require('./assets/fonts/calibri-regular.ttf'),
+    'Franklin': require('./assets/fonts/Franklin.ttf'),
+    'Segoe-bold': require('./assets/fonts/Segoe-UI-Bold.ttf'),
+    'Segoe': require('./assets/fonts/Segoe-UI.ttf'),
+  })
+
   return (
     <NavigationContainer style={styles.navi}>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{

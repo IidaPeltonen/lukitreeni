@@ -12,11 +12,12 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
+    margin: 10
   },
   text: {
     color: 'black',
     padding: 20,
-    fontFamily: 'Roboto',
+    fontFamily: 'Calibri',
     paddingBottom: 20,
     fontSize: 20,
   },
@@ -38,19 +39,21 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     backgroundColor: '#c9f1fd'
   },
-  team: {
-    fontSize: 15,
-    fontFamily: 'Robotobold'
+  //nimenantoenttä etusivulla
+  textName: {
+    fontSize: 30,
+    fontFamily: 'calibri-bold',
+    marginLeft: 20
   },
   title: {
     fontSize: 27,
     color: 'white',
-    fontFamily: 'Orbitronbold',
+    fontFamily: 'Calibri',
   },
 
   title2: {
     fontSize: 20,
     color: 'white',
-    fontFamily: 'Orbitronbold',
+    fontFamily: 'Calibri',
   },
 });
