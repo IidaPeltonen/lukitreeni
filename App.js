@@ -1,7 +1,6 @@
 // App.js
 import * as React from "react";
 import "react-native-gesture-handler"; //this should be the first import in your code
-import { Image, Text, Pressable } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -33,14 +32,13 @@ export default function App() {
   return (
     <NavigationContainer style={styles.navi}>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{
-        drawerStyle: {backgroundColor: '#c9f1fd',
-        drawerActiveTintColor: 'yellow'} //ei tee mitään
+        drawerStyle: {backgroundColor: '#c9f1fd'} 
       }}>
-        <Stack.Screen name="Etusivu" component={HomeScreen} />
-        <Stack.Screen name="Sanat" component={Words} />
-        <Stack.Screen name="Lauseet" component={Sentences} />
-        <Stack.Screen name="Numerot" component={Numbers} />
-        <Stack.Screen name="Kirjaimet" component={Letters} />
+        <Stack.Screen name="Etusivu" component={HomeScreen} style={styles.navi} />
+        <Stack.Screen name="Sanat" component={Words} style={styles.navi}  />
+        <Stack.Screen name="Lauseet" component={Sentences} style={styles.navi} />
+        <Stack.Screen name="Numerot" component={Numbers} style={styles.navi} />
+        <Stack.Screen name="Kirjaimet" component={Letters} style={styles.navi} />
         <Stack.Screen name=" " component={''} />
         <Stack.Screen name="  " component={''} />
         <Stack.Screen name="   " component={''} />

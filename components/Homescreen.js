@@ -22,6 +22,7 @@ export default function HomeScreen({ navigation }) {
           <Image source={require('./logo.jpg')}
             style={styles.logoHomepage} />
         </View>
+        <View style={styles.welcome}>
         <Text style={styles.textName}>Anna nimesi</Text>
         <TextInput
           style={styles.textNameInput}
@@ -34,6 +35,7 @@ export default function HomeScreen({ navigation }) {
           style={styles.start}>
           <Text style={styles.startText}>Aloita!</Text>
         </Pressable>
+        </View>
       </View>
     );
   }

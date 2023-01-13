@@ -12,33 +12,24 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
-    margin: 10
+    margin: 0
   },
-  text: {
-    color: 'black',
-    padding: 20,
-    fontFamily: 'Calibri',
-    paddingBottom: 20,
-    fontSize: 20,
+  header: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
   },
-  button: {
-    color: '#023020'
+  logoHomepage: {
+    //margin: 30,
+    //flex: 1,
+    aspectRatio: 2,
+    resizeMode: 'contain',
+    backgroundColor: '#c9f1fd',
+    marginBottom: 100,
+    alignSelf: 'center'
   },
   navi: {
     backgroundColor: '#c9f1fd',
     color: 'red'
-  },
-  header: {
-    flexDirection: 'row',
-    backgroundColor: '#c9f1fd',
-  },
-  logoHomepage: {
-    margin: 30,
-    flex: 1,
-    aspectRatio: 2,
-    resizeMode: 'contain',
-    backgroundColor: '#c9f1fd',
-    marginBottom: 100
   },
   //nimenantotekstietusivulla
   textName: {
@@ -60,7 +51,8 @@ export default StyleSheet.create({
     maxWidth: 200,
     marginLeft: 20,
     backgroundColor: '#023020',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 5
   },
   startText: {
   fontSize: 20,
@@ -92,5 +84,15 @@ export default StyleSheet.create({
     fontSize: 20,
     color: 'white',
     fontFamily: 'Calibri',
+  },
+  footer: {
+        backgroundColor: '#c9f1fd',
+    borderRadius: 3,
+    padding: 10,
+    position: 'absolute',
+    alignItems: 'center',
+    bottom:0,
+    left: 0,
+    right: 0
   },
 });
