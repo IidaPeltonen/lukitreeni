@@ -3,10 +3,7 @@ import { Pressable, View, Text, Image } from "react-native";
 import { StretchInX } from "react-native-reanimated";
 import styles from "../styles/styles";
 import Footer from "./Footer";
-
-//tarvitaan lista sanoja
-const words = ['kissa', 'koira', 'kana', 'hevonen', 'porkkana', 'peruna', 'äiti']
-
+import WordsTable from "./WordsTable";
 
 export default function Words() {
   const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
@@ -58,14 +55,16 @@ export default function Words() {
 
   //jos taso on 1, eli 1-2lk
   else if (difficulty === 1) {
-    let time= 30
-    console.log('difficulty: ' + difficulty)
-    console.log('time: ' + time)
+    const time= 30
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>tässä alkaa tulla 1-2lk sanoja</Text>
+          {/* käytetään sanoja words1
+              sanat ilmestyy randomisti eri puolilta
+              aika on määritetty, se näkyy loppuu asti, samoin laskuri */}
         </View>
+        <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
     );
@@ -73,14 +72,13 @@ export default function Words() {
 
   //jos taso on 2, eli 3-4lk
   else if (difficulty === 2) {
-    let time= 20
-    console.log('difficulty: ' + difficulty)
-    console.log('time: ' + time)
+    const time= 20
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>tässä alkaa tulla 3-4lk sanoja</Text>
         </View>
+        <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
     );
@@ -88,14 +86,13 @@ export default function Words() {
 
   //jos taso on 3, eli 5-6lk
   else if (difficulty === 3) {
-    let time= 15
-    console.log('difficulty: ' + difficulty)
-    console.log('time: ' + time)
+    const time= 15
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>tässä alkaa tulla 5-6lk sanoja</Text>
         </View>
+        <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
     );

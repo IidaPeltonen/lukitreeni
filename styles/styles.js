@@ -104,5 +104,28 @@ export default StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 1,
     marginBottom: 10,
-  }
+  },
+  WordsTable: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    borderWidth: 6,
+    marginBottom: 50,
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 50,
+    height: 450,
+    borderStyle: 'dashed'
+  },
+  Clock: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 17,
+    alignSelf: 'baseline',
+    marginLeft: 950,
+    position: 'absolute',
+    bottom:10,
+    left: 0,
+    right: 5
+  },
+
 });
