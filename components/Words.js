@@ -9,11 +9,12 @@ export default function Words() {
   const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [right, setRight] = useState(0) //oikeiden määrä
-  const [time, setTime] = useState(0) //kauanko sana näkyy, määräytyy vaikeustason mukaan
+  const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
 
-  //ensin valitaan taso, ts kuinka vaikeita sanoja
-  const [difficulty, setDifficulty] = useState(0)
-  //valitun tason mukaan näytetään eri sanoja
+  //funktio tason muuttujan nollaukseen
+  function resetLevel() {
+    setDifficulty(0)
+  }
 
   //jos tasoa ei ole valittu
   if (difficulty === 0) {
@@ -59,10 +60,18 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>tässä alkaa tulla 1-2lk sanoja</Text>
+          <Text style={styles.textHeader}>Lue sana ääneen</Text>
           {/* käytetään sanoja words1
               sanat ilmestyy randomisti eri puolilta
               aika on määritetty, se näkyy loppuu asti, samoin laskuri */}
+            <Pressable
+            style={styles.change}
+              title='change'
+              onPress={() => {
+                resetLevel();
+              }} >
+            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+          </Pressable>
         </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
@@ -77,6 +86,14 @@ export default function Words() {
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>tässä alkaa tulla 3-4lk sanoja</Text>
+          <Pressable
+            style={styles.change}
+              title='change'
+              onPress={() => {
+                resetLevel();
+              }} >
+            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+          </Pressable>
         </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
@@ -91,6 +108,14 @@ export default function Words() {
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>tässä alkaa tulla 5-6lk sanoja</Text>
+          <Pressable
+            style={styles.change}
+              title='change'
+              onPress={() => {
+                resetLevel();
+              }} >
+            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+          </Pressable>
         </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />

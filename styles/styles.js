@@ -113,7 +113,7 @@ export default StyleSheet.create({
     marginLeft: 50,
     marginRight: 50,
     marginTop: 50,
-    height: 450,
+    height: 400,
     borderStyle: 'dashed'
   },
   Clock: {
@@ -126,6 +126,21 @@ export default StyleSheet.create({
     bottom:10,
     left: 0,
     right: 5
+  },
+  change: {
+    backgroundColor: 'lightblue',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#023020',
+    shadowOpacity: 10,
+    maxWidth: 400
+  },
+  //arvottu sana
+  show: {
+    fontSize: 60,
+    fontFamily: 'Calibri-bold',
+    margin: 100,
+    fontWeight: 'bold'
   },
 
 });
