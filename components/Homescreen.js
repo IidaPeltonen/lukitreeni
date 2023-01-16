@@ -3,6 +3,7 @@ import "react-native-gesture-handler"; //this should be the first import in your
 import React, { useState } from "react";
 import { View, Text, Image, TextInput, Pressable } from "react-native";
 import styles from "../styles/styles";
+import Footer from "./Footer"
 
 export default function HomeScreen({ navigation }) {
   const [name, setName] = useState('')
@@ -31,6 +32,7 @@ export default function HomeScreen({ navigation }) {
         <Pressable
           title='Aloita!'
           onPress={saveName}
+          //tämä tieto pitäisi saada mukanaan footerille ja säilyttää siellä
           style={styles.start}>
           <Text style={styles.startText}>Aloita!</Text>
         </Pressable>
@@ -50,6 +52,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.user}></Text>
           <Text style={styles.plain}>Valitse mitä haluat tehdä tänään</Text>
         </View>
+        <Footer name={name} />
       </View>
     )
   }

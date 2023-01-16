@@ -16,7 +16,6 @@ export default function WordsTable({ difficulty, time }) {
     const [isLoading, setIsLoading] = useState(false); // jotta useEffect toimii
     const [showable, setShowable] = useState(false); // näytettävä sana
 
-   
     console.log('fixedTime: ' + (fixedTime+1))
 
     //haetaan sopivan tason sanat

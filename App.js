@@ -35,7 +35,7 @@ export default function App() {
         drawerStyle: {backgroundColor: '#c9f1fd'} 
       }}>
         <Stack.Screen name="Etusivu" component={HomeScreen} style={styles.navi} />
-        <Stack.Screen name="Kokonaissanahahmotus" component={Words} style={styles.navi}  />
+        <Stack.Screen name="Kokonaissanahahmotus" component={Words} style={styles.navi} />
         <Stack.Screen name="Lauseet" component={Sentences} style={styles.navi} />
         <Stack.Screen name="Numerot" component={Numbers} style={styles.navi} />
         <Stack.Screen name="Kirjaimet" component={Letters} style={styles.navi} />

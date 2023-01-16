@@ -118,7 +118,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable difficulty={difficulty} time={time} />
-        <Footer done={done} right={right} />
+        <Footer done={done} right={right}  />
       </View>
     );
   }
