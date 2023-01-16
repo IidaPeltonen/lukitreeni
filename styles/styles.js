@@ -38,8 +38,17 @@ export default StyleSheet.create({
   //nimenantotekstietusivulla
   textHeader: {
     fontSize: 30,
-    fontFamily: 'Calibri-bold',
+    fontFamily: 'Roboto',
     marginLeft: 20,
+    alignSelf: 'center',
+    fontWeight: 'bold'
+  },
+  textHeader2: {
+    fontSize: 25,
+    fontFamily: 'Roboto',
+    marginLeft: 20,
+    alignSelf: 'center',
+    fontWeight: 'bold'
   },
   //nimen input
   textHeaderInput: {
@@ -56,7 +65,8 @@ export default StyleSheet.create({
     marginLeft: 20,
     backgroundColor: '#023020',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 5,
+    marginTop: 15
   },
   startText: {
   fontSize: 20,
@@ -69,11 +79,25 @@ export default StyleSheet.create({
   },
   user: {
     fontSize: 30,
-    fontFamily: 'Calibri-bold',
+    fontFamily: 'Roboto',
+    fontWeight: 'bold'
   },
   plain: {
     fontSize: 20,
-    fontFamily: 'Calibri',
+    fontFamily: 'Roboto',
+  },
+  wrong: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    //miksi tämä ei toimi?
+  
+    color: 'red',
+    padding: 5
+  },
+  right: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    marginRight: 50
   },
   end: {
     marginTop: 200
@@ -129,18 +153,34 @@ export default StyleSheet.create({
   },
   change: {
     backgroundColor: 'lightblue',
-    alignSelf: 'center',
     borderWidth: 1,
     borderColor: '#023020',
     shadowOpacity: 10,
-    maxWidth: 400
+    //maxWidth: 400
   },
   //arvottu sana
   show: {
     fontSize: 60,
-    fontFamily: 'Calibri-bold',
+    fontFamily: 'Roboto',
     margin: 100,
     fontWeight: 'bold'
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  letters: {
+    alignSelf: 'center',
+    height: 150,
+    margin: 12,
+    borderWidth: 3,
+    paddingLeft:30,
+    width: 150,
+    fontSize: 80,
+    marginBottom: 50,
+    justifyContent: 'center',
+  },
+
+
 
 });

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Pressable, View, Text, Image } from "react-native";
-import { StretchInX } from "react-native-reanimated";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import WordsTable from "./WordsTable";
@@ -24,7 +23,8 @@ export default function Words() {
           <Image source={require('./logo.jpg')} style={styles.logo} />
         </View>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>Valitse vaikeustaso</Text>
+          <Text style={styles.textHeader}>Lue sanoja</Text>
+          <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
           <View style={styles.lineBold} />
           <Pressable
             title='1-2 lk'
@@ -61,18 +61,17 @@ export default function Words() {
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Lue sana ääneen</Text>
-          {/* käytetään sanoja words1
-              sanat ilmestyy randomisti eri puolilta
-              aika on määritetty, se näkyy loppuu asti, samoin laskuri */}
+          </View>
+          <View style={styles.right}>
             <Pressable
             style={styles.change}
               title='change'
               onPress={() => {
                 resetLevel();
               }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
-        </View>
+          </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
@@ -85,16 +84,18 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>tässä alkaa tulla 3-4lk sanoja</Text>
-          <Pressable
+        <Text style={styles.textHeader}>Lue sana ääneen</Text>
+        </View>
+          <View style={styles.right}>
+            <Pressable
             style={styles.change}
               title='change'
               onPress={() => {
                 resetLevel();
               }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
-        </View>
+          </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
@@ -107,16 +108,18 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>tässä alkaa tulla 5-6lk sanoja</Text>
-          <Pressable
+        <Text style={styles.textHeader}>Lue sana ääneen</Text>
+        </View>
+          <View style={styles.right}>
+            <Pressable
             style={styles.change}
               title='change'
               onPress={() => {
                 resetLevel();
               }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
-        </View>
+          </View>
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right}  />
       </View>

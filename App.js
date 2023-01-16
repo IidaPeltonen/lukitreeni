@@ -23,6 +23,7 @@ export default function App() {
     'Franklin': require('./assets/fonts/Franklin.ttf'),
     'Segoe-bold': require('./assets/fonts/Segoe-UI-Bold.ttf'),
     'Segoe': require('./assets/fonts/Segoe-UI.ttf'),
+    'Roboto': require('./assets/fonts/RobotoMono.ttf')
   })
 
   if(!fontsLoaded) {
