@@ -2,23 +2,14 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styles from "../styles/styles";
 
-export default function Footer({ done, right, name }) {
+export default function Footer({ name }) {
 
-  if (done = 'undefined') {
     return (
       <View style={styles.footer}>
-        <Text style={styles.doer}>Lukija: {name}</Text>
-      </View>
-    )
-  }
-  else {
-    return (
-      <View style={styles.footer}>
-        <Text style={styles.doer}>Lukija: {name}</Text>
-        <Text style={styles.done}>Tehty: {done}</Text>
-        <Text style={styles.right}>Oikein: {right} </Text>
+        <Text style={styles.doer}>Oppilas: {name}</Text>
+{/*         <Text style={styles.done}>Tehty: {done}</Text>
+        <Text style={styles.done}>Oikein: {right} </Text> */}
       </View>
 
     )
-  }
 }

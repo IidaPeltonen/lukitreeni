@@ -55,7 +55,6 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.user}></Text>
           <Text style={styles.plain}>Valitse mitä haluat tehdä tänään</Text>
         </View>
-        <Footer name={name} />
       </View>
     )
   }

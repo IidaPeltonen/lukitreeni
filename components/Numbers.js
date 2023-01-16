@@ -35,7 +35,6 @@ export default function Numbers() {
               <Pressable
                 title='Aloita!'
                 onPress={startGame}
-                //tämä tieto pitäisi saada mukanaan footerille ja säilyttää siellä
                 style={styles.start}>
                 <Text style={styles.startText}>Aloita!</Text>
               </Pressable>
