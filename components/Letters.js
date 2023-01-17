@@ -37,17 +37,15 @@ export default function Letters() {
     console.log('big: ' + big)
     console.log('given: ' + text)
     //yritetyt nousee yhdellä
-    console.log('done funktion sisällä: ' + done)
     done = done + 1
-    console.log('done lisäyksen jälkeen: ' + done)
 
     //jos vastaus on oikein
     if (text === big.toLowerCase()) {
       setWrong('')
-      console.log('oikein')
       right = right + 1
       setBig('')
       setInput('')
+      startGame()
     }
     //jos ei 
     else {
@@ -55,7 +53,7 @@ export default function Letters() {
       setWrong('Yritä uudelleen!')
     }
     console.log('Done lopussa: ' + done)
-    setRefresh(Math.random()); // <- Add if your view not Rerender
+    setRefresh(Math.random()); //refressaa syötteen
   }
 
   //jos peli on juuri aloitettu
