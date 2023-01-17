@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import styles from "../styles/styles";
 
 export default function Timer({ word, time }) {
@@ -16,9 +16,11 @@ export default function Timer({ word, time }) {
       }, [timer]);
 
       return (
+        <ScrollView>
         <View>
             <Text style={styles.show}>{word}</Text>
         </View>
+        </ScrollView>
       )
 
   /*   return (

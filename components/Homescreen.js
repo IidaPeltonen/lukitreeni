@@ -1,7 +1,7 @@
 // Homescreen.js
 import "react-native-gesture-handler"; //this should be the first import in your code
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TextInput, Pressable } from "react-native";
+import { View, Text, Image, TextInput, Pressable, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Footer from "./Footer"
@@ -18,6 +18,7 @@ export default function HomeScreen({ navigation }) {
 
   if (noUser === true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')}
@@ -41,10 +42,12 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
       </View>
+      </ScrollView>
     );
   }
   else {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')}
@@ -56,6 +59,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.plain}>Valitse mitä haluat tehdä tänään</Text>
         </View>
       </View>
+      </ScrollView>
     )
   }
 }

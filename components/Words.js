@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, View, Text, Image } from "react-native";
+import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import WordsTable from "./WordsTable";
@@ -18,6 +18,7 @@ export default function Words() {
   //jos tasoa ei ole valittu
   if (difficulty === 0) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -51,6 +52,7 @@ export default function Words() {
           </Pressable>
         </View>
       </View>
+      </ScrollView>
     );
   }
 
@@ -58,6 +60,7 @@ export default function Words() {
   else if (difficulty === 1) {
     const time= 30
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -75,6 +78,7 @@ export default function Words() {
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
+      </ScrollView>
     );
   }
 
@@ -82,6 +86,7 @@ export default function Words() {
   else if (difficulty === 2) {
     const time= 20
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -99,6 +104,7 @@ export default function Words() {
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
+      </ScrollView>
     );
   }
 
@@ -106,6 +112,7 @@ export default function Words() {
   else if (difficulty === 3) {
     const time= 15
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -123,6 +130,7 @@ export default function Words() {
         <WordsTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right}  />
       </View>
+      </ScrollView>
     );
   }
 }

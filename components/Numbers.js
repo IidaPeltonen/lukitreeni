@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, View, Text, Image } from "react-native";
+import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 
@@ -18,6 +18,7 @@ export default function Numbers() {
   //jos peli on juuri aloitettu
   if (notStarted == true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -42,6 +43,7 @@ export default function Numbers() {
           </View>
         </View>
       </View>
+      </ScrollView>
     );
   }
 
@@ -49,6 +51,7 @@ export default function Numbers() {
   else {
     const time = 50
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Numeroita tähän</Text>
@@ -58,6 +61,7 @@ export default function Numbers() {
         </View>
         <Footer done={done} right={right} />
       </View>
+      </ScrollView>
     );
   }
 

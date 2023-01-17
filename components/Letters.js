@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, View, Text, Image, TextInput } from "react-native";
+import { Pressable, View, Text, Image, TextInput, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 
@@ -21,7 +21,6 @@ export default function Letters() {
 
   function startGame() {
     setNotStart(false)
-    console.log('Peli aloitettu')
     getLetter()
   }
 
@@ -33,9 +32,6 @@ export default function Letters() {
   }
 
   function checkLetter(text) {
-    console.log('checkLetteriä kutsuttiin')
-    console.log('big: ' + big)
-    console.log('given: ' + text)
     //yritetyt nousee yhdellä
     done = done + 1
 
@@ -52,13 +48,13 @@ export default function Letters() {
       setInput('')
       setWrong('Yritä uudelleen!')
     }
-    console.log('Done lopussa: ' + done)
     setRefresh(Math.random()); //refressaa syötteen
   }
 
   //jos peli on juuri aloitettu
   if (notStarted == true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -80,6 +76,7 @@ export default function Letters() {
           </View>
         </View>
       </View>
+      </ScrollView>
     );
   }
 
@@ -87,6 +84,7 @@ export default function Letters() {
   //mutta yrityksiä on 15
   else if (done === 15) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -100,10 +98,12 @@ export default function Letters() {
           </View>
         </View>
       </View>
+      </ScrollView>
     );
   }
   else {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Anna oikea kirjain</Text>
@@ -118,10 +118,10 @@ export default function Letters() {
           <View style={styles.center}>
             <Text style={styles.wrong}>{wrong}</Text>
             <Text style={styles.plain}>Arvauksia jäljellä tällä kerralla : {times-done}</Text>
-            <Text style={styles.plain}>Done : {done} Right : {right}</Text>
         </View>
         <Footer />
       </View>
+      </ScrollView>
     );
   }
 

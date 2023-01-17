@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, View, Text, Image } from "react-native";
+import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
@@ -18,6 +18,7 @@ export default function Sentences() {
   //jos tasoa ei ole valittu
   if (difficulty === 0) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -51,6 +52,7 @@ export default function Sentences() {
           </Pressable>
         </View>
       </View>
+      </ScrollView>
     );
   }
 
@@ -58,6 +60,7 @@ export default function Sentences() {
   else if (difficulty === 1) {
     const time= 50
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -75,6 +78,7 @@ export default function Sentences() {
         <SentencesTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
+      </ScrollView>
     );
   }
 
@@ -82,6 +86,7 @@ export default function Sentences() {
   else if (difficulty === 2) {
     const time= 40
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -99,6 +104,7 @@ export default function Sentences() {
         <SentencesTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right} />
       </View>
+      </ScrollView>
     );
   }
 
@@ -106,6 +112,7 @@ export default function Sentences() {
   else if (difficulty === 3) {
     const time= 30
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -123,6 +130,7 @@ export default function Sentences() {
         <SentencesTable difficulty={difficulty} time={time} />
         <Footer done={done} right={right}  />
       </View>
+      </ScrollView>
     );
   }
 }
