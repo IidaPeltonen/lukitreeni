@@ -1,6 +1,6 @@
 import "react-native-gesture-handler"; //this should be the first import in your code
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TextInput, Pressable, ScrollView, Button } from "react-native";
+import { View, Text, Image, TextInput, Pressable, ScrollView, Alert } from "react-native";
 import styles from "../styles/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -27,7 +27,19 @@ export default function HomeScreen({ navigation }) {
     }
   }
 
-  console.log('name: ' + firstname)
+  const showAlert = () => {
+    Alert.alert(
+      'Moi {firstname}',
+      'Nimi tallennettu.',
+      [
+        {
+          text: 'Aloitetaan!',
+          onPress: () => console.log('aloitetaan')
+        }
+      ]
+    )
+  }
+
     return (
       <ScrollView>
       <View style={styles.container}>
@@ -48,7 +60,7 @@ export default function HomeScreen({ navigation }) {
           <Pressable
             title="Save firstname"
             style={styles.start}
-            onPress={() => storeData(firstname)}>
+            onPress={() => storeData(firstname) || showAlert()}>
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
           </View>

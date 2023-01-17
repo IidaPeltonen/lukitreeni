@@ -23,10 +23,8 @@ export default function Footer() {
   }
 
     return (
-      <ScrollView>
       <View style={styles.footer}>
         <Text style={styles.doer}>Oppilas: {firstname}</Text>
       </View>
-      </ScrollView>
     )
 }

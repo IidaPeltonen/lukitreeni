@@ -12,7 +12,8 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
-    margin: 0
+    margin: 0,
+    padding: 0
   },
   header: {
     backgroundColor: '#c9f1fd',
@@ -69,9 +70,9 @@ export default StyleSheet.create({
     marginBottom: 50
   },
   startText: {
-  fontSize: 20,
-   color: 'white',
-   padding: 10,
+    fontSize: 20,
+    color: 'white',
+    padding: 10,
   },
   welcome: {
     alignContent: 'center',
@@ -90,7 +91,6 @@ export default StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Roboto',
     //miksi tämä ei toimi?
-  
     color: 'red',
     padding: 5
   },
@@ -105,7 +105,6 @@ export default StyleSheet.create({
   footer: {
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
-    padding: 10,
     position: 'absolute',
     alignItems: 'center',
     bottom:0,

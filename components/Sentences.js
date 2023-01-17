@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Sentences() {
-  const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
+  const [firstname, setFirstname] = useState('');
+
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [right, setRight] = useState(0) //oikeiden määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita lauseita
 
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const firstname = await AsyncStorage.getItem('@firstname');
+      console.log(firstname);
+      if (firstname !== null) {
+        setFirstname(firstname);
+      }
+    } catch(e) {
+      console.log('error: ' + e)
+    }
+  }
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
     setDifficulty(0)
@@ -51,6 +70,7 @@ export default function Sentences() {
             <Text style={styles.choise}>5-6 lk</Text>
           </Pressable>
         </View>
+        <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -76,7 +96,7 @@ export default function Sentences() {
           </Pressable>
         </View>
         <SentencesTable difficulty={difficulty} time={time} />
-        <Footer done={done} right={right} />
+        <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -102,7 +122,7 @@ export default function Sentences() {
           </Pressable>
         </View>
         <SentencesTable difficulty={difficulty} time={time} />
-        <Footer done={done} right={right} />
+        <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -128,7 +148,7 @@ export default function Sentences() {
           </Pressable>
         </View>
         <SentencesTable difficulty={difficulty} time={time} />
-        <Footer done={done} right={right}  />
+        <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
     );

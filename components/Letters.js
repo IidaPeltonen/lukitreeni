@@ -135,7 +135,7 @@ export default function Letters() {
             <Text style={styles.wrong}>{wrong}</Text>
             <Text style={styles.plain}>Arvauksia jäljellä tällä kerralla : {times-done}</Text>
         </View>
-        <Footer />
+        <Footer firstname={firstname}/>
       </View>
       </ScrollView>
     );

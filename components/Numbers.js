@@ -77,7 +77,7 @@ export default function Numbers() {
           <Text style={styles.plain}>24 / tää ilmestyy kun aika loppuu</Text>
           <Text style={styles.plain}>Aikaa jäljellä : 'times' </Text>
         </View>
-        <Footer done={done} right={right} />
+        <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
     );
