@@ -67,7 +67,7 @@ export default function Letters() {
         </View>
         <View style={styles.welcome}>
           <View style={styles.center}>
-            <Text style={styles.textHeader}>Testaa työmuistiasi</Text>
+            <Text style={styles.textHeader}>Tunnista isot kirjaimet</Text>
             <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
             <Text style={styles.plain}>Kirjoita näkemäsi iso kirjain pienellä </Text>
             <Text style={styles.plain}>alareunan ruutuun </Text>
@@ -86,6 +86,24 @@ export default function Letters() {
   }
 
   //jos aloita on painettu
+  //mutta yrityksiä on 15
+  else if (done === 15) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image source={require('./logo.jpg')} style={styles.logo} />
+        </View>
+        <View style={styles.welcome}>
+          <View style={styles.center}>
+            <Text style={styles.textHeader}>Peli päättyi!</Text>
+            <Text style={styles.plain}> </Text>
+            <Text style={styles.plain}> </Text>
+            <Text style={styles.plain}>Sait {right} oikein!</Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
   else {
     return (
       <View style={styles.container}>
