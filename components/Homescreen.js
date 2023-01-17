@@ -1,22 +1,33 @@
-// Homescreen.js
 import "react-native-gesture-handler"; //this should be the first import in your code
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TextInput, Pressable, ScrollView } from "react-native";
+import { View, Text, Image, TextInput, Pressable, ScrollView, Button } from "react-native";
 import styles from "../styles/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Footer from "./Footer"
 
 export default function HomeScreen({ navigation }) {
-  const [name, setName] = useState('')
-  const [noUser, setNoUser] = useState(true)
+  const [firstname, setFirstname] = useState('')
 
-  function saveName() {
-    setNoUser(false)
-    let user = name
-    setName(user)
+  useEffect(() => {
+    clearData();
+  }, []);
+
+  const clearData = async () => {
+    try {
+      await AsyncStorage.removeItem('@firstname');
+    } catch (e) {
+      console.log('error: ' + e)
+    }
   }
 
-  if (noUser === true) {
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('@firstname', value)
+    } catch (e) {
+      console.log('error: ' + e)
+    }
+  }
+
+  console.log('name: ' + firstname)
     return (
       <ScrollView>
       <View style={styles.container}>
@@ -25,41 +36,24 @@ export default function HomeScreen({ navigation }) {
             style={styles.logoHomepage} />
         </View>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>Anna nimesi</Text>
+          <Text style={styles.textHeader}>Moi! Anna nimesi</Text>
+          <View style={styles.center}>
           <TextInput
             style={styles.textHeaderInput}
-            keyboardType='default'
-            onChangeText={Text => setName(Text)}
+            onChangeText={setFirstname}
+            value={firstname}
+            placeholder="Nimi tähän"
           />
-          <View style={styles.center}>
-            <Pressable
-              title='Aloita!'
-              onPress={saveName}
-              //tämä tieto pitäisi saada mukanaan footerille ja säilyttää siellä
-              style={styles.start}>
-              <Text style={styles.startText}>Aloita!</Text>
-            </Pressable>
+
+          <Pressable
+            title="Save firstname"
+            style={styles.start}
+            onPress={() => storeData(firstname)}>
+            <Text style={styles.startText}>Aloita!</Text>
+          </Pressable>
+          </View>
           </View>
         </View>
-      </View>
       </ScrollView>
     );
-  }
-  else {
-    return (
-      <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Image source={require('./logo.jpg')}
-            style={styles.logoHomepage} />
-        </View>
-        <View style={styles.welcome}>
-          <Text style={styles.user}>Tervetuloa {name}!</Text>
-          <Text style={styles.user}></Text>
-          <Text style={styles.plain}>Valitse mitä haluat tehdä tänään</Text>
-        </View>
-      </View>
-      </ScrollView>
-    )
-  }
 }

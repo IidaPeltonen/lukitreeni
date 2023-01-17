@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pressable, View, Text, Image, TextInput, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
   'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö']
@@ -11,13 +12,28 @@ const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', '
   const times = 15 // joka kerralle 15 arvausta
 
 export default function Letters() {
-  const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
+  const [firstname, setFirstname] = useState('');
   const [big, setBig] = useState('') //näytettävä
   const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
   const [input, setInput] = useState('') //käyttäjän syöte
   const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const firstname = await AsyncStorage.getItem('@firstname');
+      console.log(firstname);
+      if (firstname !== null) {
+        setFirstname(firstname);
+      }
+    } catch(e) {
+      console.log('error: ' + e)
+    }
+  }
 
   function startGame() {
     setNotStart(false)

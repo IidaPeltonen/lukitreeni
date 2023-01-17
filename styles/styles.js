@@ -53,12 +53,11 @@ export default StyleSheet.create({
   //nimen input
   textHeaderInput: {
     height: 70,
-    margin: 12,
-    borderBottomWidth: 3,
-    padding: 10,
-    width: 500,
+    borderBottomWidth: 2,
+    width: 200,
     fontSize: 25,
-    marginBottom: 50
+    marginBottom: 50,
+    alignItems: 'center'
   },
   start: {
     maxWidth: 200,
@@ -66,7 +65,8 @@ export default StyleSheet.create({
     backgroundColor: '#023020',
     alignItems: 'center',
     borderRadius: 5,
-    marginTop: 15
+    marginTop: 15,
+    marginBottom: 50
   },
   startText: {
   fontSize: 20,

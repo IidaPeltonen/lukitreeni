@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Numbers() {
-  const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
+  const [firstname, setFirstname] = useState('');
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [right, setRight] = useState(0) //oikeiden määrä
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
   const [notStarted, setNotStart] = useState(true) //taso alkaa aina kahdesta, max on 6
+  
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const firstname = await AsyncStorage.getItem('@firstname');
+      console.log(firstname);
+      if (firstname !== null) {
+        setFirstname(firstname);
+      }
+    } catch(e) {
+      console.log('error: ' + e)
+    }
+  }
 
   function startGame() {
     setNotStart(false)
