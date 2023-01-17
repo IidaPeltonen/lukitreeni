@@ -6,6 +6,10 @@ import Footer from "./Footer";
 const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
   'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö']
 
+  let done = 0
+  let right = 0
+  const times = 15 // joka kerralle 15 arvausta
+
 export default function Letters() {
   const [user, setUser] = useState('') //kirjautuneen nimi //miten tää saadaan?
   const [big, setBig] = useState('') //näytettävä
@@ -13,13 +17,7 @@ export default function Letters() {
   const [input, setInput] = useState('') //käyttäjän syöte
   const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
-  const [dones, setDones] = useState(''); // 
-  const [rights, setRights] = useState(''); //
 
-  let done = 0 //montako tehty
-  let right = 0 //montako oikein
-  const times = 15 // joka kerralle 15 arvausta
-  const left = times - dones
 
   function startGame() {
     setNotStart(false)
@@ -32,39 +30,31 @@ export default function Letters() {
     let random = Math.floor(Math.random() * 23)
     let randomLetter = bigs[random]
     setBig(randomLetter)
-    console.log('randomLetter: ' + randomLetter)
   }
 
   function checkLetter(text) {
-    
+    console.log('checkLetteriä kutsuttiin')
     console.log('big: ' + big)
     console.log('given: ' + text)
+    //yritetyt nousee yhdellä
+    console.log('done funktion sisällä: ' + done)
+    done = done + 1
+    console.log('done lisäyksen jälkeen: ' + done)
 
     //jos vastaus on oikein
     if (text === big.toLowerCase()) {
-      //yritetyt nousee yhdellä
-      done = done+1
-      setDones(done)
-      setRefresh(Math.random()); // <- Add if your view not Rerender
       setWrong('')
       console.log('oikein')
-      right = +1
-      setRights(right)
-      setRefresh(Math.random()); // <- Add if your view not Rerender
+      right = right + 1
       setBig('')
       setInput('')
     }
     //jos ei 
     else {
-      //yritetyt nousee yhdellä
-      done = done+1
-      setDones(done)
-      setRefresh(Math.random()); // <- Add if your view not Rerender
       setInput('')
       setWrong('Yritä uudelleen!')
     }
-    setDones(done)
-    setRights(right)
+    console.log('Done lopussa: ' + done)
     setRefresh(Math.random()); // <- Add if your view not Rerender
   }
 
@@ -111,7 +101,8 @@ export default function Letters() {
         </View>
           <View style={styles.center}>
             <Text style={styles.wrong}>{wrong}</Text>
-            <Text style={styles.plain}>Arvauksia jäljellä tällä kerralla : {left}</Text>
+            <Text style={styles.plain}>Arvauksia jäljellä tällä kerralla : {times-done}</Text>
+            <Text style={styles.plain}>Done : {done} Right : {right}</Text>
         </View>
         <Footer />
       </View>
