@@ -40,12 +40,13 @@ export default function Sentences() {
       <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={require('./logo.jpg')} style={styles.logo} />
+          <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Lue virkkeitä</Text>
           <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
           <View style={styles.lineBold} />
+          <View style={styles.choiseBox}>
           <Pressable
             title='1-2 lk'
             onPress={() => {
@@ -69,6 +70,7 @@ export default function Sentences() {
             }} >
             <Text style={styles.choise}>5-6 lk</Text>
           </Pressable>
+          </View>
         </View>
         <Footer firstname={firstname} done={done} right={right} />
       </View>

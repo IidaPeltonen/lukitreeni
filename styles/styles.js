@@ -13,7 +13,10 @@ export default StyleSheet.create({
     backgroundColor: '#c9f1fd',
     borderRadius: 3,
     margin: 0,
-    padding: 0
+    padding: 0, 
+    maxHeight: '100%',
+    maxWidth: '100%',
+    paddingBottom: 20
   },
   header: {
     backgroundColor: '#c9f1fd',
@@ -23,18 +26,12 @@ export default StyleSheet.create({
     aspectRatio: 2,
     resizeMode: 'contain',
     backgroundColor: '#c9f1fd',
-    marginBottom: 100,
-    alignSelf: 'center'
-  },
-  logo: {
-    aspectRatio: 2,
-    resizeMode: 'contain',
-    backgroundColor: '#c9f1fd',
+    marginBottom: 40,
     alignSelf: 'center'
   },
   navi: {
     backgroundColor: '#c9f1fd',
-    color: 'red'
+    tintColor: 'purple1'
   },
   //nimenantotekstietusivulla
   textHeader: {
@@ -45,7 +42,7 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   textHeader2: {
-    fontSize: 25,
+    fontSize: 20,
     fontFamily: 'Roboto',
     marginLeft: 20,
     alignSelf: 'center',
@@ -57,7 +54,7 @@ export default StyleSheet.create({
     borderBottomWidth: 2,
     width: 200,
     fontSize: 25,
-    marginBottom: 50,
+    marginBottom: 30,
     alignItems: 'center'
   },
   start: {
@@ -109,13 +106,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     bottom:0,
     left: 0,
-    right: 0
+    right: 0,
+    marginBottom: 15
   },
   //tasovalinnan tekstit
   choise: {
     alignSelf: 'center',
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: 'bold',
+  },
+  choiseBox: {
+    marginBottom: 20
   },
   //väliviivat tasovalintaan
   lineBold: {
@@ -136,7 +137,6 @@ export default StyleSheet.create({
     marginLeft: 50,
     marginRight: 50,
     marginTop: 50,
-    height: 400,
     borderStyle: 'dashed'
   },
   Clock: {
@@ -155,13 +155,12 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#023020',
     shadowOpacity: 10,
-    //maxWidth: 400
   },
   //arvottu sana
   show: {
     fontSize: 60,
     fontFamily: 'Roboto',
-    margin: 100,
+    margin: 10,
     fontWeight: 'bold'
   },
   center: {
@@ -170,11 +169,11 @@ export default StyleSheet.create({
   },
   letters: {
     alignSelf: 'center',
-    height: 150,
+    height: 120,
     margin: 12,
     borderWidth: 3,
     paddingLeft:30,
-    width: 150,
+    width: 120,
     fontSize: 80,
     marginBottom: 50,
     justifyContent: 'center',

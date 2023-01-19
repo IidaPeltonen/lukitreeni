@@ -39,7 +39,7 @@ export default function Numbers() {
       <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={require('./logo.jpg')} style={styles.logo} />
+          <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <View style={styles.welcome}>
           <View style={styles.center}>

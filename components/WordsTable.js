@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, Dimensions } from 'react-native';
 import Timer from './Timer';
 import styles from "../styles/styles";
 
@@ -18,6 +18,7 @@ export default function WordsTable({ difficulty, time }) {
     console.log('fixedTime: ' + (fixedTime))
 
     useEffect(() => {
+        console.log('korkeus: ' + (Dimensions.get("window").height))
         getSelectedLvlWords()
     }, [])
 
@@ -77,7 +78,7 @@ export default function WordsTable({ difficulty, time }) {
 
     return (
         <ScrollView>
-        <View style={styles.WordsTable}>
+        <View style={styles.WordsTable} maxHeight={Dimensions.get("window").height +300}>
             <Text style={styles.show}>{showable}</Text>
             <Text style={styles.Clock}>Aikaa jäljellä : {time}s </Text>
         </View>

@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
   const showAlert = () => {
     Alert.alert(
       'Moi ' + firstname + '!',
-      'Nimi tallennettu.',
+      'Nimi tallennettu.' + 'Valitse valikosta haluamasi aktiviteetti.',
       [
         {
           text: 'Aloitetaan!',
@@ -40,35 +40,35 @@ export default function HomeScreen({ navigation }) {
     )
   }
 
-    return (
-      <ScrollView>
+  return (
+    <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')}
             style={styles.logoHomepage} />
         </View>
         <View style={styles.welcome}>
-          <Text style={styles.textHeader}>Moi! Anna nimesi</Text>
+          <Text style={styles.textHeader}>Tervetuloa lukitreeniin!</Text>
+          <Text style={styles.textHeader}>Anna nimesi</Text>
           <View style={styles.center}>
-          <TextInput
-            style={styles.textHeaderInput}
-            onChangeText={setFirstname}
-            value={firstname}
-            placeholder="Nimi tähän"
-          />
-
-          <Pressable
-            title="Save firstname"
-            style={styles.start}
-            onPress={() => {
-              storeData(firstname);
-              showAlert();
-            }}>
-            <Text style={styles.startText}>Aloita!</Text>
-          </Pressable>
-          </View>
+            <TextInput
+              style={styles.textHeaderInput}
+              onChangeText={setFirstname}
+              value={firstname}
+              placeholder="Nimi tähän"
+            />
+            <Pressable
+              title="Save firstname"
+              style={styles.start}
+              onPress={() => {
+                storeData(firstname);
+                showAlert();
+              }}>
+              <Text style={styles.startText}>Aloita!</Text>
+            </Pressable>
           </View>
         </View>
-      </ScrollView>
-    );
+      </View>
+    </ScrollView>
+  );
 }
