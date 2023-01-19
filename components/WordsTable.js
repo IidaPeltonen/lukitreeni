@@ -15,7 +15,11 @@ export default function WordsTable({ difficulty, time }) {
     const [words, setWords] = useState([])
     const [showable, setShowable] = useState(false); // näytettävä sana
 
-    //console.log('fixedTime: ' + (fixedTime+1))
+    console.log('fixedTime: ' + (fixedTime))
+
+    useEffect(() => {
+        getSelectedLvlWords()
+    }, [])
 
     //haetaan sopivan tason sanat
     function getSelectedLvlWords() {
@@ -54,18 +58,22 @@ export default function WordsTable({ difficulty, time }) {
             console.log('tempRandArr: ' + tempRandArr)
         }
         //kutsutaan tulostavaa funktiota
+        printWords(tempRandArr)
     }
 
     function printWords(wordsForPrinting) {
         //meillä on taulukollinen sanoja
         //tähän useEffect
         //theniin aikakatkaisu?
+        //for-looppi?
+        for (let i = 0; i < wordsForPrinting.length; i++) {
+        console.log('print:')
+            setShowable(wordsForPrinting[i])
+            setTimeout(() => {
+                setShowable(null)
+            }, fixedTime)
+        }
     }
-
-
-    useEffect(() => {
-        getSelectedLvlWords()
-    }, [])
 
     return (
         <ScrollView>
