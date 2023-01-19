@@ -63,11 +63,11 @@ export default function WordsTable({ difficulty, time }) {
 
     function printWords(wordsForPrinting) {
         //meillä on taulukollinen sanoja
-        //tähän useEffect
+        //tähän useEffect?
         //theniin aikakatkaisu?
         //for-looppi?
         for (let i = 0; i < wordsForPrinting.length; i++) {
-        console.log('print:')
+        console.log('print: ' + i)
             setShowable(wordsForPrinting[i])
             setTimeout(() => {
                 setShowable(null)
