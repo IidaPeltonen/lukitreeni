@@ -29,7 +29,7 @@ export default function HomeScreen({ navigation }) {
 
   const showAlert = () => {
     Alert.alert(
-      'Moi {firstname}',
+      'Moi ' + firstname + '!',
       'Nimi tallennettu.',
       [
         {
@@ -60,7 +60,10 @@ export default function HomeScreen({ navigation }) {
           <Pressable
             title="Save firstname"
             style={styles.start}
-            onPress={() => storeData(firstname) || showAlert()}>
+            onPress={() => {
+              storeData(firstname);
+              showAlert();
+            }}>
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
           </View>

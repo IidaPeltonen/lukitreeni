@@ -13,10 +13,9 @@ export default function WordsTable({ difficulty, time }) {
     let fixedTime = (Number(time) * 1000)
     const [timer, setTimer] = useState(fixedTime) //kauanko sana näkyy, määräytyy vaikeustason mukaan
     const [words, setWords] = useState([])
-    const [isLoading, setIsLoading] = useState(false); // jotta useEffect toimii
     const [showable, setShowable] = useState(false); // näytettävä sana
 
-    console.log('fixedTime: ' + (fixedTime+1))
+    //console.log('fixedTime: ' + (fixedTime+1))
 
     //haetaan sopivan tason sanat
     function getSelectedLvlWords() {
@@ -36,46 +35,41 @@ export default function WordsTable({ difficulty, time }) {
                 tempWords.push(words3[i])
             }
         }
-        setWords(tempWords)
-        showWords(tempWords)
+        //kutsutaan randomizea, jotta saadaan sanat sekaisin
+        randomizeWords(tempWords)
     }
 
-    //näytetään sanoja kunnes taulu on tyhjä
-
-    function showWords(words) {
+    //arvotaan valitut sanat uuteen taulukkoon random-järjestykseen
+    function randomizeWords(tempWords) {
+        //tilapäinen array sanoille
+        let tempRandArr = []
         //tarkistaa saatujen sanojen pituuden
-        let length = (words.length - 1)
-
-/*         function showOne(showable) {
-            showOne(showable)
-            // tämän pitäisi kestää niin kauan kuin on aikaa
-            setShowable(showable)
-            setTimeout(() => {
-                setShowable('')
-            }, fixedTime)
-        } */
-
+        let length = (tempWords.length - 1)
         //arpoo numeron väliltä 0-pituus, kunnes laskuri on 0
         for (let usedWords = 0; usedWords <= length; usedWords++) {
-            let random = Math.floor(Math.random() * (words.length - 1))
-            let randomWord = words[random]       
-            //showOne(randomWord)
-            setShowable(randomWord)
-            words.splice(random, 1)
-            console.log('words: ' + words)
+            let random = Math.floor(Math.random() * (tempWords.length - 1))
+            let randomWord = tempWords[random]    
+            tempRandArr.push(randomWord)   
+            tempWords.splice(random, 1)
+            console.log('tempRandArr: ' + tempRandArr)
         }
+        //kutsutaan tulostavaa funktiota
+    }
+
+    function printWords(wordsForPrinting) {
+        //meillä on taulukollinen sanoja
+        //tähän useEffect
+        //theniin aikakatkaisu?
     }
 
 
     useEffect(() => {
-        setIsLoading(true);
         getSelectedLvlWords()
     }, [])
 
     return (
         <ScrollView>
         <View style={styles.WordsTable}>
-            {/* <Timer word={showable} time={time}/> */}
             <Text style={styles.show}>{showable}</Text>
             <Text style={styles.Clock}>Aikaa jäljellä : {time}s </Text>
         </View>
