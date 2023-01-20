@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView } from "react-native";
+import { Pressable, View, Text, Image, ScrollView, Dimensions} from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
@@ -38,7 +38,8 @@ export default function Sentences() {
   if (difficulty === 0) {
     return (
       <ScrollView>
-      <View style={styles.container}>
+            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+            <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
@@ -83,7 +84,8 @@ export default function Sentences() {
     const time= 50
     return (
       <ScrollView>
-      <View style={styles.container}>
+            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+            <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>
@@ -109,7 +111,8 @@ export default function Sentences() {
     const time= 40
     return (
       <ScrollView>
-      <View style={styles.container}>
+           {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+           <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>
@@ -135,7 +138,8 @@ export default function Sentences() {
     const time= 30
     return (
       <ScrollView>
-      <View style={styles.container}>
+           {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+           <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>

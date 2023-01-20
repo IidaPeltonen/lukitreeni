@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, ScrollView } from "react-native";
+import { Pressable, View, Text, Image, TextInput, ScrollView, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -71,7 +71,8 @@ export default function Letters() {
   if (notStarted == true) {
     return (
       <ScrollView>
-      <View style={styles.container}>
+           {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+           <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
@@ -101,7 +102,8 @@ export default function Letters() {
   else if (done === 15) {
     return (
       <ScrollView>
-      <View style={styles.container}>
+            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+            <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
         </View>
@@ -120,7 +122,8 @@ export default function Letters() {
   else {
     return (
       <ScrollView>
-      <View style={styles.container}>
+            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+            <View style={styles.container}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Anna oikea kirjain</Text>
           <Text style={styles.letters}>{big}</Text>

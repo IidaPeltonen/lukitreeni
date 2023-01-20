@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, Dimensions } from 'react-native';
 import Timer from './Timer';
 import styles from "../styles/styles";
 
@@ -75,7 +75,8 @@ export default function SentencesTable({ difficulty, time }) {
 
     return (
         <ScrollView>
-        <View style={styles.SentencesTable}>
+             {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
+      <View style={styles.container}>
             {/* <Timer word={showable} time={time}/> */}
             <Text style={styles.show}>{showable}</Text>
             <Text style={styles.Clock}>Aikaa jäljellä : {time}s </Text>
