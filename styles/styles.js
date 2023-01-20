@@ -107,7 +107,7 @@ export default StyleSheet.create({
     bottom:0,
     left: 0,
     right: 0,
-    marginBottom: 15
+    paddingBottom: 15,
   },
   //tasovalinnan tekstit
   choise: {

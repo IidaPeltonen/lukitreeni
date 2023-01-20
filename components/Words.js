@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView } from "react-native";
+import { Pressable, View, Text, Image, ScrollView, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import WordsTable from "./WordsTable";
@@ -36,7 +36,7 @@ export default function Words() {
   if (difficulty === 0) {
     return (
       <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
@@ -79,7 +79,7 @@ export default function Words() {
     const time= 30
     return (
       <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
         <View style={styles.welcome}>
           <Text style={styles.textHeader}>Lue sana ääneen</Text>
           </View>
@@ -105,7 +105,7 @@ export default function Words() {
     const time= 20
     return (
       <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
@@ -131,7 +131,7 @@ export default function Words() {
     const time= 15
     return (
       <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>

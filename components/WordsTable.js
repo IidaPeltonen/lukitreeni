@@ -10,15 +10,11 @@ const words3 = ['apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 
 
 export default function WordsTable({ difficulty, time }) {
 
-    let fixedTime = (Number(time) * 1000)
-    const [timer, setTimer] = useState(fixedTime) //kauanko sana näkyy, määräytyy vaikeustason mukaan
+    const [counter, setCounter] = useState(time) //kauanko sana näkyy, määräytyy vaikeustason mukaan
     const [words, setWords] = useState([])
-    const [showable, setShowable] = useState(false); // näytettävä sana
-
-    console.log('fixedTime: ' + (fixedTime))
+    const [wordIndex, setWordIndex] = useState(1);
 
     useEffect(() => {
-        console.log('korkeus: ' + (Dimensions.get("window").height))
         getSelectedLvlWords()
     }, [])
 
@@ -53,35 +49,41 @@ export default function WordsTable({ difficulty, time }) {
         //arpoo numeron väliltä 0-pituus, kunnes laskuri on 0
         for (let usedWords = 0; usedWords <= length; usedWords++) {
             let random = Math.floor(Math.random() * (tempWords.length - 1))
-            let randomWord = tempWords[random]    
-            tempRandArr.push(randomWord)   
+            let randomWord = tempWords[random]
+            tempRandArr.push(randomWord)
             tempWords.splice(random, 1)
             console.log('tempRandArr: ' + tempRandArr)
         }
         //kutsutaan tulostavaa funktiota
+        setWords(tempRandArr)
         printWords(tempRandArr)
     }
 
-    function printWords(wordsForPrinting) {
-        //meillä on taulukollinen sanoja
-        //tähän useEffect?
-        //theniin aikakatkaisu?
-        //for-looppi?
-        for (let i = 0; i < wordsForPrinting.length; i++) {
-        console.log('print: ' + i)
-            setShowable(wordsForPrinting[i])
-            setTimeout(() => {
-                setShowable(null)
-            }, fixedTime)
-        }
+    function printWords() {
+        console.log('tulostetaan')
+        console.log('words[1] : ' + words[1])
+        console.log('words pituus: ' + words.length)
+        console.log('counter: ' + counter)
+
+/*         useEffect(() => {
+            const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+            console.log('timer: ' + timer)
+            console.log('counter: ' + counter)
+            if (counter === 0 && wordIndex < words.length) {
+                setCounter(time);
+                setWordIndex(wordIndex + 1);
+            }
+            return () => clearInterval(timer);
+        }, [counter]); */
+
     }
 
     return (
         <ScrollView>
-        <View style={styles.WordsTable} maxHeight={Dimensions.get("window").height +300}>
-            <Text style={styles.show}>{showable}</Text>
-            <Text style={styles.Clock}>Aikaa jäljellä : {time}s </Text>
-        </View>
+            <View style={styles.WordsTable} maxHeight={Dimensions.get("window").height + 300}>
+                <Text style={styles.show}>Word {wordIndex}: {words[wordIndex]}</Text>
+                <Text style={styles.Clock}>Aikaa jäljellä : {counter}s </Text>
+            </View>
         </ScrollView>
     )
 }
