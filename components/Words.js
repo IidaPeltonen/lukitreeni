@@ -169,7 +169,7 @@ export default function Words() {
 
   //jos taso on 3, eli 5-6lk
   else if (difficulty === 3) {
-    const time= 5
+    const time= 15
     return (
       <ScrollView>
       <View style={styles.container}>
