@@ -143,8 +143,8 @@ export default StyleSheet.create({
     color: 'blue',
     fontWeight: 'bold',
     fontSize: 17,
-    alignSelf: 'baseline',
-    marginLeft: 950,
+     alignSelf: 'baseline',
+    marginLeft: 950, 
     position: 'absolute',
     bottom:10,
     left: 0,
@@ -161,7 +161,9 @@ export default StyleSheet.create({
     fontSize: 60,
     fontFamily: 'Roboto',
     margin: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 80,
+    marginTop: 80
   },
   center: {
     justifyContent: 'center',

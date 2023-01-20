@@ -5,11 +5,17 @@ import Footer from "./Footer";
 import WordsTable from "./WordsTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+//tarvitaan lista sanoja
+const words1 = ['savu', 'sinä', 'kana', 'talo', 'aave', 'ovi', 'auto']
+const words2 = ['kissa', 'koira', 'koulu', 'kaali', 'sukka', 'talvi', 'silta']
+const words3 = ['apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 'kaappi', 'sitruuna']
+
 export default function Words() {
   const [firstname, setFirstname] = useState('');
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [right, setRight] = useState(0) //oikeiden määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
+  const [words, setWords] = useState([])
 
   useEffect(() => {
     getData();
@@ -18,7 +24,6 @@ export default function Words() {
   const getData = async () => {
     try {
       const firstname = await AsyncStorage.getItem('@firstname');
-      console.log(firstname);
       if (firstname !== null) {
         setFirstname(firstname);
       }
@@ -26,6 +31,36 @@ export default function Words() {
       console.log('error: ' + e)
     }
   }
+
+  function getSelectedLvlWords(difficulty) {
+    const tempWords = []
+    if (difficulty === 1) {
+        for (let i = 0; i < words1.length; i++) {
+            tempWords.push(words1[i])
+        }
+    }
+    if (difficulty === 2) {
+        for (let i = 0; i < words2.length; i++) {
+            tempWords.push(words2[i])
+        }
+    }
+    if (difficulty === 3) {
+        for (let i = 0; i < words3.length; i++) {
+            tempWords.push(words3[i])
+        }
+    }
+    //tilapäinen array sekoitetuille sanoille
+    let tempRandArr = []
+    let length = (tempWords.length - 1)
+    //arpoo numeron väliltä 0-pituus, kunnes laskuri on 0
+    for (let usedWords = 0; usedWords <= length; usedWords++) {
+        let random = Math.floor(Math.random() * (tempWords.length))
+        let randomWord = tempWords[random]
+        tempRandArr.push(randomWord)
+        tempWords.splice(random, 1)
+    }
+    setWords(tempRandArr)
+}
 
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
@@ -47,24 +82,30 @@ export default function Words() {
           <Pressable
             title='1-2 lk'
             onPress={() => {
-              setDifficulty(1);
-            }} >
+              let helper = 1
+              setDifficulty(helper)
+              getSelectedLvlWords(helper);
+            }}>
             <Text style={styles.choise}>1-2 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
             title='3-4 lk'
             onPress={() => {
-              setDifficulty(2);
-            }} >
+              let helper = 2
+              setDifficulty(helper)
+              getSelectedLvlWords(helper);
+            }}>
             <Text style={styles.choise}>3-4 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
             title='5-6 lk'
             onPress={() => {
-              setDifficulty(3);
-            }} >
+              let helper = 3
+              setDifficulty(helper)
+              getSelectedLvlWords(helper);
+            }}>
             <Text style={styles.choise}>5-6 lk</Text>
           </Pressable>
         </View>
@@ -79,23 +120,23 @@ export default function Words() {
     const time= 30
     return (
       <ScrollView>
-      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
-        <View style={styles.welcome}>
-          <Text style={styles.textHeader}>Lue sana ääneen</Text>
+        <View style={styles.container} >
+          <View style={styles.welcome}>
+            <Text style={styles.textHeader}>Lue sana ääneen</Text>
           </View>
           <View style={styles.right}>
             <Pressable
-            style={styles.change}
+              style={styles.change}
               title='change'
               onPress={() => {
                 resetLevel();
               }} >
-                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
-          </Pressable>
+              <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            </Pressable>
           </View>
-        <WordsTable difficulty={difficulty} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
-      </View>
+          <WordsTable words={words} time={time} />
+          <Footer firstname={firstname} done={done} right={right} />
+        </View>
       </ScrollView>
     );
   }
@@ -105,7 +146,7 @@ export default function Words() {
     const time= 20
     return (
       <ScrollView>
-      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
+      <View style={styles.container} >
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
@@ -119,7 +160,7 @@ export default function Words() {
                   <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
           </View>
-        <WordsTable difficulty={difficulty} time={time} />
+        <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
@@ -128,10 +169,10 @@ export default function Words() {
 
   //jos taso on 3, eli 5-6lk
   else if (difficulty === 3) {
-    const time= 15
+    const time= 5
     return (
       <ScrollView>
-      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
+      <View style={styles.container}>
         <View style={styles.welcome}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
@@ -145,7 +186,7 @@ export default function Words() {
                   <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
           </View>
-        <WordsTable difficulty={difficulty} time={time} />
+        <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
       </ScrollView>
