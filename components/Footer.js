@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import styles from "../styles/styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { set } from 'react-native-reanimated';
 
 export default function Footer() {
   const [firstname, setFirstname] = useState('');
@@ -13,7 +14,6 @@ export default function Footer() {
   const getData = async () => {
     try {
       const firstname = await AsyncStorage.getItem('@firstname');
-      console.log(firstname);
       if (firstname !== null) {
         setFirstname(firstname);
       }
