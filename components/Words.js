@@ -13,7 +13,6 @@ const words3 = ['apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 
 export default function Words() {
   const [firstname, setFirstname] = useState('');
   const [done, setDone] = useState(0) //tehtyjen määrä
-  const [right, setRight] = useState(0) //oikeiden määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
   const [words, setWords] = useState([])
 
@@ -70,15 +69,15 @@ export default function Words() {
   //jos tasoa ei ole valittu
   if (difficulty === 0) {
     return (
-      <ScrollView>
-      <View style={styles.container} maxHeight={Dimensions.get("window").height +500}>
+      <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <View style={styles.center}>
-          <Text style={styles.textHeader}>Lue sanoja</Text>
+          <Text style={styles.textHeader2}>Lue sanoja</Text>
           <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
-          <View style={styles.lineBold} />
+        </View>
+        <View style={styles.chooseLvl}>
           <Pressable
             title='1-2 lk'
             onPress={() => {
@@ -86,7 +85,7 @@ export default function Words() {
               setDifficulty(helper)
               getSelectedLvlWords(helper);
             }}>
-            <Text style={styles.choise}>1-2 lk</Text>
+            <Text style={styles.choice}>1-2 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
@@ -96,7 +95,7 @@ export default function Words() {
               setDifficulty(helper)
               getSelectedLvlWords(helper);
             }}>
-            <Text style={styles.choise}>3-4 lk</Text>
+            <Text style={styles.choice}>3-4 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
@@ -106,12 +105,11 @@ export default function Words() {
               setDifficulty(helper)
               getSelectedLvlWords(helper);
             }}>
-            <Text style={styles.choise}>5-6 lk</Text>
+            <Text style={styles.choice}>5-6 lk</Text>
           </Pressable>
-        </View>
-        <Footer firstname={firstname} done={done} right={right} />
+          </View>
+        <Footer firstname={firstname} done={done} />
       </View>
-      </ScrollView>
     );
   }
 
@@ -119,7 +117,6 @@ export default function Words() {
   else if (difficulty === 1) {
     const time= 30
     return (
-      <ScrollView>
         <View style={styles.container} >
           <View style={styles.center}>
             <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -137,7 +134,6 @@ export default function Words() {
           <WordsTable words={words} time={time} />
           <Footer firstname={firstname} done={done} right={right} />
         </View>
-      </ScrollView>
     );
   }
 
@@ -145,7 +141,6 @@ export default function Words() {
   else if (difficulty === 2) {
     const time= 20
     return (
-      <ScrollView>
       <View style={styles.container} >
         <View style={styles.center}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -163,7 +158,6 @@ export default function Words() {
         <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
-      </ScrollView>
     );
   }
 
@@ -171,7 +165,6 @@ export default function Words() {
   else if (difficulty === 3) {
     const time= 15
     return (
-      <ScrollView>
       <View style={styles.container}>
         <View style={styles.center}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
@@ -189,7 +182,6 @@ export default function Words() {
         <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
-      </ScrollView>
     );
   }
 }

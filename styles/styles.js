@@ -38,7 +38,7 @@ export default StyleSheet.create({
     backgroundColor: '#c9f1fd',
     tintColor: 'purple1'
   },
-  //nimenantotekstietusivulla
+  //nimenantoteksti etusivulla
   textHeader: {
     fontSize: 25,
     fontFamily: 'Roboto',
@@ -46,6 +46,14 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold'
   },
+    //headerit muualla
+    textHeader2: {
+      fontSize: 20,
+      fontFamily: 'Roboto',
+      marginLeft: 20,
+      alignSelf: 'center',
+      fontWeight: 'bold'
+    },
   //nimen input
   textHeaderInput: {
     height: 50,
@@ -74,6 +82,28 @@ export default StyleSheet.create({
     color: 'white',
     padding: 10,
   },
+  //tasovalinnan view
+  chooseLvl: {
+    alignContent: 'center',
+    alignSelf: 'center',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  //tasovalinnan tekstit
+  choice: {
+    alignSelf: 'center',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  //väliviivat tasovalintaan
+  line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    marginBottom: 10,
+    width: 100,
+  },
+
+
 
   plain: {
     fontSize: 20,
@@ -95,34 +125,15 @@ export default StyleSheet.create({
     marginTop: 200
   },
   footer: {
+    flexDirection: 'row',
     backgroundColor: '#c9f1fd',
-    borderRadius: 3,
     position: 'absolute',
     alignItems: 'center',
     bottom:0,
     left: 0,
     right: 0,
-    paddingBottom: 15,
-  },
-  //tasovalinnan tekstit
-  choise: {
-    alignSelf: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  choiseBox: {
-    marginBottom: 20
-  },
-  //väliviivat tasovalintaan
-  lineBold: {
-    borderBottomColor: 'black',
-    borderBottomWidth: 2,
-    marginBottom: 10,
-  },
-  line: {
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    marginBottom: 10,
+    paddingBottom: 10,
+    marginLeft: 10
   },
   WordsTable: {
     backgroundColor: '#c9f1fd',

@@ -84,7 +84,7 @@ export default function Sentences() {
           <Text style={styles.textHeader}>Lue virkkeitä</Text>
           <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
           <View style={styles.lineBold} />
-          <View style={styles.choiseBox}>
+          <View style={styles.choiceBox}>
           <Pressable
             title='1-2 lk'
             onPress={() => {
@@ -92,7 +92,7 @@ export default function Sentences() {
               setDifficulty(helper)
               getSelectedLvlSentences(helper);
             }}>
-            <Text style={styles.choise}>1-2 lk</Text>
+            <Text style={styles.choice}>1-2 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
@@ -102,7 +102,7 @@ export default function Sentences() {
               setDifficulty(helper)
               getSelectedLvlSentences(helper);
             }}>
-            <Text style={styles.choise}>3-4 lk</Text>
+            <Text style={styles.choice}>3-4 lk</Text>
           </Pressable>
           <View style={styles.line} />
           <Pressable
@@ -112,7 +112,7 @@ export default function Sentences() {
               setDifficulty(helper)
               getSelectedLvlSentences(helper);
             }}>
-            <Text style={styles.choise}>5-6 lk</Text>
+            <Text style={styles.choice}>5-6 lk</Text>
           </Pressable>
           </View>
         </View>
