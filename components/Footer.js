@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import styles from "../styles/styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { set } from 'react-native-reanimated';
 
-export default function Footer() {
+export default function Footer({ counter}) {
   const [firstname, setFirstname] = useState('');
 
   useEffect(() => {
@@ -24,7 +23,7 @@ export default function Footer() {
 
     return (
       <View style={styles.footer}>
-        <Text style={styles.doer}>Oppilas: {firstname}</Text>
+        <Text style={styles.doer}>Oppilas: {firstname} </Text>
       </View>
     )
 }

@@ -19,16 +19,16 @@ export default function SentencesTable({ sentences, time }) {
             setInfo('Lauseet loppuivat!')
         }
         return () => clearInterval(timer);
-    }, [counter]); 
+    }, [counter]);
 
     return (
         <View style={styles.container} >
             {senIndex <= (sentences.length - 1) &&
                 <>
-                    <View style={styles.WordsTable}>
+                    <View style={styles.SentencesTable}>
                         <View style={styles.center} >
-                            <Text style={styles.show}>{sentences[senIndex]}</Text>
-                            <Text style={styles.plain}>{info}</Text>
+                            <Text style={styles.showSen}>{sentences[senIndex]}</Text>
+                            <Text style={styles.plainText}>{info}</Text>
                         </View>
                         <Text style={styles.Clock}>Aikaa jäljellä : {counter} </Text>
                     </View>

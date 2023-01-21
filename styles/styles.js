@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#c9f1fd',
     margin: 0,
-    padding: 0, 
+    padding: 0,
     maxHeight: '100%',
     maxWidth: '100%',
   },
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   //iso logo
   logoHomepage: {
     width: '100%',
-    aspectRatio: 10/2,
+    aspectRatio: 10 / 2,
     resizeMode: 'contain',
     backgroundColor: '#c9f1fd',
     marginBottom: 20,
@@ -46,14 +46,14 @@ export default StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold'
   },
-    //headerit muualla
-    textHeader2: {
-      fontSize: 20,
-      fontFamily: 'Roboto',
-      marginLeft: 20,
-      alignSelf: 'center',
-      fontWeight: 'bold'
-    },
+  //headerit muualla
+  textHeader2: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    marginLeft: 20,
+    alignSelf: 'center',
+    fontWeight: 'bold'
+  },
   //nimen input
   textHeaderInput: {
     height: 50,
@@ -144,63 +144,96 @@ export default StyleSheet.create({
     marginRight: 150,
     borderStyle: 'dashed'
   },
-    //arvottu sana
-    show: {
-      fontSize: 60,
-      fontFamily: 'Roboto',
-      fontWeight: 'bold',
-    },
-    //timerin näyttö
-    Clock: {
-      color: 'blue',
-      fontWeight: 'bold',
-      fontSize: 17,
-      alignSelf: 'baseline',
+  //arvottu sana
+  showWord: {
+    fontSize: 60,
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+  },
+  //timerin näyttö
+  Clock: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 17,
+    alignSelf: 'baseline',
+    position: 'absolute',
+    bottom: 5,
+    left: 5,
+    right: 0
+  },
+  //lauseiden tausta
+  SentencesTable: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 6,
+    marginBottom: 20,
+    marginTop: 20,
+    marginLeft: 50,
+    marginRight: 50,
+    borderStyle: 'dashed'
+  },
+  //arvottu lause
+  showSen: {
+    fontSize: 50,
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+  },
+  //kirjain-sivun kirjainkentät
+  nextTo: {
+    flexDirection: 'row',
+  },
+  //kirjain-sivun kentät
+  letters: {
+    //alignSelf: 'center',
+    height: 110,
+    width: 110,
+    borderWidth: 3,
+    margin: 20,
+/*  PUHELIMELLA NÄYTTÄÄ TÄYDELLISELTÄ NÄIN
+   fontSize: 80,
+    marginTop: 40,
+    marginBottom: 40,
+    justifyContent: 'center', 
+    paddingLeft: 30 */
+    fontSize: 60,
+    marginTop: 40,
+    marginBottom: 40,
+    justifyContent: 'center', 
+    paddingLeft: 20, 
+    paddingRight: 20, 
+    paddingTop: 0, 
+    paddingBottom: 0, 
+  },
+    //footer
+    footer: {
+      flexDirection: 'row',
+      backgroundColor: '#c9f1fd',
       position: 'absolute',
-      bottom:5,
-      left: 5,
-      right: 0
+      alignItems: 'center',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      paddingBottom: 10,
+      marginLeft: 10
     },
-
-
-
+//kirjain-sivun väärä vastaus
   wrong: {
     fontSize: 20,
     fontFamily: 'Roboto',
-    //miksi tämä ei toimi?
-    color: 'red',
-    padding: 5
+    marginTop: 70,
+    color: 'red'
   },
 
   end: {
     marginTop: 200
   },
-  footer: {
-    flexDirection: 'row',
-    backgroundColor: '#c9f1fd',
-    position: 'absolute',
-    alignItems: 'center',
-    bottom:0,
-    left: 0,
-    right: 0,
-    paddingBottom: 10,
-    marginLeft: 10
-  },
 
 
 
 
-  letters: {
-    alignSelf: 'center',
-    height: 120,
-    margin: 12,
-    borderWidth: 3,
-    paddingLeft:30,
-    width: 120,
-    fontSize: 80,
-    marginBottom: 50,
-    justifyContent: 'center',
-  },
+
+
 
 
 

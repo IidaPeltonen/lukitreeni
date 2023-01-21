@@ -79,7 +79,7 @@ export default function Letters() {
             <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
             <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
             <Text style={styles.plainText}>Kirjoita näkemäsi iso kirjain pienellä </Text>
-            <Text style={styles.plainText}>alareunan ruutuun </Text>
+            <Text style={styles.plainText}>tyhjään ruutuun </Text>
             <View style={styles.center}>
               <Pressable
                 title='Aloita!'
@@ -117,25 +117,27 @@ export default function Letters() {
   }
   else {
     return (
-      <ScrollView>
         <View style={styles.container}>
           <View style={styles.center}>
-            <Text style={styles.textHeader}>Anna oikea kirjain</Text>
-            <Text style={styles.letters}>{big}</Text>
-            <TextInput
-              value={input}
-              maxLength={1}
-              autoCapitalize='none'
-              style={styles.letters}
-              onChangeText={Text => checkLetter(Text)} />
+            <Text style={styles.textHeader}>Anna oikea kirjain pienellä</Text>
           </View>
           <View style={styles.center}>
-            <Text style={styles.wrong}>{wrong}</Text>
-            <Text style={styles.plain}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
+            <View style={styles.nextTo}>
+              <Text style={styles.letters}>{big}</Text>
+              <TextInput
+                value={input}
+                maxLength={1}
+                autoCapitalize='none'
+                style={styles.letters}
+                onChangeText={Text => checkLetter(Text)} />
+              <Text style={styles.wrong}>{wrong}</Text>
+              </View>
+          </View>
+          <View style={styles.center}>
+            <Text style={styles.plainText}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
           </View>
           <Footer firstname={firstname} />
         </View>
-      </ScrollView>
     );
   }
 

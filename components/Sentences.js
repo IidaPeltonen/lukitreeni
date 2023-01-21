@@ -25,7 +25,6 @@ export default function Sentences() {
   const getData = async () => {
     try {
       const firstname = await AsyncStorage.getItem('@firstname');
-      console.log(firstname);
       if (firstname !== null) {
         setFirstname(firstname);
       }
@@ -54,17 +53,16 @@ export default function Sentences() {
     }
     //tilapäinen array sekoitetuille lauseille
     let tempRandArr = []
-    let length = (sentences.length - 1)
+    let length = (tempSentences.length - 1)
     //arpoo numeron väliltä 0-pituus, kunnes laskuri on 0
     for (let usedSentences = 0; usedSentences <= length; usedSentences++) {
-      let random = Math.floor(Math.random() * (sentences.length))
-      let randomSen = sentences[random]
+      let random = Math.floor(Math.random() * (tempSentences.length))
+      let randomSen = tempSentences[random]
       tempRandArr.push(randomSen)
       tempSentences.splice(random, 1)
     }
-    setSentences(tempSentences)
+    setSentences(tempRandArr)
   }
-
 
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
@@ -113,7 +111,7 @@ export default function Sentences() {
               <Text style={styles.choice}>5-6 lk</Text>
             </Pressable>
           </View>
-          <Footer firstname={firstname} done={done} right={right} />
+          <Footer firstname={firstname}  />
         </View>
     );
   }
@@ -122,8 +120,6 @@ export default function Sentences() {
   else if (difficulty === 1) {
     const time = 50
     return (
-      <ScrollView>
-        {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
         <View style={styles.container}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -141,9 +137,8 @@ export default function Sentences() {
             </Pressable>
           </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer firstname={firstname} done={done} right={right} />
+          <Footer firstname={firstname}  />
         </View>
-      </ScrollView>
     );
   }
 
@@ -151,8 +146,6 @@ export default function Sentences() {
   else if (difficulty === 2) {
     const time = 40
     return (
-      <ScrollView>
-        {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
         <View style={styles.container}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -168,9 +161,8 @@ export default function Sentences() {
             </Pressable>
           </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer firstname={firstname} done={done} right={right} />
+          <Footer firstname={firstname}  />
         </View>
-      </ScrollView>
     );
   }
 
@@ -178,8 +170,6 @@ export default function Sentences() {
   else if (difficulty === 3) {
     const time = 30
     return (
-      <ScrollView>
-        {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
         <View style={styles.container}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Lue lause ääneen</Text>
@@ -195,9 +185,8 @@ export default function Sentences() {
             </Pressable>
           </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer firstname={firstname} done={done} right={right} />
+          <Footer firstname={firstname}  />
         </View>
-      </ScrollView>
     );
   }
 }

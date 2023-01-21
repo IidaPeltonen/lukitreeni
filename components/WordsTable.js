@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, ScrollView, Dimensions } from 'react-native';
 import styles from "../styles/styles";
+import Footer from './Footer';
+
 
 export default function WordsTable({ words, time }) {
-
+    const [firstname, setFirstname] = useState('');
     const [wordIndex, setWordIndex] = useState(0);
     const [counter, setCounter] = useState(time) //kauanko sana näkyy, määräytyy vaikeustason mukaan
     const [info, setInfo] = useState('') //info sanoje loppumisesta
@@ -26,7 +28,7 @@ export default function WordsTable({ words, time }) {
             {wordIndex <= (words.length - 1) &&
                 <>
                     <View style={styles.center} >
-                        <Text style={styles.show}>{words[wordIndex]}</Text>
+                        <Text style={styles.showWord}>{words[wordIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
                     </View>
                     <Text style={styles.Clock}>Aikaa jäljellä : {counter} </Text>
