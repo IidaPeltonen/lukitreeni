@@ -75,7 +75,7 @@ export default function Words() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <Text style={styles.textHeader}>Lue sanoja</Text>
           <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
           <View style={styles.lineBold} />
@@ -121,7 +121,7 @@ export default function Words() {
     return (
       <ScrollView>
         <View style={styles.container} >
-          <View style={styles.welcome}>
+          <View style={styles.center}>
             <Text style={styles.textHeader}>Lue sana ääneen</Text>
           </View>
           <View style={styles.right}>
@@ -147,7 +147,7 @@ export default function Words() {
     return (
       <ScrollView>
       <View style={styles.container} >
-        <View style={styles.welcome}>
+        <View style={styles.center}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
           <View style={styles.right}>
@@ -173,7 +173,7 @@ export default function Words() {
     return (
       <ScrollView>
       <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
         <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
           <View style={styles.right}>

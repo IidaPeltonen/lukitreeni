@@ -8,41 +8,39 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
+  //ivun 'kehykset
   container: {
     flex: 1,
     backgroundColor: '#c9f1fd',
-    borderRadius: 3,
     margin: 0,
     padding: 0, 
     maxHeight: '100%',
     maxWidth: '100%',
-    paddingBottom: 20
   },
+  //logon paikka
   header: {
     backgroundColor: '#c9f1fd',
     alignItems: 'center',
+    height: '35%'
   },
+  //iso logo
   logoHomepage: {
-    aspectRatio: 2,
+    width: '100%',
+    aspectRatio: 10/2,
     resizeMode: 'contain',
     backgroundColor: '#c9f1fd',
-    marginBottom: 40,
-    alignSelf: 'center'
+    marginBottom: 20,
+    alignSelf: 'center',
+    maxHeight: '100%'
   },
+  //drawer-navi
   navi: {
     backgroundColor: '#c9f1fd',
     tintColor: 'purple1'
   },
   //nimenantotekstietusivulla
   textHeader: {
-    fontSize: 30,
-    fontFamily: 'Roboto',
-    marginLeft: 20,
-    alignSelf: 'center',
-    fontWeight: 'bold'
-  },
-  textHeader2: {
-    fontSize: 20,
+    fontSize: 25,
     fontFamily: 'Roboto',
     marginLeft: 20,
     alignSelf: 'center',
@@ -50,36 +48,33 @@ export default StyleSheet.create({
   },
   //nimen input
   textHeaderInput: {
-    height: 70,
+    height: 50,
     borderBottomWidth: 2,
-    width: 200,
-    fontSize: 25,
-    marginBottom: 30,
+    maxWidth: 200,
+    fontSize: 20,
+    marginBottom: 5,
     alignItems: 'center'
   },
+  //keskelle sivua haluttavat elementit
+  center: {
+    alignContent: 'center',
+    alignSelf: 'center'
+  },
+  //start-button
   start: {
     maxWidth: 200,
-    marginLeft: 20,
     backgroundColor: '#023020',
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 15,
-    marginBottom: 50
   },
+  //start-button text
   startText: {
     fontSize: 20,
     color: 'white',
     padding: 10,
   },
-  welcome: {
-    alignContent: 'center',
-    alignSelf: 'center'
-  },
-  user: {
-    fontSize: 30,
-    fontFamily: 'Roboto',
-    fontWeight: 'bold'
-  },
+
   plain: {
     fontSize: 20,
     fontFamily: 'Roboto',
@@ -164,10 +159,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 80,
     marginTop: 80
-  },
-  center: {
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   letters: {
     alignSelf: 'center',

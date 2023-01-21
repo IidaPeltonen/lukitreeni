@@ -80,7 +80,7 @@ export default function Sentences() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <Text style={styles.textHeader}>Lue virkkeitä</Text>
           <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
           <View style={styles.lineBold} />
@@ -129,7 +129,7 @@ export default function Sentences() {
       <ScrollView>
             {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
             <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>
         <View style={styles.right}>
@@ -158,7 +158,7 @@ export default function Sentences() {
       <ScrollView>
            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
            <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>
         <View style={styles.right}>
@@ -185,7 +185,7 @@ export default function Sentences() {
       <ScrollView>
            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
            <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
         <Text style={styles.textHeader}>Lue lause ääneen</Text>
         </View>
         <View style={styles.right}>

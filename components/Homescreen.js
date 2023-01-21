@@ -41,13 +41,12 @@ export default function HomeScreen({ navigation }) {
   }
 
   return (
-    <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')}
             style={styles.logoHomepage} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <Text style={styles.textHeader}>Tervetuloa lukitreeniin!</Text>
           <Text style={styles.textHeader}>Anna nimesi</Text>
           <View style={styles.center}>
@@ -69,6 +68,5 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
       </View>
-    </ScrollView>
   );
 }

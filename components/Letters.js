@@ -76,7 +76,7 @@ export default function Letters() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Tunnista isot kirjaimet</Text>
             <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
@@ -107,7 +107,7 @@ export default function Letters() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logo} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Peli päättyi!</Text>
             <Text style={styles.plain}> </Text>
@@ -124,7 +124,7 @@ export default function Letters() {
       <ScrollView>
             {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
             <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <Text style={styles.textHeader}>Anna oikea kirjain</Text>
           <Text style={styles.letters}>{big}</Text>
           <TextInput

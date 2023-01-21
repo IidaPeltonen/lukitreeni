@@ -154,7 +154,7 @@ export default function Numbers() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <View style={styles.center}>
             <Text style={styles.textHeader}>Testaa työmuistiasi</Text>
             <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
@@ -185,7 +185,7 @@ export default function Numbers() {
       <ScrollView>
         {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
         <View style={styles.container}>
-        <View style={styles.welcome}>
+        <View style={styles.center}>
           <Text style={styles.textHeader}>Testaa työmuistiasi</Text>
           <View style={styles.center}>
           <Text style={styles.plain}>Paina numerosarja mieleesi ja kirjoita se ruudulle, kun aika loppuu</Text>
