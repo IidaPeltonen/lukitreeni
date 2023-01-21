@@ -102,13 +102,68 @@ export default StyleSheet.create({
     marginBottom: 10,
     width: 100,
   },
-
-
-
+  //ohjetekstit tää esim vaihda tasoa-napissa
   plain: {
     fontSize: 20,
     fontFamily: 'Roboto',
   },
+  //etusivujen ohjeet
+  plainText: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    alignSelf: 'center'
+  },
+  //oikeaan ylänurkkaan haluttavat elementit
+  right: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    marginRight: 30,
+  },
+  //tasonvaihto-nappulan tyylit
+  change: {
+    backgroundColor: 'lightblue',
+    borderWidth: 1,
+    borderColor: '#023020',
+    shadowOpacity: 10,
+    borderRadius: 10,
+    padding: 5
+  },
+  //tasonvaihto-nappulan teksti
+  changeText: {
+    fontSize: 15
+  },
+  //muuttuvien sanojen näyttö
+  WordsTable: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 6,
+    marginBottom: 20,
+    marginTop: 20,
+    marginLeft: 150,
+    marginRight: 150,
+    borderStyle: 'dashed'
+  },
+    //arvottu sana
+    show: {
+      fontSize: 60,
+      fontFamily: 'Roboto',
+      fontWeight: 'bold',
+    },
+    //timerin näyttö
+    Clock: {
+      color: 'blue',
+      fontWeight: 'bold',
+      fontSize: 17,
+      alignSelf: 'baseline',
+      position: 'absolute',
+      bottom:5,
+      left: 5,
+      right: 0
+    },
+
+
+
   wrong: {
     fontSize: 20,
     fontFamily: 'Roboto',
@@ -116,11 +171,7 @@ export default StyleSheet.create({
     color: 'red',
     padding: 5
   },
-  right: {
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    marginRight: 50
-  },
+
   end: {
     marginTop: 200
   },
@@ -135,42 +186,10 @@ export default StyleSheet.create({
     paddingBottom: 10,
     marginLeft: 10
   },
-  WordsTable: {
-    backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    borderWidth: 6,
-    marginBottom: 50,
-    marginLeft: 50,
-    marginRight: 50,
-    marginTop: 50,
-    borderStyle: 'dashed'
-  },
-  Clock: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 17,
-     alignSelf: 'baseline',
-    marginLeft: 950, 
-    position: 'absolute',
-    bottom:10,
-    left: 0,
-    right: 5
-  },
-  change: {
-    backgroundColor: 'lightblue',
-    borderWidth: 1,
-    borderColor: '#023020',
-    shadowOpacity: 10,
-  },
-  //arvottu sana
-  show: {
-    fontSize: 60,
-    fontFamily: 'Roboto',
-    margin: 10,
-    fontWeight: 'bold',
-    marginBottom: 80,
-    marginTop: 80
-  },
+
+
+
+
   letters: {
     alignSelf: 'center',
     height: 120,

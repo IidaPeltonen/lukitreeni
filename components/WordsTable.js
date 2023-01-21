@@ -22,16 +22,14 @@ export default function WordsTable({ words, time }) {
     }, [counter]); 
 
     return (
-        <View style={styles.container} >
+        <View style={styles.WordsTable} >
             {wordIndex <= (words.length - 1) &&
                 <>
-                    <View style={styles.WordsTable}>
-                        <View style={styles.center} >
-                            <Text style={styles.show}>{words[wordIndex]}</Text>
-                            <Text style={styles.plain}>{info}</Text>
-                        </View>
-                        <Text style={styles.Clock}>Aikaa jäljellä : {counter} </Text>
+                    <View style={styles.center} >
+                        <Text style={styles.show}>{words[wordIndex]}</Text>
+                        <Text style={styles.plain}>{info}</Text>
                     </View>
+                    <Text style={styles.Clock}>Aikaa jäljellä : {counter} </Text>
                 </>
             }
         </View>

@@ -15,8 +15,8 @@ export default function Numbers() {
   const [rightsThisRound, setRightsThisRound] = useState(0) //muuttuja kierroksen oikeita varten
   const [wrongsThisRound, setWrongsThisRound] = useState(0) //muuttuja kierroksen vääriä varten
 
-  
-//käyttäjän nimen haku
+
+  //käyttäjän nimen haku
   useEffect(() => {
     getData();
   }, []);
@@ -28,7 +28,7 @@ export default function Numbers() {
       if (firstname !== null) {
         setFirstname(firstname);
       }
-    } catch(e) {
+    } catch (e) {
       console.log('error: ' + e)
     }
   }
@@ -144,25 +144,21 @@ export default function Numbers() {
   }
 
 
-//returnit
+  //returnit
   //jos peli on juuri aloitettu
   if (notStarted == true) {
     return (
-      <ScrollView>
-            {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
-            <View style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <View style={styles.center}>
-          <View style={styles.center}>
-            <Text style={styles.textHeader}>Testaa työmuistiasi</Text>
-            <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
-            <Text style={styles.plain}>Ajan loppuessa kirjoita se annettuun kenttään.</Text>
-            <Text style={styles.plain}>Jos saat kaksi peräkkäin oikein, taso nousee.</Text>
-            <Text style={styles.plain}>Jos saat kaksi peräkkäin väärin, taso laskee.</Text>
-            <Text style={styles.plain}>Ylin taso on taso numero 6.</Text>
-
+            <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
+            <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
+            <Text style={styles.plainText}>Ajan loppuessa kirjoita se allaolevaan kenttään.</Text>
+            <Text style={styles.plainText}>Jos saat kaksi oikein, taso nousee. Jos saat kaksi väärin, taso laskee.</Text>
+            <Text style={styles.plainText}></Text>
+            </View>
             <View style={styles.center}>
               <Pressable
                 title='Aloita!'
@@ -170,11 +166,8 @@ export default function Numbers() {
                 style={styles.start}>
                 <Text style={styles.startText}>Aloita!</Text>
               </Pressable>
-            </View>
-          </View>
         </View>
       </View>
-      </ScrollView>
     );
   }
 
@@ -183,25 +176,22 @@ export default function Numbers() {
     const time = 50
     return (
       <ScrollView>
-        {/* <View style={styles.container} height={Dimensions.get("window").height -100}> */}
         <View style={styles.container}>
-        <View style={styles.center}>
-          <Text style={styles.textHeader}>Testaa työmuistiasi</Text>
           <View style={styles.center}>
-          <Text style={styles.plain}>Paina numerosarja mieleesi ja kirjoita se ruudulle, kun aika loppuu</Text>
-          <Text style={styles.plain}>{numbers}/ tää katoaa kun aika loppuu</Text>
-          <TextInput style={styles.plain}>24 / tää ilmestyy kun aika loppuu</TextInput>
-          <Text style={styles.Clock}>Aikaa jäljellä : 'times' </Text>
-          <Pressable
+            <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
+              <Text style={styles.plainText}>Paina numerosarja mieleesi ja kirjoita se ruudulle, kun aika loppuu</Text>
+              <Text style={styles.plainText}>{numbers}/ tää katoaa kun aika loppuu</Text>
+              <TextInput style={styles.plainText}>24 / tää ilmestyy kun aika loppuu</TextInput>
+              <Text style={styles.Clock}>Aikaa jäljellä : 'times' </Text>
+              <Pressable
                 title='Aloita!'
                 onPress={startGame}
                 style={styles.start}>
                 <Text style={styles.startText}>uudet!</Text>
               </Pressable>
+          </View>
+          <Footer firstname={firstname} done={done} right={right} />
         </View>
-        </View>
-       <Footer firstname={firstname} done={done} right={right} /> 
-      </View>
       </ScrollView>
     );
   }

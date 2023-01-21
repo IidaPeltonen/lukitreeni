@@ -13,6 +13,7 @@ const words3 = ['apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 
 export default function Words() {
   const [firstname, setFirstname] = useState('');
   const [done, setDone] = useState(0) //tehtyjen määrä
+  const [right, setRight] = useState(0) //tehtyjen määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
   const [words, setWords] = useState([])
 
@@ -26,7 +27,7 @@ export default function Words() {
       if (firstname !== null) {
         setFirstname(firstname);
       }
-    } catch(e) {
+    } catch (e) {
       console.log('error: ' + e)
     }
   }
@@ -34,32 +35,32 @@ export default function Words() {
   function getSelectedLvlWords(difficulty) {
     const tempWords = []
     if (difficulty === 1) {
-        for (let i = 0; i < words1.length; i++) {
-            tempWords.push(words1[i])
-        }
+      for (let i = 0; i < words1.length; i++) {
+        tempWords.push(words1[i])
+      }
     }
     if (difficulty === 2) {
-        for (let i = 0; i < words2.length; i++) {
-            tempWords.push(words2[i])
-        }
+      for (let i = 0; i < words2.length; i++) {
+        tempWords.push(words2[i])
+      }
     }
     if (difficulty === 3) {
-        for (let i = 0; i < words3.length; i++) {
-            tempWords.push(words3[i])
-        }
+      for (let i = 0; i < words3.length; i++) {
+        tempWords.push(words3[i])
+      }
     }
     //tilapäinen array sekoitetuille sanoille
     let tempRandArr = []
     let length = (tempWords.length - 1)
     //arpoo numeron väliltä 0-pituus, kunnes laskuri on 0
     for (let usedWords = 0; usedWords <= length; usedWords++) {
-        let random = Math.floor(Math.random() * (tempWords.length))
-        let randomWord = tempWords[random]
-        tempRandArr.push(randomWord)
-        tempWords.splice(random, 1)
+      let random = Math.floor(Math.random() * (tempWords.length))
+      let randomWord = tempWords[random]
+      tempRandArr.push(randomWord)
+      tempWords.splice(random, 1)
     }
     setWords(tempRandArr)
-}
+  }
 
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
@@ -107,7 +108,7 @@ export default function Words() {
             }}>
             <Text style={styles.choice}>5-6 lk</Text>
           </Pressable>
-          </View>
+        </View>
         <Footer firstname={firstname} done={done} />
       </View>
     );
@@ -115,46 +116,46 @@ export default function Words() {
 
   //jos taso on 1, eli 1-2lk
   else if (difficulty === 1) {
-    const time= 30
+    const time = 30
     return (
-        <View style={styles.container} >
-          <View style={styles.center}>
-            <Text style={styles.textHeader}>Lue sana ääneen</Text>
-          </View>
-          <View style={styles.right}>
-            <Pressable
-              style={styles.change}
-              title='change'
-              onPress={() => {
-                resetLevel();
-              }} >
-              <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
-            </Pressable>
-          </View>
-          <WordsTable words={words} time={time} />
-          <Footer firstname={firstname} done={done} right={right} />
+      <View style={styles.container} >
+        <View style={styles.center}>
+          <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
+        <View style={styles.right}>
+          <Pressable
+            style={styles.change}
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <Text style={styles.changeText}>Vaihda vaikeustasoa</Text>
+          </Pressable>
+        </View>
+        <WordsTable words={words} time={time} />
+        <Footer firstname={firstname} done={done} right={right} />
+      </View>
     );
   }
 
   //jos taso on 2, eli 3-4lk
   else if (difficulty === 2) {
-    const time= 20
+    const time = 20
     return (
       <View style={styles.container} >
         <View style={styles.center}>
-        <Text style={styles.textHeader}>Lue sana ääneen</Text>
+          <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
-          <View style={styles.right}>
-            <Pressable
+        <View style={styles.right}>
+          <Pressable
             style={styles.change}
-              title='change'
-              onPress={() => {
-                resetLevel();
-              }} >
-                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
-          </View>
+        </View>
         <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
@@ -163,22 +164,22 @@ export default function Words() {
 
   //jos taso on 3, eli 5-6lk
   else if (difficulty === 3) {
-    const time= 15
+    const time = 15
     return (
       <View style={styles.container}>
         <View style={styles.center}>
-        <Text style={styles.textHeader}>Lue sana ääneen</Text>
+          <Text style={styles.textHeader}>Lue sana ääneen</Text>
         </View>
-          <View style={styles.right}>
-            <Pressable
+        <View style={styles.right}>
+          <Pressable
             style={styles.change}
-              title='change'
-              onPress={() => {
-                resetLevel();
-              }} >
-                  <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
           </Pressable>
-          </View>
+        </View>
         <WordsTable words={words} time={time} />
         <Footer firstname={firstname} done={done} right={right} />
       </View>
