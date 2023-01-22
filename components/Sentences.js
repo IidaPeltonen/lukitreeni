@@ -77,10 +77,12 @@ export default function Sentences() {
             <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
           </View>
           <View style={styles.center}>
-            <Text style={styles.textHeader2}>Lue virkkeitä</Text>
             <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
+            <Text style={styles.plainText}>Seuraavalla sivulla lue virkkeet ääneen</Text>
+          
           </View>
           <View style={styles.chooseLvl}>
+            <Text></Text>
             <Pressable
               title='1-2 lk'
               onPress={() => {
@@ -88,7 +90,7 @@ export default function Sentences() {
                 setDifficulty(helper)
                 getSelectedLvlSentences(helper);
               }}>
-              <Text style={styles.choice}>1-2 lk</Text>
+              <Text style={styles.choice}>1. Lyhyet virkkeet</Text>
             </Pressable>
             <View style={styles.line} />
             <Pressable
@@ -98,7 +100,7 @@ export default function Sentences() {
                 setDifficulty(helper)
                 getSelectedLvlSentences(helper);
               }}>
-              <Text style={styles.choice}>3-4 lk</Text>
+              <Text style={styles.choice}>2. Pidemmät virkkeet</Text>
             </Pressable>
             <View style={styles.line} />
             <Pressable
@@ -108,8 +110,9 @@ export default function Sentences() {
                 setDifficulty(helper)
                 getSelectedLvlSentences(helper);
               }}>
-              <Text style={styles.choice}>5-6 lk</Text>
+              <Text style={styles.choice}>3. Pitkät virkkeet</Text>
             </Pressable>
+            <View style={styles.line} />
           </View>
           <Footer firstname={firstname}  />
         </View>
@@ -121,9 +124,7 @@ export default function Sentences() {
     const time = 50
     return (
         <View style={styles.container}>
-          <View style={styles.center}>
-            <Text style={styles.textHeader}>Lue lause ääneen</Text>
-          </View>
+
           <View style={styles.right}>
             <Pressable
               style={styles.change}
@@ -147,9 +148,6 @@ export default function Sentences() {
     const time = 40
     return (
         <View style={styles.container}>
-          <View style={styles.center}>
-            <Text style={styles.textHeader}>Lue lause ääneen</Text>
-          </View>
           <View style={styles.right}>
             <Pressable
               style={styles.change}
@@ -171,9 +169,6 @@ export default function Sentences() {
     const time = 30
     return (
         <View style={styles.container}>
-          <View style={styles.center}>
-            <Text style={styles.textHeader}>Lue lause ääneen</Text>
-          </View>
           <View style={styles.right}>
             <Pressable
               style={styles.change}

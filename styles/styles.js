@@ -100,7 +100,7 @@ export default StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 1,
     marginBottom: 10,
-    width: 100,
+    width: 300,
   },
   //ohjetekstit tää esim vaihda tasoa-napissa
   plain: {
@@ -126,7 +126,9 @@ export default StyleSheet.create({
     borderColor: '#023020',
     shadowOpacity: 10,
     borderRadius: 10,
-    padding: 5
+    padding: 5,
+    marginTop: 30,
+    marginBottom: 30
   },
   //tasonvaihto-nappulan teksti
   changeText: {
@@ -146,7 +148,7 @@ export default StyleSheet.create({
   },
   //arvottu sana
   showWord: {
-    fontSize: 60,
+    fontSize: 80,
     fontFamily: 'Roboto',
     fontWeight: 'bold',
   },
