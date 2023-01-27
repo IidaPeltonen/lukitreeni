@@ -244,7 +244,7 @@ export default StyleSheet.create({
     borderWidth: 4,
     height: 100,
     fontSize: 50,
-    marginBottom: 100,
+    marginBottom: 50,
     alignSelf: 'center',
     justifyContent: 'center',
     minWidth: 250

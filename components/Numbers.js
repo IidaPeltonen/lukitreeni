@@ -56,6 +56,7 @@ export default function Numbers() {
     console.log('difficulty: ' + difficulty)
     console.log('right: ' + right)
 
+    setInfo('')
     if (wrong === 8) {
       setGameEnded(true)
     }
@@ -63,8 +64,10 @@ export default function Numbers() {
       if (difficulty === 2) {
         if (right === 2) {
           //tämä ei toimi, lvl ei vaan nouse, eikä oikeat nollaannut
-          setDifficulty(Number(3))
-          setRight(Number(0))
+/*           setDifficulty(Number(3))
+          setRight(Number(0)) */
+          setDifficulty(difficulty + 1)
+          setRight(0)
         }
         else {
           console.log('Taso2, oikeita alle 2')
@@ -198,12 +201,16 @@ export default function Numbers() {
       console.log('koko sarja oikein')
       setRight(right + 1)
       setNumbers('')
+      setInfo('Hyvä, oikein!')
     }
     else {
       console.log('koko sarja ei oikein')
       setWrong(wrong + 1)
+      setInfo('Harmi, pieleen meni!')
     }
     setAnswer('')
+    console.log('arvotaan uudet')
+
   }
 
 
@@ -260,6 +267,10 @@ export default function Numbers() {
             keyboardType='number-pad'
             onChangeText={setAnswer}
           />
+          <Text style={styles.plain}>{info}</Text>
+          <Text style={styles.plain}>Arvottuja numerosarjoja: {done}</Text>
+          <Text style={styles.plain}>Oikein: {right}</Text>
+          <Text style={styles.plain}>Väärin: {wrong}</Text>
         </View>
         <View style={styles.center}>
           <View style={styles.nextTo}>
@@ -274,7 +285,7 @@ export default function Numbers() {
               onPress={checkLvl}
               style={styles.checkNumber}>
               <Text style={styles.checkNumberText}>Arvo uudet</Text>
-            </Pressable>
+            </Pressable> 
           </View>
         </View>
         {/*  <Footer firstname={firstname} done={done} right={right} /> */}
