@@ -229,15 +229,23 @@ export default StyleSheet.create({
     marginTop: 70,
     color: 'red'
   },
+  //kirjain-sivun väärä vastaus, kuva
+  wrongPic: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    marginTop: 70,
+    color: 'red'
+  },
   //numero-sivun näytettävä numero
   numberToShow: {
     borderWidth: 4,
     height: 100,
     fontSize: 50,
-    marginTop: 100,
+    marginTop: 150,
     marginBottom: 100,
     fontWeight: 'bold',
-    minWidth: 250
+    minWidth: 250,
+    textAlign: 'center'
   },
   //numero-sivun käyttäjän antana numero
   numberToWrite: {
@@ -246,6 +254,7 @@ export default StyleSheet.create({
     fontSize: 50,
     marginBottom: 50,
     minWidth: 250,
+    textAlign: 'center'
   },
   //numero-sivun tarkista-nappi
   checkNumber: {
@@ -266,9 +275,17 @@ export default StyleSheet.create({
     color: 'white',
     padding: 10,
   },
+  //järjellä olevat arvaukset kirjaimissa
   left: {
     marginTop: 20,
     marginBottom:100
+  },
+  //kirjain-sivun container
+  LetterContainer: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 650
   },
 
 

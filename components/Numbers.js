@@ -22,11 +22,8 @@ export default function Numbers() {
   const [right, setRight] = useState(1) //oliko vastaus oikein
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
-  const [rights, setRights] = useState(0) //oliko vastaus oikein
   const [info, setInfo] = useState('') //tieto oikesta ja väärästä
-
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
-  // const [newDifficulty, setNewDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
 
   //käyttäjän nimen haku
   useEffect(() => {

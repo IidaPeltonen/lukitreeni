@@ -3,6 +3,7 @@ import { Pressable, View, Text, Image, TextInput, Dimensions, ScrollView } from 
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
   'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö']
@@ -16,8 +17,17 @@ export default function Letters() {
   const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
   const [input, setInput] = useState('') //käyttäjän syöte
   const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
+  const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
   const [done, setDone] = useState(0) //tehtyjen määrä
+
+
+  let alertPic =
+    <MaterialCommunityIcons
+      name='alert-decagram'
+      size={35}
+      color={'red'}>
+    </MaterialCommunityIcons>
 
   useEffect(() => {
     getData();
@@ -59,7 +69,8 @@ export default function Letters() {
     }
     //jos ei 
     else {
-      setWrong('Yritä uudelleen!')
+      setWrong( '  Yritä uudelleen!'  )
+      setWrongPic( alertPic )
     }
     setInput('')
     setRefresh(Math.random()); //refressaa syötteen
@@ -99,8 +110,9 @@ export default function Letters() {
   //mutta yrityksiä on 15
   else if (done === 15) {
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      // <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.LetterContainer}>
           <View style={styles.header}>
             <Image source={require('./logo.jpg')} style={styles.logo} />
           </View>
@@ -114,13 +126,15 @@ export default function Letters() {
           </View>
           <Footer done={done} />
         </View>
-        </ScrollView>
+      </View>
+        // </ScrollView>
     );
   }
   else {
     return (
       <ScrollView>
         <View style={styles.container}>
+        <View style={styles.LetterContainer}>
           <View style={styles.center}>
             <View style={styles.nextTo}>
               <Text style={styles.letters}>{big}</Text>
@@ -131,12 +145,13 @@ export default function Letters() {
                 autoCapitalize='none'
                 style={styles.letters}
                 onChangeText={checkLetter} />
+              <Text style={styles.wrongPic}>{wrongPic}</Text>
               <Text style={styles.wrong}>{wrong}</Text>
               </View>
               <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
           </View>
           <View style={styles.center}>
-
+</View>
           </View>
           <Footer done={done} />
         </View>
