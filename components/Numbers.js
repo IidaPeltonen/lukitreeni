@@ -202,6 +202,7 @@ export default function Numbers() {
       console.log('koko sarja ei oikein')
       setWrong(wrong + 1)
     }
+    setAnswer('')
   }
 
 
@@ -252,9 +253,11 @@ export default function Numbers() {
         <View style={styles.center}>
           <Text style={styles.numberToShow}> {numbers} </Text>
           <TextInput
+            placeholder=""
+            value={answer}
             style={styles.numberToWrite}
             keyboardType='number-pad'
-            onChangeText={Text => setAnswer(Text)}
+            onChangeText={setAnswer}
           />
         </View>
         <View style={styles.center}>
