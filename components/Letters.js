@@ -55,15 +55,13 @@ export default function Letters() {
     if (text === big.toLowerCase()) {
       setWrong('')
       right = right + 1
-      setBig('')
-      setInput('')
       startGame()
     }
     //jos ei 
     else {
-      setInput('')
       setWrong('Yritä uudelleen!')
     }
+    setInput('')
     setRefresh(Math.random()); //refressaa syötteen
   }
 
@@ -127,11 +125,12 @@ export default function Letters() {
             <View style={styles.nextTo}>
               <Text style={styles.letters}>{big}</Text>
               <TextInput
+              placeholder=""
                 value={input}
                 maxLength={1}
                 autoCapitalize='none'
                 style={styles.letters}
-                onChangeText={Text => checkLetter(Text)} />
+                onChangeText={checkLetter} />
               <Text style={styles.wrong}>{wrong}</Text>
               </View>
           </View>
