@@ -132,7 +132,9 @@ export default StyleSheet.create({
   },
   //tasonvaihto-nappulan teksti
   changeText: {
-    fontSize: 15
+    fontSize: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   //muuttuvien sanojen näyttö
   WordsTable: {

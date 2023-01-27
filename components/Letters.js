@@ -134,22 +134,23 @@ export default function Letters() {
     return (
       <ScrollView>
         <View style={styles.container}>
-        <View style={styles.LetterContainer}>
-          <View style={styles.center}>
-            <View style={styles.nextTo}>
-              <Text style={styles.letters}>{big}</Text>
-              <TextInput
-              placeholder=""
-                value={input}
-                maxLength={1}
-                autoCapitalize='none'
-                style={styles.letters}
-                onChangeText={checkLetter} />
-              <Text style={styles.wrongPic}>{wrongPic}</Text>
-              <Text style={styles.wrong}>{wrong}</Text>
+          <View style={styles.LetterContainer}>
+            <View style={styles.center}>
+              <View style={styles.nextTo}>
+                <Text style={styles.letters}>{big}</Text>
+                <TextInput
+                  placeholder=""
+                  value={input}
+                  maxLength={1}
+                  autoCapitalize='none'
+                  style={styles.letters}
+                  onChangeText={checkLetter} 
+                />
+                <Text style={styles.wrongPic}>{wrongPic}</Text>
+                <Text style={styles.wrong}>{wrong}</Text>
               </View>
               <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
-          </View>
+            </View>
           <View style={styles.center}>
 </View>
           </View>

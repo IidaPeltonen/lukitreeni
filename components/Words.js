@@ -4,6 +4,7 @@ import styles from "../styles/styles";
 import Footer from "./Footer";
 import WordsTable from "./WordsTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 //tarvitaan lista sanoja
 const words1 = ['sa-vu', 'si-nä', 'ka-na', 'ta-lo', 'aa-ve', 'o-vi', 'au-to']
@@ -170,13 +171,21 @@ export default function Words() {
     return (
       <View style={styles.container} >
         <View style={styles.right}>
-          <Pressable
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.changeText}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
@@ -191,13 +200,21 @@ export default function Words() {
     return (
       <View style={styles.container} >
         <View style={styles.right}>
-          <Pressable
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
@@ -211,14 +228,22 @@ export default function Words() {
     const time = 15
     return (
       <View style={styles.container}>
-        <View style={styles.right}>
-          <Pressable
+       <View style={styles.right}>
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
@@ -232,13 +257,21 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.right}>
-          <Pressable
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
@@ -252,13 +285,21 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.right}>
-          <Pressable
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
@@ -272,13 +313,21 @@ export default function Words() {
     return (
       <View style={styles.container}>
         <View style={styles.right}>
-          <Pressable
+            <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
               resetLevel();
             }} >
-            <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />

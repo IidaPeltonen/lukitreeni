@@ -4,6 +4,8 @@ import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+
 
 //tarvitaan lista sanoja
 const sen1 = ['Ovi on auki.', 'Talo on iso.', 'Kissa on pieni.', 'Sinä olet kiva!']
@@ -125,19 +127,24 @@ export default function Sentences() {
     const time = 50
     return (
         <View style={styles.container}>
-
-          <View style={styles.right}>
+<View style={styles.right}>
             <Pressable
-              style={styles.change}
-              title='change'
-              onPress={() => {
-                let helper = 3
-                setDifficulty(helper)
-                getSelectedLvlSentences(helper);
-              }}>
-              <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
-            </Pressable>
-          </View>
+            style={styles.change}
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
+          </Pressable>
+        </View>
           <SentencesTable sentences={sentences} time={time} />
           <Footer done={done} />
         </View>
@@ -151,14 +158,22 @@ export default function Sentences() {
         <View style={styles.container}>
           <View style={styles.right}>
             <Pressable
-              style={styles.change}
-              title='change'
-              onPress={() => {
-                resetLevel();
-              }} >
-              <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
-            </Pressable>
-          </View>
+            style={styles.change}
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
+          </Pressable>
+        </View>
           <SentencesTable sentences={sentences} time={time} />
           <Footer done={done} />
         </View>
@@ -172,14 +187,22 @@ export default function Sentences() {
         <View style={styles.container}>
           <View style={styles.right}>
             <Pressable
-              style={styles.change}
-              title='change'
-              onPress={() => {
-                resetLevel();
-              }} >
-              <Text style={styles.plain}>Vaihda vaikeustasoa</Text>
-            </Pressable>
-          </View>
+            style={styles.change}
+            title='change'
+            onPress={() => {
+              resetLevel();
+            }} >
+            <MaterialCommunityIcons
+              name='swap-vertical'
+              size={25}
+              color={'black'}
+            >
+            </MaterialCommunityIcons>
+            <Text style={styles.changeText}>
+              Taso
+            </Text>
+          </Pressable>
+        </View>
           <SentencesTable sentences={sentences} time={time} />
           <Footer done={done} />
         </View>
