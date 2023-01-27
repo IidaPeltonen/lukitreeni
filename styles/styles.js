@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
-  //ivun 'kehykset
+  //sivun 'kehykset'
   container: {
     flex: 1,
     backgroundColor: '#c9f1fd',
@@ -184,49 +184,89 @@ export default StyleSheet.create({
   //kirjain-sivun kirjainkentät
   nextTo: {
     flexDirection: 'row',
+    marginRight: 15,
+    marginLeft: 15
   },
   //kirjain-sivun kentät
   letters: {
-    //alignSelf: 'center',
     height: 110,
     width: 110,
     borderWidth: 3,
     margin: 20,
-/*  PUHELIMELLA NÄYTTÄÄ TÄYDELLISELTÄ NÄIN
-   fontSize: 80,
-    marginTop: 40,
-    marginBottom: 40,
-    justifyContent: 'center', 
-    paddingLeft: 30 */
+    /*  PUHELIMELLA NÄYTTÄÄ TÄYDELLISELTÄ NÄIN
+       fontSize: 80,
+        marginTop: 40,
+        marginBottom: 40,
+        justifyContent: 'center', 
+        paddingLeft: 30 */
     fontSize: 60,
     marginTop: 40,
     marginBottom: 40,
-    justifyContent: 'center', 
-    paddingLeft: 20, 
-    paddingRight: 20, 
-    paddingTop: 0, 
-    paddingBottom: 0, 
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
-    //footer
-    footer: {
-      flexDirection: 'row',
-      backgroundColor: '#c9f1fd',
-      position: 'absolute',
-      alignItems: 'center',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      paddingBottom: 10,
-      marginLeft: 10
-    },
-//kirjain-sivun väärä vastaus
+  //footer
+  footer: {
+    flexDirection: 'row',
+    backgroundColor: '#c9f1fd',
+    position: 'absolute',
+    alignItems: 'center',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingBottom: 10,
+    marginLeft: 10
+  },
+  //kirjain-sivun väärä vastaus
   wrong: {
     fontSize: 20,
     fontFamily: 'Roboto',
     marginTop: 70,
     color: 'red'
   },
-
+  //numero-sivun näytettävä numero
+  numberToShow: {
+    borderWidth: 4,
+    height: 100,
+    fontSize: 50,
+    marginTop: 100,
+    marginBottom: 100,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
+  //numero-sivun käyttäjän antana numero
+  numberToWrite: {
+    borderWidth: 4,
+    height: 100,
+    fontSize: 50,
+    marginBottom: 100,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    minWidth: 250
+  },
+  //numero-sivun tarkista-nappi
+  checkNumber: {
+    width: 200,
+    backgroundColor: '#023020',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 15,
+    marginBottom: 100,
+    margin: 20,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  //numero-sivun tarkista-napin teksti
+  checkNumberText: {
+    fontSize: 20,
+    color: 'white',
+    padding: 10,
+  },
   end: {
     marginTop: 200
   },

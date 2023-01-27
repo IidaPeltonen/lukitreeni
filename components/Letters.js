@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, ScrollView, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, TextInput, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -90,6 +90,7 @@ export default function Letters() {
             </View>
           </View>
         </View>
+        <Footer firstname={firstname} done={done} />
       </View>
     );
   }
@@ -98,7 +99,7 @@ export default function Letters() {
   //mutta yrityksiä on 15
   else if (done === 15) {
     return (
-      <ScrollView>
+
         <View style={styles.container}>
           <View style={styles.header}>
             <Image source={require('./logo.jpg')} style={styles.logo} />
@@ -111,8 +112,9 @@ export default function Letters() {
               <Text style={styles.plainText}>Sait {right} oikein!</Text>
             </View>
           </View>
+          <Footer firstname={firstname} done={done} />
         </View>
-      </ScrollView>
+
     );
   }
   else {

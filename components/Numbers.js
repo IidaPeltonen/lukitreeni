@@ -4,16 +4,31 @@ import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+/*
+vaikeusasteet 2 - 5
+tokasta kolmanteen tarvii saada 2 oikein
+kolmesta neljään pitää saada 3 oikein
+neljästä viiteen pitää saada 4 oikein
+vitosta viisi oikein -> iso palkinto? peli päättyy?
+yhteensä 8 väärin koko pelissä -> peli päättyy
+*/
+
 export default function Numbers() {
   const [firstname, setFirstname] = useState('');
-  const [done, setDone] = useState(0) //tehtyjen määrä
-  const [right, setRight] = useState(0) //oikeiden määrä
-  const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
   const [notStarted, setNotStart] = useState(true) //onko aloita-painettu
+  const [gameEnded, setGameEnded] = useState(false) //jos 8 väärin
   const [numbers, setNumbers] = useState([]) //näytettävät numerot
-  const [givenNumbers, setGivenNumbers] = useState([]) //syötetty numerosarja
-  const [rightsThisRound, setRightsThisRound] = useState(0) //muuttuja kierroksen oikeita varten
-  const [wrongsThisRound, setWrongsThisRound] = useState(0) //muuttuja kierroksen vääriä varten
+  const [answer, setAnswer] = useState(['']) //syötetty numerosarja
+  const [right, setRight] = useState(1) //oliko vastaus oikein
+  const [done, setDone] = useState(0) //tehtyjen määrä
+  const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
+
+  const [rights, setRights] = useState(0) //oliko vastaus oikein
+  const [info, setInfo] = useState('') //tieto oikesta ja väärästä
+
+  const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
+  // const [newDifficulty, setNewDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
+
 
 
   //käyttäjän nimen haku
@@ -24,7 +39,6 @@ export default function Numbers() {
   const getData = async () => {
     try {
       const firstname = await AsyncStorage.getItem('@firstname');
-      console.log(firstname);
       if (firstname !== null) {
         setFirstname(firstname);
       }
@@ -35,117 +49,164 @@ export default function Numbers() {
 
   function startGame() {
     setNotStart(false)
-    getNumber()
+    checkLvl()
+  }
+
+  function checkLvl() {
+    console.log('difficulty: ' + difficulty)
+    console.log('right: ' + right)
+
+    if (wrong === 8) {
+      setGameEnded(true)
+    }
+    else {
+      if (difficulty === 2) {
+        if (right === 2) {
+          //tämä ei toimi, lvl ei vaan nouse, eikä oikeat nollaannut
+          setDifficulty(Number(3))
+          setRight(Number(0))
+        }
+        else {
+          console.log('Taso2, oikeita alle 2')
+        }
+      }
+      if (difficulty === 3) {
+        if (right === 3) {
+          console.log('diff = 3 ja oikein = 3')
+          setDifficulty(difficulty + 1)
+          setRight(0)
+        }
+        else {
+          console.log('Taso 3, oikeita alle 3')
+        }
+      }
+      if (difficulty === 4) {
+        if (right === 4) {
+          console.log('diff = 4 ja oikein = 4')
+          setDifficulty(difficulty + 1)
+          setRight(0)
+        }
+        else {
+          console.log('Taso 4, oikeita alle 4')
+        }
+      }
+      if (difficulty === 5) {
+        console.log('diff = 5')
+        console.log('ollaan tasolla 5')
+      }
+      getNumber()
+    }
   }
 
   function getNumber() {
-    //tarkistetaan vaikeusaste'
-    //arvotaan sopiva määrä numeroita
-    //asetetaan ne numbersiim
+    console.log('getNumberia kutsuttiin')
+    console.log('diff: ' + difficulty)
+    console.log('oikein; ' + right)
+    setDone(done + 1);
     let tempNbrs = []
+
     if (difficulty === 2) {
-      console.log('arvotaan kaksi numeroa')
       let number1 = Math.floor(Math.random() * 10)
-      console.log('num1: ' + number1)
       tempNbrs.push(number1)
       let number2 = Math.floor(Math.random() * 10)
-      console.log('num2: ' + number2)
       tempNbrs.push(number2)
-      console.log(tempNbrs)
     }
-    if (difficulty === 3) {
-      console.log('arvotaan kolme numeroa')
+    else if (difficulty === 3) {
       let number1 = Math.floor(Math.random() * 10)
-      console.log('num1: ' + number1)
       tempNbrs.push(number1)
       let number2 = Math.floor(Math.random() * 10)
-      console.log('num2: ' + number2)
       tempNbrs.push(number2)
       let number3 = Math.floor(Math.random() * 10)
-      console.log('num3: ' + number3)
       tempNbrs.push(number3)
-      console.log(tempNbrs)
     }
-    if (difficulty === 4) {
-      console.log('arvotaan nljä numeroa')
+    else if (difficulty === 4) {
       let number1 = Math.floor(Math.random() * 10)
-      console.log('num1: ' + number1)
       tempNbrs.push(number1)
       let number2 = Math.floor(Math.random() * 10)
-      console.log('num2: ' + number2)
       tempNbrs.push(number2)
       let number3 = Math.floor(Math.random() * 10)
-      console.log('num3: ' + number3)
       tempNbrs.push(number3)
       let number4 = Math.floor(Math.random() * 10)
-      console.log('num4: ' + number4)
       tempNbrs.push(number4)
-      console.log(tempNbrs)
     }
-    if (difficulty === 5) {
-      console.log('arvotaan visi numeroa')
+    else if (difficulty === 5) {
       let number1 = Math.floor(Math.random() * 10)
-      console.log('num1: ' + number1)
       tempNbrs.push(number1)
       let number2 = Math.floor(Math.random() * 10)
-      console.log('num2: ' + number2)
       tempNbrs.push(number2)
       let number3 = Math.floor(Math.random() * 10)
-      console.log('num3: ' + number3)
       tempNbrs.push(number3)
       let number4 = Math.floor(Math.random() * 10)
-      console.log('num4: ' + number4)
       tempNbrs.push(number4)
       let number5 = Math.floor(Math.random() * 10)
-      console.log('num5: ' + number5)
       tempNbrs.push(number5)
-      console.log(tempNbrs)
-    }
-    if (difficulty === 6) {
-      console.log('arvotaan kuusi numeroa')
-      let number1 = Math.floor(Math.random() * 10)
-      console.log('num1: ' + number1)
-      tempNbrs.push(number1)
-      let number2 = Math.floor(Math.random() * 10)
-      console.log('num2: ' + number2)
-      tempNbrs.push(number2)
-      let number3 = Math.floor(Math.random() * 10)
-      console.log('num3: ' + number3)
-      tempNbrs.push(number3)
-      let number4 = Math.floor(Math.random() * 10)
-      console.log('num4: ' + number4)
-      tempNbrs.push(number4)
-      let number5 = Math.floor(Math.random() * 10)
-      console.log('num5: ' + number5)
-      tempNbrs.push(number5)
-      let number6 = Math.floor(Math.random() * 10)
-      console.log('num6: ' + number6)
-      tempNbrs.push(number6)
-      console.log(tempNbrs)
     }
     setNumbers(tempNbrs)
   }
 
-  function checkNumber() {
-    //setDones++
-    setDone(done + 1);
-    //luetaan käyttäjän syöte
-    //verrataan sitä näytettyyn numerosarjaan
-    //annetaan palaute
-    //josoikein, oikeat lisääntyy
-    // setRightsThisRound ++
-    //jos väärin
-    // setWrongssThisRound ++
-    //jos rightsThisRound === 2
-    //difficulty++
-    //jos wrongsThisRound === 2
-    //difficulty--
+  function editAnswer() {
+    if (answer.length !== numbers.length) {
+      alert('Tarkista numeroiden määrä')
+    }
+    else {
+      let tempAnswer = []
+      if (answer.length === 2) {
+        let first = answer.substring(0, 1)
+        let second = answer.substring(1, 2)
+        tempAnswer.push(first, second)
+      }
+      if (answer.length === 3) {
+        let first = answer.substring(0, 1)
+        let second = answer.substring(1, 2)
+        let third = answer.substring(2, 3)
+        tempAnswer.push(first, second, third)
+      }
+      if (answer.length === 4) {
+        let first = answer.substring(0, 1)
+        let second = answer.substring(1, 2)
+        let third = answer.substring(2, 3)
+        let fourth = answer.substring(3, 4)
+        tempAnswer.push(first, second, third, fourth)
+      }
+      if (answer.length === 5) {
+        let first = answer.substring(0, 1)
+        let second = answer.substring(1, 2)
+        let third = answer.substring(2, 3)
+        let fourth = answer.substring(3, 4)
+        let fifth = answer.substring(4, 5)
+        tempAnswer.push(first, second, third, fourth, fifth)
+      }
+      checkNumber(tempAnswer)
+    }
+  }
 
+  function checkNumber(tempAnswer) {
+    let oikein = 0
+    let vaarin = 0
+    for (let x = 0; x < tempAnswer.length; x++) {
+      if (Number(tempAnswer[x]) === Number(numbers[x])) {
+        //tässä voisi muuttaa vaikka väriä tai piilottaa tai jotain
+        //oikeiden määrä nousee
+        oikein = oikein + 1
+      }
+      else {
+        vaarin = vaarin + 1
+      }
+    }
+    //jos koko sana on oikein
+    if (oikein === numbers.length) {
+      console.log('koko sarja oikein')
+      setRight(right + 1)
+    }
+    else {
+      console.log('koko sarja ei oikein')
+      setWrong(wrong + 1)
+    }
   }
 
 
   //returnit
-  //jos peli on juuri aloitettu
+  //jos aloita ei ole painettu
   if (notStarted == true) {
     return (
       <View style={styles.container}>
@@ -153,47 +214,70 @@ export default function Numbers() {
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <View style={styles.center}>
-            <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-            <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
-            <Text style={styles.plainText}>Ajan loppuessa kirjoita se allaolevaan kenttään.</Text>
-            <Text style={styles.plainText}>Jos saat kaksi oikein, taso nousee. Jos saat kaksi väärin, taso laskee.</Text>
-            <Text style={styles.plainText}></Text>
-            </View>
-            <View style={styles.center}>
-              <Pressable
-                title='Aloita!'
-                onPress={startGame}
-                style={styles.start}>
-                <Text style={styles.startText}>Aloita!</Text>
-              </Pressable>
+          <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
+          <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
+          <Text style={styles.plainText}>Ajan loppuessa kirjoita se allaolevaan kenttään.</Text>
+          <Text style={styles.plainText}>Taso nousee, kun saat tarpeeksi monta oikeaa vastausta.</Text>
+          <Text style={styles.plainText}>Yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
+          <Text style={styles.plainText}></Text>
         </View>
+        <View style={styles.center}>
+          <Pressable
+            title='Aloita!'
+            onPress={startGame}
+            style={styles.start}>
+            <Text style={styles.startText}>Aloita!</Text>
+          </Pressable>
+        </View>
+        <Footer firstname={firstname} />
       </View>
     );
   }
 
-  //jos aloita on painettu
-  else {
-    const time = 50
+  //jos aloita on painettu, mutta peli on jo loppunut
+  else if (gameEnded === true) {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.center}>
-            <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-              <Text style={styles.plainText}>Paina numerosarja mieleesi ja kirjoita se ruudulle, kun aika loppuu</Text>
-              <Text style={styles.plainText}>{numbers}/ tää katoaa kun aika loppuu</Text>
-              <TextInput style={styles.plainText}>24 / tää ilmestyy kun aika loppuu</TextInput>
-              <Text style={styles.Clock}>Aikaa jäljellä : 'times' </Text>
-              <Pressable
-                title='Aloita!'
-                onPress={startGame}
-                style={styles.start}>
-                <Text style={styles.startText}>uudet!</Text>
-              </Pressable>
-          </View>
-          <Footer firstname={firstname} done={done} right={right} />
+      <View style={styles.container}>
+        <View style={styles.center}>
+          <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
         </View>
-      </ScrollView>
+        <Footer firstname={firstname} />
+      </View>
     );
   }
+
+  else {
+    return (
+      <View style={styles.container}>
+        <View style={styles.center}>
+          <Text style={styles.numberToShow}> {numbers} </Text>
+          <TextInput
+            style={styles.numberToWrite}
+            keyboardType='number-pad'
+            onChangeText={Text => setAnswer(Text)}
+          />
+        </View>
+        <View style={styles.center}>
+          <View style={styles.nextTo}>
+            <Pressable
+              title='Tarkista'
+              onPress={editAnswer}
+              style={styles.checkNumber}>
+              <Text style={styles.checkNumberText}>Tarkista</Text>
+            </Pressable>
+            <Pressable
+              title='Uudet'
+              onPress={checkLvl}
+              style={styles.checkNumber}>
+              <Text style={styles.checkNumberText}>Arvo uudet</Text>
+            </Pressable>
+          </View>
+        </View>
+        {/*  <Footer firstname={firstname} done={done} right={right} /> */}
+      </View>
+
+    );
+  }
+
 
 }
