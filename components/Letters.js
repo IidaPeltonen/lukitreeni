@@ -122,9 +122,6 @@ export default function Letters() {
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.center}>
-            <Text style={styles.textHeader}>Anna oikea kirjain pienellä</Text>
-          </View>
-          <View style={styles.center}>
             <View style={styles.nextTo}>
               <Text style={styles.letters}>{big}</Text>
               <TextInput
