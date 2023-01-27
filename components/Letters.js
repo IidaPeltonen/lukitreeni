@@ -18,6 +18,7 @@ export default function Letters() {
   const [input, setInput] = useState('') //käyttäjän syöte
   const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
+  const [done, setDone] = useState(0) //tehtyjen määrä
 
   useEffect(() => {
     getData();
@@ -45,6 +46,7 @@ export default function Letters() {
     let random = Math.floor(Math.random() * 23)
     let randomLetter = bigs[random]
     setBig(randomLetter)
+    setDone(done+1)
   }
 
   function checkLetter(text) {
@@ -89,7 +91,7 @@ export default function Letters() {
             </View>
           </View>
         </View>
-        <Footer firstname={firstname} done={done} />
+        <Footer done={done} />
       </View>
       </ScrollView>
     );
@@ -112,7 +114,7 @@ export default function Letters() {
               <Text style={styles.plainText}>Sait {right} oikein!</Text>
             </View>
           </View>
-          <Footer firstname={firstname} done={done} />
+          <Footer done={done} />
         </View>
         </ScrollView>
     );
@@ -140,7 +142,7 @@ export default function Letters() {
           <View style={styles.center}>
             <Text style={styles.plainText}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
           </View>
-          <Footer firstname={firstname} />
+          <Footer done={done} />
         </View>
         </ScrollView>
     );

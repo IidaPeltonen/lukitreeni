@@ -16,7 +16,6 @@ const words6 = ['huikaus', 'tankku', 'nepos', 'silkaa', 'marous', 'törä', 'enk
 export default function Words() {
   const [firstname, setFirstname] = useState('');
   const [done, setDone] = useState(0) //tehtyjen määrä
-  const [right, setRight] = useState(0) //tehtyjen määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
   const [words, setWords] = useState([])
 
@@ -76,6 +75,7 @@ export default function Words() {
       let randomWord = tempWords[random]
       tempRandArr.push(randomWord)
       tempWords.splice(random, 1)
+      setDone(done+1)
     }
     setWords(tempRandArr)
   }
@@ -83,6 +83,7 @@ export default function Words() {
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
     setDifficulty(0)
+    setDone(0)
   }
 
   //jos tasoa ei ole valittu
@@ -158,7 +159,7 @@ export default function Words() {
           </Pressable>
           <View style={styles.line} />
         </View>
-        <Footer firstname={firstname} done={done} />
+        <Footer done={done} />
       </View>
     );
   }
@@ -179,7 +180,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done} />
       </View>
     );
   }
@@ -200,7 +201,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done}  />
       </View>
     );
   }
@@ -221,7 +222,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done} />
       </View>
     );
   }
@@ -241,7 +242,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done}  />
       </View>
     );
   }
@@ -261,7 +262,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done}  />
       </View>
     );
   }
@@ -281,7 +282,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} right={right} />
+        <Footer firstname={firstname} done={done}  />
       </View>
     );
   }

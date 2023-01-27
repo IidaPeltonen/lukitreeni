@@ -22,14 +22,11 @@ export default function Numbers() {
   const [right, setRight] = useState(1) //oliko vastaus oikein
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
-
   const [rights, setRights] = useState(0) //oliko vastaus oikein
   const [info, setInfo] = useState('') //tieto oikesta ja väärästä
 
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
   // const [newDifficulty, setNewDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
-
-
 
   //käyttäjän nimen haku
   useEffect(() => {
@@ -209,6 +206,7 @@ export default function Numbers() {
       setInfo('Harmi, pieleen meni!')
     }
     setAnswer('')
+    setNumbers('')
     console.log('arvotaan uudet')
 
   }
@@ -239,7 +237,7 @@ export default function Numbers() {
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
         </View>
-        <Footer firstname={firstname} />
+        <Footer done={done} />
       </View>
       </ScrollView>
     );
@@ -253,7 +251,7 @@ export default function Numbers() {
         <View style={styles.center}>
           <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
         </View>
-        <Footer firstname={firstname} />
+        <Footer done={done} />
       </View>
       </ScrollView>
     );
@@ -273,7 +271,6 @@ export default function Numbers() {
             onChangeText={setAnswer}
           />
           <Text style={styles.plain}>{info}</Text>
-          <Text style={styles.plain}>Arvottuja numerosarjoja: {done}</Text>
           <Text style={styles.plain}>Oikein: {right}</Text>
           <Text style={styles.plain}>Väärin: {wrong}</Text>
         </View>
@@ -293,7 +290,7 @@ export default function Numbers() {
             </Pressable> 
           </View>
         </View>
-        {/*  <Footer firstname={firstname} done={done} right={right} /> */}
+        <Footer done={done} />
       </View>
       </ScrollView>
     );

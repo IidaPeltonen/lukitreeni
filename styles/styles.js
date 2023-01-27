@@ -235,8 +235,6 @@ export default StyleSheet.create({
     marginTop: 100,
     marginBottom: 100,
     fontWeight: 'bold',
-    alignSelf: 'center',
-    justifyContent: 'center',
     minWidth: 250
   },
   //numero-sivun käyttäjän antana numero
@@ -245,9 +243,7 @@ export default StyleSheet.create({
     height: 100,
     fontSize: 50,
     marginBottom: 50,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    minWidth: 250
+    minWidth: 250,
   },
   //numero-sivun tarkista-nappi
   checkNumber: {
