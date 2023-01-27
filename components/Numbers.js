@@ -218,6 +218,7 @@ export default function Numbers() {
   //jos aloita ei ole painettu
   if (notStarted == true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
@@ -240,23 +241,27 @@ export default function Numbers() {
         </View>
         <Footer firstname={firstname} />
       </View>
+      </ScrollView>
     );
   }
 
   //jos aloita on painettu, mutta peli on jo loppunut
   else if (gameEnded === true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
         </View>
         <Footer firstname={firstname} />
       </View>
+      </ScrollView>
     );
   }
 
   else {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.numberToShow}> {numbers} </Text>
@@ -290,7 +295,7 @@ export default function Numbers() {
         </View>
         {/*  <Footer firstname={firstname} done={done} right={right} /> */}
       </View>
-
+      </ScrollView>
     );
   }
 
