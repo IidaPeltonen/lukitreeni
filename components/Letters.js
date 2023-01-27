@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
   'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö']
 
-let done = 0
 let right = 0
 const times = 15 // joka kerralle 15 arvausta
 
@@ -51,7 +50,6 @@ export default function Letters() {
 
   function checkLetter(text) {
     //yritetyt nousee yhdellä
-    done = done + 1
 
     //jos vastaus on oikein
     if (text === big.toLowerCase()) {
@@ -138,9 +136,10 @@ export default function Letters() {
                 onChangeText={checkLetter} />
               <Text style={styles.wrong}>{wrong}</Text>
               </View>
+              <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
           </View>
           <View style={styles.center}>
-            <Text style={styles.plainText}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
+
           </View>
           <Footer done={done} />
         </View>

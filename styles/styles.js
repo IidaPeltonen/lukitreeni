@@ -264,8 +264,9 @@ export default StyleSheet.create({
     color: 'white',
     padding: 10,
   },
-  end: {
-    marginTop: 200
+  left: {
+    marginTop: 20,
+    marginBottom:100
   },
 
 
