@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, ScrollView, Dimensions } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from "../styles/styles";
-import Footer from './Footer';
-
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 export default function WordsTable({ words, time }) {
     const [firstname, setFirstname] = useState('');
@@ -21,7 +20,7 @@ export default function WordsTable({ words, time }) {
             setInfo('Sanat loppuivat!')
         }
         return () => clearInterval(timer);
-    }, [counter]); 
+    }, [counter]);
 
     return (
         <View style={styles.WordsTable} >
@@ -31,7 +30,13 @@ export default function WordsTable({ words, time }) {
                         <Text style={styles.showWord}>{words[wordIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
                     </View>
-                    <Text style={styles.Clock}>Aikaa jäljellä : {counter} </Text>
+                    <Text style={styles.Clock}>
+                        <MaterialCommunityIcons
+                            name='timer-outline'
+                            size={25}
+                            color={'black'}>
+                        </MaterialCommunityIcons>: {counter} 
+                    </Text>
                 </>
             }
         </View>

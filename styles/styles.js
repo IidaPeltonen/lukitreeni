@@ -144,7 +144,8 @@ export default StyleSheet.create({
     marginTop: 20,
     marginLeft: 150,
     marginRight: 150,
-    borderStyle: 'dashed'
+    borderStyle: 'dashed',
+    height: 400
   },
   //arvottu sana
   showWord: {
@@ -173,7 +174,8 @@ export default StyleSheet.create({
     marginTop: 20,
     marginLeft: 50,
     marginRight: 50,
-    borderStyle: 'dashed'
+    borderStyle: 'dashed',
+    height: 400
   },
   //arvottu lause
   showSen: {

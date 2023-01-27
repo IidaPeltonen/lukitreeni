@@ -180,7 +180,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} />
+        <Footer done={done} />
       </View>
     );
   }
@@ -201,7 +201,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done}  />
+        <Footer done={done}  />
       </View>
     );
   }
@@ -222,7 +222,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done} />
+        <Footer done={done} />
       </View>
     );
   }
@@ -242,7 +242,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done}  />
+        <Footer done={done}  />
       </View>
     );
   }
@@ -262,7 +262,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done}  />
+        <Footer done={done}  />
       </View>
     );
   }
@@ -282,7 +282,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer firstname={firstname} done={done}  />
+        <Footer done={done}  />
       </View>
     );
   }
