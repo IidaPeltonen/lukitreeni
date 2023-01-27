@@ -236,7 +236,8 @@ export default StyleSheet.create({
     marginBottom: 100,
     fontWeight: 'bold',
     alignSelf: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    minWidth: 250
   },
   //numero-sivun käyttäjän antana numero
   numberToWrite: {

@@ -197,6 +197,7 @@ export default function Numbers() {
     if (oikein === numbers.length) {
       console.log('koko sarja oikein')
       setRight(right + 1)
+      setNumbers('')
     }
     else {
       console.log('koko sarja ei oikein')
