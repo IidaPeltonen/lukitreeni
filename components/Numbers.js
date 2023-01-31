@@ -27,9 +27,11 @@ export default function Numbers() {
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
 
   //käyttäjän nimen haku
+  //ja lvl-tarkistus
   useEffect(() => {
     getData();
-  }, []);
+    checkLvl()
+  }, [difficulty]);
 
   const getData = async () => {
     try {
