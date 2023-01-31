@@ -25,12 +25,14 @@ export default function Numbers() {
   const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
   const [info, setInfo] = useState('') //tieto oikesta ja väärästä
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
+  const [counter, setCounter] = useState(0) //kauanko lukujono näkyy, määräytyy vaikeustason mukaan
 
   //käyttäjän nimen haku
   //ja lvl-tarkistus
   useEffect(() => {
     getData();
     checkLvl()
+    chckTime()
   }, [difficulty]);
 
   const getData = async () => {
@@ -41,6 +43,22 @@ export default function Numbers() {
       }
     } catch (e) {
       console.log('error: ' + e)
+    }
+  }
+
+  //hakee ajan vaikeuden mukaan, Leena saa mniettiä ajat
+  function chckTime() {
+    if (difficulty === 2) {
+      setCounter(10)
+    }
+    if (difficulty === 3) {
+      setCounter(13)
+    }
+    if (difficulty === 4) {
+      setCounter(17)
+    }
+    if (difficulty === 5) {
+      setCounter(20)
     }
   }
 
@@ -89,7 +107,13 @@ export default function Numbers() {
         }
       }
       if (difficulty === 5) {
-        console.log('ollaan tasolla 5')
+        if (right === 5) {
+          setDifficulty(difficulty + 1)
+          setRight(0)
+        }
+        else {
+          console.log('Taso 5, oikeita alle 5')
+        }
       }
       getNumber()
     }
@@ -199,6 +223,19 @@ export default function Numbers() {
     setNumbers('')
   }
 
+  //tää pitäisi muokata näyttämään numerosrajaa vain tietyn ajan
+   useEffect(() => {
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    if (counter === 0 && right <= 5) {
+      checkLvl()
+      chckTime()
+    }
+    else if (counter === 0 && right > 5) {
+        setInfo('Hyvin pelattu, olet paras!')
+    }
+    return () => clearInterval(timer);
+}, [counter]); 
+
   //returnit
   //jos aloita ei ole painettu
   if (notStarted == true) {
@@ -266,6 +303,7 @@ export default function Numbers() {
           />
           <Text style={styles.plainText}>{info}</Text>
           <Text style={styles.plainText}>Vaikeustaso: {difficulty}</Text>
+          <Text style={styles.plainText}>Aika: {counter}s</Text>
           <Text style={styles.plainText}>Oikein: {right}</Text>
           <Text style={styles.plainText}>Väärin: {wrong}</Text>
         </View>
