@@ -4,7 +4,7 @@ import styles from "../styles/styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
-export default function Footer({  done }) {
+export default function Footer({ done, right }) {
   const [firstname, setFirstname] = useState('');
 
 let studentPic = 
@@ -35,8 +35,8 @@ let donePic =
       console.log('error: ' + e)
     }
   }
-  console.log('done: ' + done)
 
+  //jos tehtyjä ei ole
   if (done === 0 || done === '' ) {
     return (
       <View style={styles.footer}>
@@ -44,12 +44,23 @@ let donePic =
       </View>
     )
   }
+  //jos oikeita ei oo
+  if (right === 0 || right === '') {
+    return (
+      <View style={styles.footer}>
+        <Text style={styles.doer}> {studentPic}: {firstname}   </Text>
+        <Text style={styles.doer}> tehty: {done} </Text>
+      </View>
+    )
+  }
+    
   else {
     return (
       <View style={styles.footer}>
         <View style={styles.nextTo}>
           <Text style={styles.doer}> {studentPic}: {firstname}    </Text>
-          <Text style={styles.doer}> {donePic}: {done} </Text>
+          <Text style={styles.doer}> tehty: {done} </Text>
+          <Text style={styles.doer}> oikein: {right} </Text>
         </View>
       </View>
     )

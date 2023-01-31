@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import WordsTable from "./WordsTable";

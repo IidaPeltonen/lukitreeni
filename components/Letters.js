@@ -9,6 +9,7 @@ const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', '
   'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö']
 
 let right = 0
+let wrongAns = 0
 const times = 15 // joka kerralle 15 arvausta
 
 export default function Letters() {
@@ -70,6 +71,7 @@ export default function Letters() {
     //jos ei 
     else {
       setWrong( '  Yritä uudelleen!'  )
+      wrongAns = wrongAns + 1
       setWrongPic( alertPic )
     }
     setInput('')
@@ -100,7 +102,7 @@ export default function Letters() {
             </View>
           </View>
         </View>
-        <Footer done={done} />
+        <Footer done={done} right={right} wrong={wrongAns} />
       </View>
       </ScrollView>
     );
@@ -124,7 +126,7 @@ export default function Letters() {
               <Text style={styles.plainText}>Sait {right} oikein!</Text>
             </View>
           </View>
-          <Footer done={done} />
+          <Footer done={done} right={right} wrong={wrongAns} />
         </View>
       </View>
         // </ScrollView>
@@ -154,7 +156,7 @@ export default function Letters() {
           <View style={styles.center}>
 </View>
           </View>
-          <Footer done={done} />
+          <Footer done={done} right={right} wrong={wrongAns} />
         </View>
         </ScrollView>
     );
