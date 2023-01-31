@@ -16,6 +16,13 @@ let studentPic =
 
 let donePic = 
 <MaterialCommunityIcons
+    name= 'file-cabinet'
+    size={20}
+    color={'black'}>
+</MaterialCommunityIcons>
+
+let rightPic = 
+<MaterialCommunityIcons
     name= 'check'
     size={20}
     color={'black'}>
@@ -49,7 +56,7 @@ let donePic =
     return (
       <View style={styles.footer}>
         <Text style={styles.doer}> {studentPic}: {firstname}   </Text>
-        <Text style={styles.doer}> tehty: {done} </Text>
+        <Text style={styles.doer}> {donePic}: {done} </Text>
       </View>
     )
   }
@@ -59,8 +66,8 @@ let donePic =
       <View style={styles.footer}>
         <View style={styles.nextTo}>
           <Text style={styles.doer}> {studentPic}: {firstname}    </Text>
-          <Text style={styles.doer}> tehty: {done} </Text>
-          <Text style={styles.doer}> oikein: {right} </Text>
+          <Text style={styles.doer}> {donePic}: {done} </Text>
+          <Text style={styles.doer}> {rightPic}: {right} </Text>
         </View>
       </View>
     )
