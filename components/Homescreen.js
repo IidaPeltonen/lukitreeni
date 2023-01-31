@@ -34,7 +34,6 @@ export default function HomeScreen({ navigation }) {
       [
         {
           text: 'Aloitetaan!',
-          onPress: () => console.log('Aloitetaan!')
         }
       ]
     )

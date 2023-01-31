@@ -37,7 +37,6 @@ export default function Letters() {
   const getData = async () => {
     try {
       const firstname = await AsyncStorage.getItem('@firstname');
-      console.log(firstname);
       if (firstname !== null) {
         setFirstname(firstname);
       }
