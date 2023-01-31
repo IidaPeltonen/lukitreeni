@@ -7,6 +7,10 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 export default function Footer({ done, right }) {
   const [firstname, setFirstname] = useState('');
 
+  if(firstname === '') {
+    setFirstname('Oppilas')
+  }
+
 let studentPic = 
 <MaterialCommunityIcons
     name= 'human-child'
