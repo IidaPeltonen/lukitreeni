@@ -16,7 +16,7 @@ let studentPic =
 
 let donePic = 
 <MaterialCommunityIcons
-    name= 'file-cabinet'
+    name= 'folder-download-outline'
     size={20}
     color={'black'}>
 </MaterialCommunityIcons>

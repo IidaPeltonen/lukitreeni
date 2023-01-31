@@ -102,7 +102,7 @@ export default function Letters() {
             </View>
           </View>
         </View>
-        <Footer done={done} right={right} wrong={wrongAns} />
+        <Footer done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -126,7 +126,7 @@ export default function Letters() {
               <Text style={styles.plainText}>Sait {right} oikein!</Text>
             </View>
           </View>
-          <Footer done={done} right={right} wrong={wrongAns} />
+          <Footer done={done} right={right} />
         </View>
       </View>
         // </ScrollView>
@@ -156,7 +156,7 @@ export default function Letters() {
           <View style={styles.center}>
 </View>
           </View>
-          <Footer done={done} right={right} wrong={wrongAns} />
+          <Footer done={done} right={right} />
         </View>
         </ScrollView>
     );

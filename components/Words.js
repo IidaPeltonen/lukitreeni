@@ -6,6 +6,9 @@ import WordsTable from "./WordsTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
+let right = 0
+let done = 0
+
 //tarvitaan lista sanoja
 const words1 = ['si-su', 'a-su', 'uu-si', 'su-si', 'aa-si', 'sa-tu', 'su-ti', 'au-to', 'sa-to', 'sa-na', 
   'uu-ni', 'on-ni', 'la-si', 'mu-na','le-lu', 'ma-to', 'o-ma', 'ni-mi', 'lu-mi', 'me-no', 'lato',
@@ -55,7 +58,6 @@ const words6 = ['omu', 'letu', 'isal', 'övein', 'uumi', 'ioto', 'aksi', 'äkkö
 
 export default function Words() {
   const [firstname, setFirstname] = useState('');
-  const [done, setDone] = useState(0) //tehtyjen määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita sanoja
   const [words, setWords] = useState([])
 
@@ -115,7 +117,6 @@ export default function Words() {
       let randomWord = tempWords[random]
       tempRandArr.push(randomWord)
       tempWords.splice(random, 1)
-      setDone(done+1)
     }
     setWords(tempRandArr)
   }
@@ -123,7 +124,7 @@ export default function Words() {
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
     setDifficulty(0)
-    setDone(0)
+    done = 0
   }
 
   //jos tasoa ei ole valittu
@@ -199,7 +200,7 @@ export default function Words() {
           </Pressable>
           <View style={styles.line} />
         </View>
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -228,7 +229,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -257,7 +258,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done}  />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -286,7 +287,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -314,7 +315,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done}  />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -342,7 +343,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done}  />
+        <Footer done={done} right={right} />
       </View>
     );
   }
@@ -370,7 +371,7 @@ export default function Words() {
           </Pressable>
         </View>
         <WordsTable words={words} time={time} />
-        <Footer done={done}  />
+        <Footer done={done} right={right} />
       </View>
     );
   }

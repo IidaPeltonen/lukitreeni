@@ -6,6 +6,8 @@ import SentencesTable from "./SentencesTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
+let right = 0
+let done = 0
 
 //tarvitaan lista sanoja
 const sen1 = ['Ovi on auki.', 'Talo on iso.', 'Kissa on pieni.', 'Sinä olet kiva!']
@@ -15,7 +17,6 @@ const sen3 = ['Apina söi puussa banaania.', 'Se oli hieno saavutus!', 'Kolina k
 
 export default function Sentences() {
   const [firstname, setFirstname] = useState('');
-  const [done, setDone] = useState(0) //tehtyjen määrä
   const [difficulty, setDifficulty] = useState(0) //ensin valitaan taso, ts kuinka vaikeita lauseita
   const [sentences, setSentences] = useState([])
 
@@ -61,7 +62,6 @@ export default function Sentences() {
       let randomSen = tempSentences[random]
       tempRandArr.push(randomSen)
       tempSentences.splice(random, 1)
-      setDone(done+1)
     }
     setSentences(tempRandArr)
   }
@@ -69,7 +69,7 @@ export default function Sentences() {
   //funktio tason muuttujan nollaukseen
   function resetLevel() {
     setDifficulty(0)
-    setDone(0)
+    done = 0
   }
 
   //jos tasoa ei ole valittu
@@ -117,7 +117,7 @@ export default function Sentences() {
             </Pressable>
             <View style={styles.line} />
           </View>
-          <Footer done={done} />
+          <Footer done={done} right={right} />
         </View>
     );
   }
@@ -146,7 +146,7 @@ export default function Sentences() {
           </Pressable>
         </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} />
+          <Footer done={done} right={right} />
         </View>
     );
   }
@@ -175,7 +175,7 @@ export default function Sentences() {
           </Pressable>
         </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} />
+          <Footer done={done} right={right} />
         </View>
     );
   }
@@ -204,7 +204,7 @@ export default function Sentences() {
           </Pressable>
         </View>
           <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} />
+          <Footer done={done} right={right} />
         </View>
     );
   }

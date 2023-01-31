@@ -234,7 +234,7 @@ export default function Numbers() {
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
         </View>
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -248,7 +248,7 @@ export default function Numbers() {
         <View style={styles.center}>
           <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
         </View>
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
       </ScrollView>
     );
@@ -287,7 +287,7 @@ export default function Numbers() {
             </Pressable> 
           </View>
         </View>
-        <Footer done={done} />
+        <Footer done={done} right={right} />
       </View>
       </ScrollView>
     );
