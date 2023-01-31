@@ -7,12 +7,51 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 //tarvitaan lista sanoja
-const words1 = ['sa-vu', 'si-nä', 'ka-na', 'ta-lo', 'aa-ve', 'o-vi', 'au-to']
-const words2 = ['savu', 'sinä', 'kana', 'talo', 'aave', 'ovi', 'auto']
-const words3 = ['kis-sa', 'koi-ra', 'kou-lu', 'kaa-li', 'suk-ka', 'tal-vi', 'sil-ta']
-const words4 = ['kissa', 'koira', 'koulu', 'kaali', 'sukka', 'talvi', 'silta']
-const words5 = ['apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 'kaappi', 'sitruuna']
-const words6 = ['huikaus', 'tankku', 'nepos', 'silkaa', 'marous', 'törä', 'enkke', 'toida']
+const words1 = ['si-su', 'a-su', 'uu-si', 'su-si', 'aa-si', 'sa-tu', 'su-ti', 'au-to', 'sa-to', 'sa-na', 
+  'uu-ni', 'on-ni', 'la-si', 'mu-na','le-lu', 'ma-to', 'o-ma', 'ni-mi', 'lu-mi', 'me-no', 'lato',
+  'an-sa', 'e-mo', 'tu-li', 'to-ri', 'pi-po', 'ra-ta', 'po-ni', 'pe-li', 'ra-pu', 'ai-ro', 'lu-pa', 'ro-mu', 
+  'mu-ru', 'pa-pu', 'ri-pa', 'äi-ti', 'ky-nä', 'ju-na', 'ka-na', 'ha-na', 've-si', 'sa-de', 'kä-si', 'si-ka', 
+  'ko-ti', 'ka-la', 'ää-ni', 'pe-sä', 'ka-sa', 'nä-mä', 'tä-mä', 'sa-li', 'syli', 'pö-ly', 'ki-vi', 'sa-vi',
+  'va-sa', 'kä-py', 'ri-vi', 'ku-va', 'va-lo', 'ma-ja', 'jo-ki', 'va-ja', 'ar-pa', 'ke-sä', 'ma-de', 'or-ja', 
+  'jo-no', 'vä-ri', 'oh-je']
+const words2 = ['sisu', 'asu', 'uusi', 'susi', 'aasi', 'satu', 'suti', 'auto', 'sato', 'sana', 'uuni', 'onni',
+  'lasi', 'muna','lelu', 'mato', 'oma', 'nimi', 'lumi', 'meno', 'lato', 'ansa', 'emo', 'tuli', 'tori', 'pipo', 
+  'rata', 'poni', 'peli', 'rapu', 'airo', 'lupa', 'romu', 'muru', 'papu', 'ripa', 'äiti', 'kynä', 'juna', 'kana', 
+  'hana', 'vesi', 'sade', 'käsi', 'sika', 'koti', 'kala', 'ääni', 'pesä', 'kasa', 'nämä', 'tämä', 'sali', 'syli', 
+  'pöly', 'kivi', 'savi', 'vasa', 'käpy', 'rivi', 'kuva', 'valo', 'maja', 'joki', 'vaja', 'arpa', 'kesä', 'made', 
+  'orja', 'jono', 'väri', 'ohje']
+const words3 = ['sau-na', 'son-ni', 'nas-ta', 'tas-su', 'suo-ni', 'tun-ti', 'nut-tu', 'tus-si', 'sai-ta', 
+  'tut-ti', 'tat-ti', 'uin-ti', 'nau-la', 'len-to', 'lau-lu', 'met-so', 'sol-mu', 'muo-ti', 'mai-to', 'suo-la', 
+  'luo-la', 'lie-mi', 'noi-ta', 'neu-la', 'puo-mi', 'rau-ta', 'sär-ki', 'hel-mi', 'läm-pö', 'köy-si', 'har-ja', 
+  'jal-ka', 'jäl-ki', 'kir-ja', 'vau-nu', 'lai-va', 'kis-sa', 'koi-ra', 'kou-lu', 'kaa-li', 'suk-ka', 'tal-vi',
+  'sil-ta']
+const words4 = ['sauna', 'sonni', 'nasta', 'tassu', 'suoni', 'tunti', 'nuttu', 'tussi', 'saita', 'tutti', 'tatti',
+  'uinti', 'naula', 'lento', 'laulu', 'metso', 'solmu', 'muoti', 'maito', 'suola', 'luola', 'liemi', 'noita', 
+  'neula', 'puomi', 'rauta', 'särki', 'helmi', 'lämpö', 'köysi', 'harja', 'jalka', 'jälki', 'kirja', 'vaunu', 
+  'laiva', 'kissa', 'koira', 'koulu', 'kaali', 'sukka', 'talvi', 'silta']
+const words5 = ['etana', 'apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 'sitruuna', 'etana', 
+  'nuotio', 'omena', 'asia', 'ennuste', 'ananas', 'neulanen', 'tusina', 'unelma', 'anomus', 'lautanen', 'sininen', 
+  'orava', 'palikka', 'seitsemän', 'räpylä', 'päärynä', 'kattila', 'sinappi', 'rusakko', 'mansikka', 'kirjuri', 
+  'sokkelo', 'tanssija', 'vaahtera', 'metsikkö', 'kataja', 'lepakko', 'oppilas', 'koulutus', 'palkinto', 
+  'retkeily', 'putkisto', 'kurpitsa']
+const words6 = ['omu', 'letu', 'isal', 'övein', 'uumi', 'ioto', 'aksi', 'äkkö', 'vyyri', 'louki', 'ima', 
+  'lati', 'ysöl', 'ivoin', 'yyni', 'äitö', 'asto', 'ykke', 'vaare', 'kyöli', 'laijo', 'ratte', 'mörjä', 
+  'vahke', 'heitus', 'pelvas', 'niirma', 'keissy', 'pirtto', 'kursto', 'imo', 'leta', 'äsel', 'ovein', 
+  'eeni', 'euta', 'usto', 'ikka', 'vaaro', 'liuke', 'laijo', 'rattu', 'marji', 'vohko', 'heisot', 'vispis', 
+  'neermi', 'suikke', 'purtto', 'korsti', 'ame', 'leti', 'ösyl', 'ävyin', 'ooni', 'oita', 'esta', 'ikkä',
+  'vuuro', 'luoki', 'laiju', 'retta', 'merji', 'vohka', 'houtas', 'vuspis', 'näärmö', 'soukke', 'parttu', 
+  'kursta', 'ipa', 'rila', 'ipes', 'usoin', 'yymi', 'euno', 'yksö', 'ättö', 'roohe', 'vieta', 'reita', 
+  'jikku', 'kensa', 'löhti', 'siilos', 'kosvit', 'määntö', 'tuippo', 'tilkke', 'palske', 'upe', 'relu', 
+  'apis', 'osein', 'öömi', 'yinä', 'iksa', 'ettu', 'rooha', 'tievo', 'roita', 'jikkä', 'kunso', 'lahtu', 
+  'seelis', 'kesvat', 'miinta', 'täyppö', 'talkku', 'pilska', 'ypä', 'rula', 'opes', 'ysöin', 'eemo', 'oini', 
+  'akso', 'itta', 'haare', 'vietu', 'ruite', 'jikko', 'kinsa', 'lihta', 'siilus', 'kisvet', 'meenti', 'touppa', 
+  'tulkko', 'pylske', 'ave', 'jene', 'oret', 'älöin', 'yysö', 'oika', 'atsu', 'oppa', 'miile', 'suove', 
+  'poini', 'nilla', 'rinsa', 'keemos', 'peltan', 'vyyhty', 'hoittu', 'nirppo', 'tirska', 'ivo', 'jini', 
+  'yret', 'ulain', 'aaso', 'äikö', 'etsö', 'yppö', 'meela', 'siuva', 'puinu', 'nulla', 'rynsä', 'vohtu', 
+  'kiimes', 'pilton', 'veehti', 'hoitta', 'nerppo', 'törskö', 'uvi', 'jyni', 'öryt', 'eloin', 'eeso', 'auko', 
+  'itsu', 'öppä', 'moole', 'siuvi', 'peina', 'nolle', 'ronsi', 'vyhtä', 'koomes', 'pylten', 'veehtu', 'hiutta', 
+  'narppa', 'tarsko', 'evu', 'jänä', 'urit', 'ilain', 'oose', 'yikö', 'atsa', 'ippo', 'möölä', 'sievy', 'puini', 
+  'nello', 'rensa', 'vähte', 'kaamis', 'palten', 'voohta', 'hoitti', 'nurppe', 'tarsku']
 
 export default function Words() {
   const [firstname, setFirstname] = useState('');
