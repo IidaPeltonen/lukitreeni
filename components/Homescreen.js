@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function HomeScreen({ navigation }) {
   const [firstname, setFirstname] = useState('')
+  const [isSaved, setIsSaved] = useState(false)
 
   useEffect(() => {
     clearData();
@@ -22,6 +23,15 @@ export default function HomeScreen({ navigation }) {
   const storeData = async (value) => {
     try {
       await AsyncStorage.setItem('@firstname', value)
+      if (firstname === '') {
+        setIsSaved(false)
+        alert('Anna nimesi!')
+        return
+      }
+      else {
+        setIsSaved(true)
+        showAlert
+      }
     } catch (e) {
       console.log('error: ' + e)
     }
@@ -39,7 +49,9 @@ export default function HomeScreen({ navigation }) {
     )
   }
 
-  return (
+  //jos nimeä ei ole tallessa 
+  if (isSaved === false) {
+    return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')}
@@ -60,7 +72,6 @@ export default function HomeScreen({ navigation }) {
               style={styles.start}
               onPress={() => {
                 storeData(firstname);
-                showAlert();
               }}>
               <Text style={styles.startText}>Aloita!</Text>
             </Pressable>
@@ -68,4 +79,21 @@ export default function HomeScreen({ navigation }) {
         </View>
       </View>
   );
+  }
+  else {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image source={require('./logo.jpg')}
+            style={styles.logoHomepage} />
+        </View>
+        <View style={styles.center}>
+          <Text style={styles.textHeader}>Tervetuloa lukitreeniin</Text>
+          <Text style={styles.textHeader}>{firstname}!</Text>
+      
+        </View>
+      </View>
+  );
+  }
+
 }
