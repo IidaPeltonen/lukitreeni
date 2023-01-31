@@ -98,7 +98,6 @@ export default function Numbers() {
   function getNumber() {
     console.log('diff: ' + difficulty)
     console.log('oikein; ' + right)
-    setDone(done + 1);
     let tempNbrs = []
 
     if (difficulty === 2) {
@@ -172,6 +171,7 @@ export default function Numbers() {
   }
 
   function checkNumber(tempAnswer) {
+    setDone(done + 1);
     let oikein = 0
     let vaarin = 0
     for (let x = 0; x < tempAnswer.length; x++) {
@@ -233,7 +233,6 @@ export default function Numbers() {
   //jos aloita on painettu, mutta peli on jo loppunut
   else if (gameEnded === true) {
     return (
-
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
@@ -249,15 +248,13 @@ export default function Numbers() {
         </View>
         <Footer done={done} right={totalRight} />
       </View>
-
     );
   }
 
   else {
     return (
-      <ScrollView>
+      // <ScrollView>
       <View style={styles.container}>
-        <Text>vaikeustaso: {difficulty}</Text>
         <View style={styles.center}>
           <Text style={styles.numberToShow}> {numbers} </Text>
           <TextInput
@@ -267,7 +264,8 @@ export default function Numbers() {
             keyboardType='number-pad'
             onChangeText={setAnswer}
           />
-          <Text style={styles.plain}>{info}</Text>
+          <Text style={styles.plainText}>{info}</Text>
+          <Text style={styles.plainText}>Vaikeustaso: {difficulty}</Text>
           <Text style={styles.plainText}>Oikein: {right}</Text>
           <Text style={styles.plainText}>Väärin: {wrong}</Text>
         </View>
@@ -289,7 +287,7 @@ export default function Numbers() {
         </View>
         <Footer done={done} right={totalRight} />
       </View>
-      </ScrollView>
+   //   </ScrollView>
     );
   }
 

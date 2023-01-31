@@ -243,8 +243,8 @@ export default StyleSheet.create({
     borderWidth: 4,
     height: 100,
     fontSize: 50,
-    marginTop: 150,
-    marginBottom: 100,
+    marginTop: 80,
+    marginBottom: 80,
     fontWeight: 'bold',
     minWidth: 250,
     textAlign: 'center'
@@ -254,7 +254,7 @@ export default StyleSheet.create({
     borderWidth: 4,
     height: 100,
     fontSize: 50,
-    marginBottom: 50,
+    marginBottom: 10,
     minWidth: 250,
     textAlign: 'center'
   },
@@ -264,7 +264,7 @@ export default StyleSheet.create({
     backgroundColor: '#023020',
     alignItems: 'center',
     borderRadius: 5,
-    marginTop: 15,
+    marginTop: 20,
     marginBottom: 100,
     margin: 20,
     justifyContent: 'center',
@@ -273,7 +273,7 @@ export default StyleSheet.create({
   },
   //numero-sivun tarkista-napin teksti
   checkNumberText: {
-    fontSize: 20,
+    fontSize: 18,
     color: 'white',
     padding: 10,
   },
