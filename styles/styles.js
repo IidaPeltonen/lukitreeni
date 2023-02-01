@@ -289,6 +289,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     height: 650
   },
+  //  //muuttuvien numeroiden näyttö
+  NumbersTable: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 6,
+    marginBottom: 20,
+    marginTop: 100,
+    marginLeft: 150,
+    marginRight: 150,
+    borderStyle: 'dashed',
+    height: 400
+  },
 
 
 
