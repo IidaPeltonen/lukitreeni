@@ -27,16 +27,21 @@ const words3 = ['sau-na', 'son-ni', 'nas-ta', 'tas-su', 'suo-ni', 'tun-ti', 'nut
   'tut-ti', 'tat-ti', 'uin-ti', 'nau-la', 'len-to', 'lau-lu', 'met-so', 'sol-mu', 'muo-ti', 'mai-to', 'suo-la', 
   'luo-la', 'lie-mi', 'noi-ta', 'neu-la', 'puo-mi', 'rau-ta', 'sär-ki', 'hel-mi', 'läm-pö', 'köy-si', 'har-ja', 
   'jal-ka', 'jäl-ki', 'kir-ja', 'vau-nu', 'lai-va', 'kis-sa', 'koi-ra', 'kou-lu', 'kaa-li', 'suk-ka', 'tal-vi',
-  'sil-ta']
+  'sil-ta', 'e-ta-na', 'a-pi-na', 'saa-vu-tus', 'ko-li-na', 'he-vo-nen', 'pork-ka-na', 'pe-ru-na', 
+  'sit-ruu-na', 'nuo-ti-o', 'o-me-na', 'a-si-a', 'en-nus-te', 'a-na-nas', 'neu-la-nen', 'tu-si-na', 
+  'u-nel-ma', 'a-no-mus', 'lau-ta-nen', 'si-ni-nen', 'o-ra-va', 'pa-lik-ka', 'seit-se-män', 'rä-py-lä', 
+  'pää-ry-nä', 'kat-ti-la', 'si-nap-pi', 'ru-sak-ko', 'man-sik-ka', 'kir-ju-ri', 'sok-ke-lo', 'tans-si-ja',
+  'vaah-te-ra', 'met-sik-kö', 'ka-ta-ja', 'le-pak-ko', 'op-pi-las', 'kou-lu-tus', 'pal-kin-to', 'ret-kei-ly',
+  'put-kis-to', 'kur-pit-sa']
 const words4 = ['sauna', 'sonni', 'nasta', 'tassu', 'suoni', 'tunti', 'nuttu', 'tussi', 'saita', 'tutti', 'tatti',
   'uinti', 'naula', 'lento', 'laulu', 'metso', 'solmu', 'muoti', 'maito', 'suola', 'luola', 'liemi', 'noita', 
   'neula', 'puomi', 'rauta', 'särki', 'helmi', 'lämpö', 'köysi', 'harja', 'jalka', 'jälki', 'kirja', 'vaunu', 
-  'laiva', 'kissa', 'koira', 'koulu', 'kaali', 'sukka', 'talvi', 'silta']
-const words5 = ['etana', 'apina', 'saavutus', 'kolina', 'hevonen', 'porkkana', 'peruna', 'sitruuna', 'etana', 
-  'nuotio', 'omena', 'asia', 'ennuste', 'ananas', 'neulanen', 'tusina', 'unelma', 'anomus', 'lautanen', 'sininen', 
-  'orava', 'palikka', 'seitsemän', 'räpylä', 'päärynä', 'kattila', 'sinappi', 'rusakko', 'mansikka', 'kirjuri', 
-  'sokkelo', 'tanssija', 'vaahtera', 'metsikkö', 'kataja', 'lepakko', 'oppilas', 'koulutus', 'palkinto', 
-  'retkeily', 'putkisto', 'kurpitsa']
+  'laiva', 'kissa', 'koira', 'koulu', 'kaali', 'sukka', 'talvi', 'silta','etana', 'apina', 'saavutus', 'kolina', 
+  'hevonen', 'porkkana', 'peruna', 'sitruuna', 'nuotio', 'omena', 'asia', 'ennuste', 'ananas', 'neulanen', 
+  'tusina', 'unelma', 'anomus', 'lautanen', 'sininen',   'orava', 'palikka', 'seitsemän', 'räpylä', 'päärynä', 
+  'kattila', 'sinappi', 'rusakko', 'mansikka', 'kirjuri',   'sokkelo', 'tanssija', 'vaahtera', 'metsikkö', 
+  'kataja', 'lepakko', 'oppilas', 'koulutus', 'palkinto',   'retkeily', 'putkisto', 'kurpitsa']
+const words5 = ['tosipitkäsana', 'vieläpidempisana', 'lentokoneturbiini']
 const words6 = ['omu', 'letu', 'isal', 'övein', 'uumi', 'ioto', 'aksi', 'äkkö', 'vyyri', 'louki', 'ima', 
   'lati', 'ysöl', 'ivoin', 'yyni', 'äitö', 'asto', 'ykke', 'vaare', 'kyöli', 'laijo', 'ratte', 'mörjä', 
   'vahke', 'heitus', 'pelvas', 'niirma', 'keissy', 'pirtto', 'kursto', 'imo', 'leta', 'äsel', 'ovein', 
