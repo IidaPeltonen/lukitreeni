@@ -10,6 +10,7 @@ import Sentences from './components/Sentences'
 import Numbers from './components/Numbers'
 import Memory from './components/Memory'
 import Letters from './components/Letters'
+import Dices from "./components/Dices";
 import styles from "./styles/styles";
 import { useFonts } from 'expo-font';
 
@@ -37,6 +38,7 @@ export default function App() {
         <Stack.Screen name="Numerot" component={Numbers} style={styles.navi} />
         <Stack.Screen name="Työmuisti" component={Memory} style={styles.navi} />
         <Stack.Screen name="Kirjaimet" component={Letters} style={styles.navi} />
+        <Stack.Screen name="Nopat" component={Dices} style={styles.navi} />
         <Stack.Screen name=" " component={''} />
         <Stack.Screen name="  " component={''} />
         <Stack.Screen name="   " component={''} />

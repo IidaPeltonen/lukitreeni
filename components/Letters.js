@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, Dimensions, ScrollView } from "react-native";
+import { Pressable, View, Text, Image, TextInput, ScrollView, Keyboard } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,12 +16,11 @@ export default function Letters() {
   const [firstname, setFirstname] = useState('');
   const [big, setBig] = useState('') //näytettävä
   const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
-  const [input, setInput] = useState('') //käyttäjän syöte
+  const [text, onChangeText] = useState('') //käyttäjän syöte
   const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
   const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
   const [done, setDone] = useState(0) //tehtyjen määrä
-
 
   let alertPic =
     <MaterialCommunityIcons
@@ -32,7 +31,8 @@ export default function Letters() {
 
   useEffect(() => {
     getData();
-  }, []);
+    Keyboard.dismiss()
+  }, [text]);
 
   const getData = async () => {
     try {
@@ -60,6 +60,7 @@ export default function Letters() {
 
   function checkLetter(text) {
     //yritetyt nousee yhdellä
+    console.log('syöte: ' + text)
 
     //jos vastaus on oikein
     if (text === big.toLowerCase()) {
@@ -73,7 +74,6 @@ export default function Letters() {
       wrongAns = wrongAns + 1
       setWrongPic( alertPic )
     }
-    setInput('')
     setRefresh(Math.random()); //refressaa syötteen
   }
 
@@ -141,12 +141,16 @@ export default function Letters() {
                 <Text style={styles.letters}>{big}</Text>
                 <TextInput
                   placeholder=""
-                  value={input}
+                  value={text}
                   maxLength={1}
                   autoCapitalize='none'
-                  style={styles.letters}
-                  onChangeText={checkLetter} 
-                />
+                  style={styles.letters} 
+                  onChangeText={(text) => { 
+                    onChangeText 
+                    checkLetter(text)
+                  }}>
+                </TextInput>
+
                 <Text style={styles.wrongPic}>{wrongPic}</Text>
                 <Text style={styles.wrong}>{wrong}</Text>
               </View>

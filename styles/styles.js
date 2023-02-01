@@ -302,6 +302,9 @@ export default StyleSheet.create({
     borderStyle: 'dashed',
     height: 400
   },
+  dices: {
+    
+  },
 
 
 
