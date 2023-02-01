@@ -7,19 +7,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
-const times = 15 // joka kerralle 15 arvausta
 
 export default function Dices() {
     const [firstname, setFirstname] = useState('');
     const [dice, setDice] = useState('') //näytettävä
     const [diceNum, setDiceNum] = useState('') //noppa numerona
+    const [dice2, setDice2] = useState('') //näytettävä
+    const [diceNum2, setDiceNum2] = useState('') //noppa numerona
     const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
     const [input, setInput] = useState('') //käyttäjän syöte
     const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
+    const [oneOrTwo, setOneOrTwo] = useState(0) //tehtyjen määrä
 
-    useEffect(() => {
+   useEffect(() => {
         getData();
     }, []);
 
@@ -45,7 +47,7 @@ export default function Dices() {
 
     function getDice() {
         let random = randomIntFromInterval(1, 6)
-        console.log('random: ' + random)
+        console.log('noppa1: ' + random)
         let randomName = 'dice-' + random
         setDice(<MaterialCommunityIcons
             name={randomName}
@@ -54,6 +56,18 @@ export default function Dices() {
             color={'steelblue'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
+
+        let random2 = randomIntFromInterval(1, 6)
+        console.log('noppa2: ' + random2)
+        let randomName2 = 'dice-' + random2
+        setDice2(<MaterialCommunityIcons
+            name={randomName2}
+            key={random2}
+            size={250}
+            color={'steelblue'}>
+        </MaterialCommunityIcons>)
+        setDiceNum(Number(random))
+        setDiceNum2(Number(random2))
         setDone(done + 1)
     }
 
@@ -76,11 +90,32 @@ export default function Dices() {
         else {
             setWrong('  Yritä uudelleen!')
         }
-
     }
 
-    //jos peli on juuri aloitettu
-    if (notStarted == true) {
+    function checkDiceSum(text) {
+        //jos vastaus on oikein
+        //varmistetaan, että syöte on numero
+        text = Number(text)
+
+        let sum = diceNum + diceNum2
+        console.log('sum: '+ sum)
+
+        if (text === sum) {
+            right = right + 1
+            setInput('')
+            setDice('')
+            setDiceNum('')
+            setRefresh(Math.random()); //refressaa syötteen
+            getDice()
+        }
+        //jos ei 
+        else {
+            setWrong('  Yritä uudelleen!')
+        }
+    }
+
+    //jos noppien määrää ei ole valittu
+    if (oneOrTwo === 0) {
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -90,15 +125,28 @@ export default function Dices() {
                     <View style={styles.center}>
                         <View style={styles.center}>
                             <Text style={styles.textHeader2}>Tunnista numerot</Text>
-                            <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle alkaa ilmestyä noppia.</Text>
-                            <Text style={styles.plainText}>Kirjoita näkemäsi silmäluku viereiseen kenttään.</Text>
-                            <View style={styles.center}>
+                            <Text style={styles.plainText}>Valitse montaako noppaa haluat käyttää:</Text>
+                            <View style={styles.chooseLvl}>
                                 <Pressable
-                                    title='Aloita!'
-                                    onPress={startGame}
-                                    style={styles.start}>
-                                    <Text style={styles.startText}>Aloita!</Text>
+                                    title='1'
+                                    onPress={() => {
+                                        let helper = 1
+                                        setOneOrTwo(helper)
+                                        startGame()
+                                    }}>
+                                    <Text style={styles.choice}>1 noppa - kirjoita silmäluku</Text>
                                 </Pressable>
+                                <View style={styles.line} />
+                                <Pressable
+                                    title='2'
+                                    onPress={() => {
+                                        let helper = 2
+                                        setOneOrTwo(helper)
+                                        startGame()
+                                    }}>
+                                    <Text style={styles.choice}>2 noppaa - laske silmäluvut yhteen </Text>
+                                </Pressable>
+                                <View style={styles.line} />
                             </View>
                         </View>
                     </View>
@@ -107,32 +155,7 @@ export default function Dices() {
             </ScrollView>
         );
     }
-
-    //jos aloita on painettu
-    //mutta yrityksiä on 15
-    else if (done === 15) {
-        return (
-            // <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.LetterContainer}>
-                    <View style={styles.header}>
-                        <Image source={require('./logo.jpg')} style={styles.logo} />
-                    </View>
-                    <View style={styles.center}>
-                        <View style={styles.center}>
-                            <Text style={styles.textHeader2}>Peli päättyi!</Text>
-                            <Text style={styles.plainText}> </Text>
-                            <Text style={styles.plainText}> </Text>
-                            <Text style={styles.plainText}>Sait {right} oikein!</Text>
-                        </View>
-                    </View>
-                    <Footer done={done} right={right} />
-                </View>
-            </View>
-            // </ScrollView>
-        );
-    }
-    else {
+    if (oneOrTwo === 1) {
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -150,9 +173,6 @@ export default function Dices() {
                                 />
                                 <Text style={styles.wrong}>{wrong}</Text>
                             </View>
-                            <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
-                        </View>
-                        <View style={styles.center}>
                         </View>
                     </View>
                     <Footer done={done} right={right} />
@@ -162,4 +182,31 @@ export default function Dices() {
     }
 
 
+    if (oneOrTwo === 2) {
+        return (
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.LetterContainer}>
+                        <View style={styles.center}>
+                            <View style={styles.nextTo}>
+                                <Text style={styles.dices}>{dice}</Text>
+                                <Text style={styles.dices}> + </Text>
+                                <Text style={styles.dices}>{dice2}</Text>
+                                <TextInput
+                                    placeholder=""
+                                    value={input}
+                                    maxLength={1}
+                                    autoCapitalize='none'
+                                    style={styles.letters}
+                                    onChangeText={checkDiceSum}
+                                />
+                                <Text style={styles.wrong}>{wrong}</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <Footer done={done} right={right} />
+                </View>
+            </ScrollView>
+        );
+    }
 }
