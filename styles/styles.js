@@ -285,9 +285,8 @@ export default StyleSheet.create({
   //kirjain-sivun container
   LetterContainer: {
     backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 650
+    height: 650,
+    marginTop: 30
   },
   //  //muuttuvien numeroiden näyttö
   NumbersTable: {
@@ -302,9 +301,29 @@ export default StyleSheet.create({
     borderStyle: 'dashed',
     height: 400
   },
-  dices: {
-    
+  //noppien välinen plussa
+  plus: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 80
   },
+   equal: {
+    marginTop: 20
+  },
+  //noppien syöttökenttä
+  dicesAns: {
+    height: 120,
+    width: 120, 
+    borderWidth: 1,
+    fontSize: 60,
+    marginTop: 40,
+    marginBottom: 40,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }, 
 
 
 
