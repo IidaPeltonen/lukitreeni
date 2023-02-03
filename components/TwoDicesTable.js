@@ -4,7 +4,6 @@ import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { ScrollView } from "react-native-gesture-handler";
 
 let right = 0
 let wrongAns = 0
@@ -21,13 +20,6 @@ export default function TwoDicesTable() {
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
-
-    const dicePic =
-        <MaterialCommunityIcons
-            name='dice-1'
-            size={50}
-            color={'black'}>
-        </MaterialCommunityIcons>
 
     const plusPic =
         <MaterialCommunityIcons
@@ -74,7 +66,7 @@ export default function TwoDicesTable() {
     }
 
     function getDice() {
-        console.log('getDice')
+
         setSum(0)
         setDone(done + 1)
         let random = randomIntFromInterval(1, 6)
@@ -163,7 +155,6 @@ export default function TwoDicesTable() {
                                         placeholder=""
                                         value={text}
                                         maxLength={2}
-                                        autoCapitalize='none'
                                         style={styles.dicesAns}
                                         keyboardType='number-pad'
                                         onChangeText={(text) => { onChangeText(text) }}

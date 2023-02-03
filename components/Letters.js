@@ -112,7 +112,7 @@ export default function Letters() {
   //mutta yrityksiä on 15
   else if (done === 15) {
     return (
-      // <ScrollView>
+     <ScrollView>
       <View style={styles.container}>
         <View style={styles.LetterContainer}>
           <View style={styles.header}>
@@ -129,7 +129,7 @@ export default function Letters() {
           <Footer done={done} right={right} />
         </View>
       </View>
-      // </ScrollView>
+     </ScrollView>
     );
   }
   else {
@@ -163,5 +163,4 @@ export default function Letters() {
       </ScrollView>
     );
   }
-
 }

@@ -12,14 +12,12 @@ export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
     const [dice, setDice] = useState('') //näytettävä
     const [diceNum, setDiceNum] = useState('') //noppa numerona
-    const [number, onChangeNumber] = useState('') //käyttäjän syöte
+    const [text, onChangeText] = useState('') //käyttäjän syöte
     const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
-
-
-    console.log('number yläällä: ' +  number)
+    const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
 
     let alertPic =
         <MaterialCommunityIcons
@@ -32,15 +30,8 @@ export default function DicesTable() {
         getData();
         Keyboard.dismiss()
         checkDice()
-        onChangeNumber('')
-        setWrong('')
-        setWrongPic('')
-        startGame()
-    }, [number]);
-
-    function startGame() {
-        getDice()
-      }
+        onChangeText('')
+    }, [text]);
 
     const getData = async () => {
         try {
@@ -51,6 +42,11 @@ export default function DicesTable() {
         } catch (e) {
             console.log('error: ' + e)
         }
+    }
+
+    function startGame() {
+        setNotStart(false)
+        getDice()
     }
 
     function randomIntFromInterval(min, max) { // min and max included 
@@ -71,20 +67,12 @@ export default function DicesTable() {
 
     function checkDice() {
         setDone(done + 1)
-        console.log('diceNum: ' + diceNum)
-        console.log('Number: ' + number)
 
-        //varmistetaan, että syöte on numero
-        let tempText = Number(number)
-
-        if (tempText === diceNum) {
+        if (text === diceNum) {
             console.log('oikein')
             setWrong('')
             right = right + 1
-            setDice('')
-            setDiceNum('')
-            setRefresh(Math.random()); //refressaa syötteen
-            getDice()
+            startGame()
         }
         //jos ei 
         else {
@@ -93,11 +81,11 @@ export default function DicesTable() {
             wrongAns = wrongAns + 1
             setWrongPic(alertPic)
         }
+        setRefresh(Math.random()); //refressaa syötteen
     }
 
-
-
     return (
+        <ScrollView>
             <View style={styles.container}>
                 <View style={styles.center}>
                     <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
@@ -108,13 +96,12 @@ export default function DicesTable() {
                             <Text style={styles.dices}>{dice}</Text>
                             <TextInput
                                 placeholder=""
-                                value={number}
+                                value={text}
                                 maxLength={1}
-                                style={styles.letters}
+                                style={styles.dicesAns}
                                 keyboardType='number-pad'
-                                onChangeNumber={onChangeNumber}
+                                onChangeText={onChangeText}
                             />
-                            <Text style={styles.wrong}>näihin ei tuu mitään</Text>
                             <Text style={styles.wrongPic}>{wrongPic}</Text>
                             <Text style={styles.wrong}>{wrong}</Text>
                         </View>
@@ -122,6 +109,7 @@ export default function DicesTable() {
                 </View>
                 <Footer done={done} right={right} />
             </View>
+        </ScrollView>
     );
 
 }
