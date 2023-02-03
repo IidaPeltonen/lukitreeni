@@ -223,7 +223,7 @@ export default function Memory() {
     setNumbers('')
   }
 
-  //tää pitäisi muokata näyttämään numerosrajaa vain tietyn ajan
+  //tää pitäisi muokata näyttämään numerosarjaa vain tietyn ajan
    useEffect(() => {
     const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter === 0 && right <= 5) {
@@ -233,7 +233,12 @@ export default function Memory() {
     else if (counter === 0 && right > 5) {
         setInfo('Hyvin pelattu, olet paras!')
     }
-    return () => clearInterval(timer);
+    else if (counter === 0) {
+      clearInterval(timer)
+    }
+    else {
+      return () => clearInterval(timer);
+    }
 }, [counter]); 
 
   //returnit
@@ -294,13 +299,16 @@ export default function Memory() {
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.numberToShow}> {numbers} </Text>
-          <TextInput
-            placeholder=""
-            value={answer}
-            style={styles.numberToWrite}
-            keyboardType='number-pad'
-            onChangeText={setAnswer}
-          />
+          {counter === 0 &&
+        
+            <TextInput
+              placeholder=""
+              value={answer}
+              style={styles.numberToWrite}
+              keyboardType='number-pad'
+              onChangeText={setAnswer}
+            />
+          }
           <Text style={styles.plainText}>{info}</Text>
           <Text style={styles.plainText}>Vaikeustaso: {difficulty}</Text>
           <Text style={styles.plainText}>Aika: {counter}s</Text>

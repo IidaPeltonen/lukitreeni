@@ -32,6 +32,8 @@ export default function Letters() {
   useEffect(() => {
     getData();
     Keyboard.dismiss()
+    checkLetter()
+    onChangeText('')
   }, [text]);
 
   const getData = async () => {
@@ -55,12 +57,11 @@ export default function Letters() {
     let random = Math.floor(Math.random() * 23)
     let randomLetter = bigs[random]
     setBig(randomLetter)
-    setDone(done+1)
   }
 
-  function checkLetter(text) {
+  function checkLetter() {
     //yritetyt nousee yhdellä
-    console.log('syöte: ' + text)
+    setDone(done + 1)
 
     //jos vastaus on oikein
     if (text === big.toLowerCase()) {
@@ -70,9 +71,9 @@ export default function Letters() {
     }
     //jos ei 
     else {
-      setWrong( '  Yritä uudelleen!'  )
+      setWrong('  Yritä uudelleen!')
       wrongAns = wrongAns + 1
-      setWrongPic( alertPic )
+      setWrongPic(alertPic)
     }
     setRefresh(Math.random()); //refressaa syötteen
   }
@@ -81,28 +82,28 @@ export default function Letters() {
   if (notStarted == true) {
     return (
       <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
-        </View>
-        <View style={styles.center}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
+          </View>
           <View style={styles.center}>
-            <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
-            <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
-            <Text style={styles.plainText}>Kirjoita näkemäsi iso kirjain pienellä </Text>
-            <Text style={styles.plainText}>tyhjään ruutuun </Text>
             <View style={styles.center}>
-              <Pressable
-                title='Aloita!'
-                onPress={startGame}
-                style={styles.start}>
-                <Text style={styles.startText}>Aloita!</Text>
-              </Pressable>
+              <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
+              <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
+              <Text style={styles.plainText}>Kirjoita näkemäsi iso kirjain pienellä </Text>
+              <Text style={styles.plainText}>tyhjään ruutuun </Text>
+              <View style={styles.center}>
+                <Pressable
+                  title='Aloita!'
+                  onPress={startGame}
+                  style={styles.start}>
+                  <Text style={styles.startText}>Aloita!</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
+          <Footer done={done} right={right} />
         </View>
-        <Footer done={done} right={right} />
-      </View>
       </ScrollView>
     );
   }
@@ -128,7 +129,7 @@ export default function Letters() {
           <Footer done={done} right={right} />
         </View>
       </View>
-        // </ScrollView>
+      // </ScrollView>
     );
   }
   else {
@@ -144,11 +145,13 @@ export default function Letters() {
                   value={text}
                   maxLength={1}
                   autoCapitalize='none'
-                  style={styles.letters} 
-                  onChangeText={(text) => { 
-                    onChangeText 
-                    checkLetter(text)
-                  }}>
+                  style={styles.letters}
+      /*             onChangeText={(text) => {
+                    {onChangeText}
+                    
+                  }} */
+                  onChangeText={onChangeText}
+                  >
                 </TextInput>
 
                 <Text style={styles.wrongPic}>{wrongPic}</Text>
@@ -156,12 +159,12 @@ export default function Letters() {
               </View>
               <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
             </View>
-          <View style={styles.center}>
-</View>
+            <View style={styles.center}>
+            </View>
           </View>
           <Footer done={done} right={right} />
         </View>
-        </ScrollView>
+      </ScrollView>
     );
   }
 

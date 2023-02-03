@@ -31,7 +31,8 @@ export default function App() {
     <NavigationContainer style={styles.navi}>
       <Drawer.Navigator initialRouteName="Home" screenOptions={{
         drawerStyle: {backgroundColor: '#c9f1fd'} 
-      }}>
+      }}
+      sceneContainerStyle={{backgroundColor: 'transparent'}}>
         <Stack.Screen name="Etusivu" component={HomeScreen} style={styles.navi} />
         <Stack.Screen name="Kokonaissanahahmotus" component={Words} style={styles.navi} />
         <Stack.Screen name="Virkkeet" component={Sentences} style={styles.navi} />

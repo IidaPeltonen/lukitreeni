@@ -106,6 +106,7 @@ export default function Dices() {
         //jos ei 
         else {
             setWrong('  Yritä uudelleen!')
+            setInput('')
         }
     }
 
@@ -224,6 +225,7 @@ export default function Dices() {
                                     <Text style={styles.equal}>{equalPic}</Text>
                                     <TextInput
                                         placeholder=""
+                                        value={input}
                                         maxLength={2}
                                         autoCapitalize='none'
                                         style={styles.dicesAns}
