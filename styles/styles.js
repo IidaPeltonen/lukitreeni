@@ -308,7 +308,7 @@ export default StyleSheet.create({
     marginTop: 80
   },
    equal: {
-    marginTop: 20
+    marginTop:60
   },
   //noppien syöttökenttä
   dicesAns: {

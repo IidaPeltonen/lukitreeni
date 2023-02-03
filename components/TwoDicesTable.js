@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, ScrollView, Keyboard } from "react-native";
+import { Pressable, View, Text, TextInput, Keyboard } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import { ScrollView } from "react-native-gesture-handler";
 
 let right = 0
 let wrongAns = 0
@@ -31,14 +32,14 @@ export default function TwoDicesTable() {
     const plusPic =
         <MaterialCommunityIcons
             name='plus'
-            size={80}
+            size={60}
             color={'black'}>
         </MaterialCommunityIcons>
 
     const equalPic =
         <MaterialCommunityIcons
             name='equal'
-            size={60}
+            size={50}
             color={'black'}>
         </MaterialCommunityIcons>
 
@@ -51,9 +52,6 @@ export default function TwoDicesTable() {
 
     useEffect(() => {
         getData()
-        console.log('text: ' +text.length)
-        console.log('sum: ' +sum.toString())
-        console.log('sum length: ' +sum)
         {text.length === sum.toString().length &&
             Keyboard.dismiss()
         }
@@ -84,7 +82,7 @@ export default function TwoDicesTable() {
         setDice(<MaterialCommunityIcons
             name={randomName}
             key={random}
-            size={180}
+            size={160}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -94,17 +92,13 @@ export default function TwoDicesTable() {
         setDice2(<MaterialCommunityIcons
             name={randomName2}
             key={random2}
-            size={180}
+            size={160}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
         setDiceNum2(Number(random2))
-
-        console.log('eka: ' + Number(random))
-        console.log('toka: ' + Number(random2))
         let tempSum1 = random + random2
         setSum(tempSum1)
-        console.log('tempSum: ' + tempSum1)
     }
 
     function checkDiceSum() {
@@ -113,7 +107,6 @@ export default function TwoDicesTable() {
         //varmistetaan, että syöte on numero
         let userText = Number(text)
         let tempSum = diceNum + diceNum2
-        console.log('tempSum: ' + tempSum)
 
         if (userText === tempSum) {
             setWrong('')
@@ -140,18 +133,20 @@ export default function TwoDicesTable() {
     }
 
     return (
-        <ScrollView>
+<>
             <View style={styles.container}>
                 <View style={styles.center}>
                     <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
                 </View>
                 {done === 0 &&
+                <View style={styles.center}>
                     <Pressable
                         title='Aloita'
                         onPress={getDice}
                         style={styles.checkNumber}>
                         <Text style={styles.startText}>Heitä nopat!</Text>
                     </Pressable>
+                </View>
                 }
                 {done !== 0 &&
                     <View style={styles.LetterContainer}>
@@ -170,12 +165,12 @@ export default function TwoDicesTable() {
                                         maxLength={2}
                                         autoCapitalize='none'
                                         style={styles.dicesAns}
+                                        keyboardType='number-pad'
                                         onChangeText={(text) => { onChangeText(text) }}
                                     />
                                     <Text style={styles.wrongPic}>{wrongPic}</Text>
                                     <Text style={styles.wrong}>{wrong}</Text>
                                 </View>
-                                <Text></Text>
                                 <View style={styles.center}>
                                     <Pressable
                                         title='Uudet'
@@ -191,7 +186,6 @@ export default function TwoDicesTable() {
 
             </View>
             <Footer done={done} right={right} />
-
-            </ScrollView >
+            </>
         );
 }

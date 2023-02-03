@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, ScrollView, Keyboard } from "react-native";
+import { Pressable, View, Text, Image } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import DicesTable from "./DicesTable";
@@ -13,15 +13,15 @@ export default function Dices() {
     const [notStarted, setNotStarted] = useState(true) //onko peli aloitettu
 
     const dicePic =
-    <MaterialCommunityIcons
-        name='dice-1'
-        size={50}
-        color={'black'}>
-    </MaterialCommunityIcons>
+        <MaterialCommunityIcons
+            name='dice-1'
+            size={50}
+            color={'black'}>
+        </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
-      }, );
+    },);
 
     const getData = async () => {
         try {
@@ -43,62 +43,55 @@ export default function Dices() {
     //jos peliä ei ole aloitettu
     if (oneOrTwo === 0) {
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <View style={styles.header}>
-                        <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
-                    </View>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
+                </View>
+                <View style={styles.center}>
                     <View style={styles.center}>
-                        <View style={styles.center}>
-                            <Text style={styles.textHeader2}>Tunnista numerot</Text>
-                            <Text style={styles.plainText}>Valitse montaako noppaa haluat käyttää:</Text>
+                        <Text style={styles.textHeader2}>Tunnista numerot</Text>
+                        <Text style={styles.plainText}>Valitse montaako noppaa haluat käyttää:</Text>
+                        <Text></Text>
+                        <View style={styles.chooseLvl}>
+                            <Pressable
+                                title='1'
+                                onPress={() => {
+                                    let helper = 1
+                                    setOneOrTwo(helper)
+                                    startGame()
+                                }}>
+                                <Text style={styles.choice}> {dicePic} </Text>
+                            </Pressable>
                             <Text></Text>
-                            <View style={styles.chooseLvl}>
-                                <Pressable
-                                    title='1'
-                                    onPress={() => {
-                                        let helper = 1
-                                        setOneOrTwo(helper)
-                                        startGame()
-                                    }}>
-                                    <Text style={styles.choice}> {dicePic} </Text>
-                                </Pressable>
-                                <Text></Text>
-                                <Pressable
-                                    title='2'
-                                    onPress={() => {
-                                        let helper = 2
-                                        setOneOrTwo(helper)
-                                        startGame()
-                                    }}>
-                                    <Text style={styles.choice}> {dicePic}{dicePic}  </Text>
-                                </Pressable>
-                            </View>
+                            <Pressable
+                                title='2'
+                                onPress={() => {
+                                    let helper = 2
+                                    setOneOrTwo(helper)
+                                    startGame()
+                                }}>
+                                <Text style={styles.choice}> {dicePic}{dicePic}  </Text>
+                            </Pressable>
                         </View>
                     </View>
-                    <Footer done={done}  />
                 </View>
-            </ScrollView>
+                <Footer done={done} />
+            </View>
         );
     }
-    else if (notStarted === false && oneOrTwo === 1){
+    else if (notStarted === false && oneOrTwo === 1) {
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                   <DicesTable />
-                </View>
-            </ScrollView>
+            <View style={styles.container}>
+                <DicesTable />
+            </View>
         );
     }
-    else if (notStarted === false && oneOrTwo === 2){
+    else if (notStarted === false && oneOrTwo === 2) {
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                   <TwoDicesTable />
-                </View>
-            </ScrollView>
+            <View style={styles.container}>
+                <TwoDicesTable />
+            </View>
+
         );
     }
-
-
 }
