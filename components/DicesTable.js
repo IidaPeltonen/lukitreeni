@@ -12,11 +12,14 @@ export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
     const [dice, setDice] = useState('') //näytettävä
     const [diceNum, setDiceNum] = useState('') //noppa numerona
-    const [text, onChangeText] = useState('') //käyttäjän syöte
+    const [number, onChangeNumber] = useState('') //käyttäjän syöte
     const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
+
+
+    console.log('number yläällä: ' +  number)
 
     let alertPic =
         <MaterialCommunityIcons
@@ -29,11 +32,11 @@ export default function DicesTable() {
         getData();
         Keyboard.dismiss()
         checkDice()
-        onChangeText('')
+        onChangeNumber('')
         setWrong('')
         setWrongPic('')
-        getDice()
-    }, [text]);
+        startGame()
+    }, [number]);
 
     function startGame() {
         getDice()
@@ -64,17 +67,18 @@ export default function DicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
-
     }
 
     function checkDice() {
         setDone(done + 1)
+        console.log('diceNum: ' + diceNum)
+        console.log('Number: ' + number)
 
         //varmistetaan, että syöte on numero
-        let tempText = Number(text)
-
+        let tempText = Number(number)
 
         if (tempText === diceNum) {
+            console.log('oikein')
             setWrong('')
             right = right + 1
             setDice('')
@@ -84,6 +88,7 @@ export default function DicesTable() {
         }
         //jos ei 
         else {
+            console.log('väärin')
             setWrong('  Yritä uudelleen!')
             wrongAns = wrongAns + 1
             setWrongPic(alertPic)
@@ -103,16 +108,16 @@ export default function DicesTable() {
                             <Text style={styles.dices}>{dice}</Text>
                             <TextInput
                                 placeholder=""
-                                value={text}
+                                value={number}
                                 maxLength={1}
-                                autoCapitalize='none'
                                 style={styles.letters}
-                                onChangeText={onChangeText}
+                                keyboardType='number-pad'
+                                onChangeNumber={onChangeNumber}
                             />
+                            <Text style={styles.wrong}>näihin ei tuu mitään</Text>
                             <Text style={styles.wrongPic}>{wrongPic}</Text>
                             <Text style={styles.wrong}>{wrong}</Text>
                         </View>
-
                     </View>
                 </View>
                 <Footer done={done} right={right} />

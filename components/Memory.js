@@ -275,6 +275,7 @@ export default function Memory() {
   //jos aloita on painettu, mutta peli on jo loppunut
   else if (gameEnded === true) {
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
@@ -290,12 +291,13 @@ export default function Memory() {
         </View>
         <Footer done={done} right={totalRight} />
       </View>
+      </ScrollView>
     );
   }
 
   else {
     return (
-      // <ScrollView>
+       <ScrollView>
       <View style={styles.container}>
         <View style={styles.center}>
           <Text style={styles.numberToShow}> {numbers} </Text>
@@ -333,7 +335,7 @@ export default function Memory() {
         </View>
         <Footer done={done} right={totalRight} />
       </View>
-   //   </ScrollView>
+      </ScrollView>
     );
   }
 
