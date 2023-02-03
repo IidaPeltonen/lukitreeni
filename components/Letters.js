@@ -34,6 +34,8 @@ export default function Letters() {
     Keyboard.dismiss()
     checkLetter()
     onChangeText('')
+    setWrong('')
+    setWrongPic('')
   }, [text]);
 
   const getData = async () => {
@@ -53,6 +55,8 @@ export default function Letters() {
   }
 
   function getLetter() {
+    //arvotut kirjaimet nousee yhdellä
+    setDone(done + 1)
     //arvo numero ja etsi siitä indksistä kirjain aakkosia on 24
     let random = Math.floor(Math.random() * 23)
     let randomLetter = bigs[random]
@@ -60,21 +64,22 @@ export default function Letters() {
   }
 
   function checkLetter() {
-    //yritetyt nousee yhdellä
-    setDone(done + 1)
 
-    //jos vastaus on oikein
-    if (text === big.toLowerCase()) {
-      setWrong('')
-      right = right + 1
-      startGame()
+    if (text !== '') {
+      //jos vastaus on oikein
+      if (text === big.toLowerCase()) {
+        setWrong('')
+        right = right + 1
+        startGame()
+      }
+      //jos ei 
+      else {
+        setWrong('  Yritä uudelleen!')
+        wrongAns = wrongAns + 1
+        setWrongPic(alertPic)
+      }
     }
-    //jos ei 
-    else {
-      setWrong('  Yritä uudelleen!')
-      wrongAns = wrongAns + 1
-      setWrongPic(alertPic)
-    }
+   
     setRefresh(Math.random()); //refressaa syötteen
   }
 
