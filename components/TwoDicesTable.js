@@ -144,9 +144,9 @@ export default function TwoDicesTable() {
                     <View style={styles.LetterContainer}>
                         <View style={styles.center}>
                             <View style={styles.nextTo}>
-                                <Text style={styles.dices}>{dice}</Text>
+                                <Text>{dice}</Text>
                                 <Text style={styles.plus}>{plusPic}</Text>
-                                <Text style={styles.dices}>{dice2}</Text>
+                                <Text>{dice2}</Text>
                             </View>
                             <View style={styles.center}>
                                 <View style={styles.nextTo}>

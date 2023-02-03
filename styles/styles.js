@@ -307,14 +307,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 80
   },
-   equal: {
+  //kahden nopan = -merkki
+  equal: {
     marginTop:60
+  },
+  equal2: {
+    marginTop:90
   },
   //noppien syöttökenttä
   dicesAns: {
     height: 120,
     width: 120, 
-    borderWidth: 1,
+    borderWidth: 2,
     fontSize: 60,
     marginTop: 40,
     marginBottom: 40,
@@ -323,6 +327,21 @@ export default StyleSheet.create({
     paddingRight: 20,
     paddingTop: 0,
     paddingBottom: 0,
+  }, 
+  //yhden nopan syöttökenttä
+  dicesAns2: {
+    height: 190,
+    width: 190, 
+    borderWidth: 2,
+    fontSize: 60,
+    marginTop: 40,
+    marginBottom: 40,
+    justifyContent: 'center',
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingTop: 0,
+    paddingBottom: 0,
+    marginLeft: 40
   }, 
 
 

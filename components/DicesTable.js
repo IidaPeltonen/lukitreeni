@@ -12,7 +12,7 @@ export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
     const [dice, setDice] = useState('') //näytettävä
     const [diceNum, setDiceNum] = useState('') //noppa numerona
-    const [text, onChangeText] = useState('') //käyttäjän syöte
+    const [number, onChangeNumber] = useState('') //käyttäjän syöte
     const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
@@ -25,13 +25,20 @@ export default function DicesTable() {
             size={35}
             color={'red'}>
         </MaterialCommunityIcons>
+    
+    const equalPic =
+    <MaterialCommunityIcons
+        name='equal'
+        size={60}
+        color={'black'}>
+    </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
         Keyboard.dismiss()
         checkDice()
-        onChangeText('')
-    }, [text]);
+        onChangeNumber('')
+    }, [number]);
 
     const getData = async () => {
         try {
@@ -59,7 +66,7 @@ export default function DicesTable() {
         setDice(<MaterialCommunityIcons
             name={randomName}
             key={random}
-            size={200}
+            size={180}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -68,9 +75,9 @@ export default function DicesTable() {
     function checkDice() {
         setDone(done + 1)
 
-        if (text !== '') {
+        if (number !== '') {
             console.log('syöte annettu')
-            if (text === diceNum) {
+            if (number === diceNum) {
                 console.log('oikein')
                 setWrong('')
                 right = right + 1
@@ -112,18 +119,19 @@ export default function DicesTable() {
                 <View style={styles.LetterContainer}>
                     <View style={styles.center}>
                         <View style={styles.nextTo}>
-                            <Text style={styles.dices}>{dice}</Text>
+                            <Text >{dice}</Text>
+                            <Text style={styles.plus}>{equalPic}</Text>
                             <TextInput
                                 placeholder=""
-                                value={text}
+                                value={number}
                                 maxLength={1}
-                                style={styles.dicesAns}
+                                style={styles.dicesAns2}
                                 keyboardType='number-pad'
-                                onChangeText={onChangeText}
+                                onChangeNumber={onChangeNumber}
                             />
-                            <Text style={styles.wrongPic}>{wrongPic}</Text>
-                            <Text style={styles.wrong}>{wrong}</Text>
                         </View>
+                        <Text style={styles.wrongPic}>{wrongPic}</Text>
+                            <Text style={styles.wrong}>{wrong}</Text>
                     </View>
                 </View>}
                 <Footer done={done} right={right} />
