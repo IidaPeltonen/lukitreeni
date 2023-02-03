@@ -150,7 +150,7 @@ export default function Letters() {
                   value={text}
                   maxLength={1}
                   autoCapitalize='none'
-                  style={styles.letters}
+                  style={styles.lettersAns}
                   onChangeText={onChangeText}
                   >
                 </TextInput>

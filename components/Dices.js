@@ -6,6 +6,7 @@ import DicesTable from "./DicesTable";
 import TwoDicesTable from "./TwoDicesTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function Dices() {
     const [done, setDone] = useState(0) //tehtyjen määrä
@@ -81,17 +82,21 @@ export default function Dices() {
     }
     else if (notStarted === false && oneOrTwo === 1) {
         return (
-            <View style={styles.container}>
-                <DicesTable />
-            </View>
+            <ScrollView>
+                <View style={styles.container}>
+                    <DicesTable />
+                </View>
+            </ScrollView>
+
         );
     }
     else if (notStarted === false && oneOrTwo === 2) {
         return (
+            <ScrollView>
             <View style={styles.container}>
                 <TwoDicesTable />
             </View>
-
+        </ScrollView>
         );
     }
 }

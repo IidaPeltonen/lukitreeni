@@ -212,6 +212,21 @@ export default StyleSheet.create({
     paddingTop: 0,
     paddingBottom: 0,
   },
+  lettersAns: {
+    backgroundColor: 'white',
+    height: 110,
+    width: 110,
+    borderWidth: 3,
+    margin: 20,
+    fontSize: 60,
+    marginTop: 40,
+    marginBottom: 40,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
   //footer
   footer: {
     flexDirection: 'row',
@@ -341,8 +356,23 @@ export default StyleSheet.create({
     paddingRight: 50,
     paddingTop: 0,
     paddingBottom: 0,
-    marginLeft: 40
+    marginLeft: 40, 
+    backgroundColor: 'white'
   }, 
+    //yhden nopan väärä vastaus
+    wrongDice: {
+      fontSize: 20,
+      fontFamily: 'Roboto',
+      marginTop: 10,
+      color: 'red',
+      marginBottom: 0
+    },
+  //noppien container
+  DiceContainer: {
+    backgroundColor: '#c9f1fd',
+    height: 550,
+    marginTop: 30
+  },
 
 
 

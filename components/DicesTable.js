@@ -25,13 +25,13 @@ export default function DicesTable() {
             size={35}
             color={'red'}>
         </MaterialCommunityIcons>
-    
+
     const equalPic =
-    <MaterialCommunityIcons
-        name='equal'
-        size={60}
-        color={'black'}>
-    </MaterialCommunityIcons>
+        <MaterialCommunityIcons
+            name='equal'
+            size={60}
+            color={'black'}>
+        </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
@@ -95,17 +95,17 @@ export default function DicesTable() {
             console.log('ei syötettä')
             startGame()
         }
-        
+
         setRefresh(Math.random()); //refressaa syötteen
     }
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.center}>
-                    <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
-                </View>
-                {done === 0 &&
+        <>
+            <View style={styles.center}>
+                <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
+            </View>
+            {
+                done === 0 &&
                 <View style={styles.center}>
                     <Pressable
                         title='Aloita'
@@ -114,9 +114,10 @@ export default function DicesTable() {
                         <Text style={styles.startText}>Heitä nopat!</Text>
                     </Pressable>
                 </View>
-                }
-                {done !== 0 &&
-                <View style={styles.LetterContainer}>
+            }
+            {
+                done !== 0 &&
+                <View style={styles.DiceContainer}>
                     <View style={styles.center}>
                         <View style={styles.nextTo}>
                             <Text >{dice}</Text>
@@ -130,13 +131,12 @@ export default function DicesTable() {
                                 onChangeNumber={onChangeNumber}
                             />
                         </View>
-                        <Text style={styles.wrongPic}>{wrongPic}</Text>
-                            <Text style={styles.wrong}>{wrong}</Text>
+                        <Text style={styles.wrongDice}>{wrongPic} {wrong}tässä</Text>
                     </View>
-                </View>}
-                <Footer done={done} right={right} />
-            </View>
-        </ScrollView>
+                </View>
+            }
+            <Footer done={done} right={right} />
+        </>
     );
 
 }
