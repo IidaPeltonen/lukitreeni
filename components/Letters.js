@@ -146,10 +146,6 @@ export default function Letters() {
                   maxLength={1}
                   autoCapitalize='none'
                   style={styles.letters}
-      /*             onChangeText={(text) => {
-                    {onChangeText}
-                    
-                  }} */
                   onChangeText={onChangeText}
                   >
                 </TextInput>
