@@ -18,27 +18,6 @@ export default function DicesTable() {
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
 
-    const dicePic =
-        <MaterialCommunityIcons
-            name='dice-1'
-            size={50}
-            color={'black'}>
-        </MaterialCommunityIcons>
-
-    const plusPic =
-        <MaterialCommunityIcons
-            name='plus'
-            size={80}
-            color={'black'}>
-        </MaterialCommunityIcons>
-
-    const equalPic =
-        <MaterialCommunityIcons
-            name='equal'
-            size={60}
-            color={'black'}>
-        </MaterialCommunityIcons>
-
     let alertPic =
         <MaterialCommunityIcons
             name='alert-decagram'
@@ -114,7 +93,6 @@ export default function DicesTable() {
 
 
     return (
-        <ScrollView>
             <View style={styles.container}>
                 <View style={styles.center}>
                     <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
@@ -139,7 +117,6 @@ export default function DicesTable() {
                 </View>
                 <Footer done={done} right={right} />
             </View>
-        </ScrollView>
     );
 
 }
