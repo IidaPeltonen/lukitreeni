@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, ScrollView, Keyboard } from "react-native";
+import { View, Text, TextInput, ScrollView, Keyboard, Pressable } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -68,19 +68,27 @@ export default function DicesTable() {
     function checkDice() {
         setDone(done + 1)
 
-        if (text === diceNum) {
-            console.log('oikein')
-            setWrong('')
-            right = right + 1
+        if (text !== '') {
+            console.log('syöte annettu')
+            if (text === diceNum) {
+                console.log('oikein')
+                setWrong('')
+                right = right + 1
+                startGame()
+            }
+            //jos ei 
+            else {
+                console.log('väärin')
+                setWrong('  Yritä uudelleen!')
+                wrongAns = wrongAns + 1
+                setWrongPic(alertPic)
+            }
+        }
+        else {
+            console.log('ei syötettä')
             startGame()
         }
-        //jos ei 
-        else {
-            console.log('väärin')
-            setWrong('  Yritä uudelleen!')
-            wrongAns = wrongAns + 1
-            setWrongPic(alertPic)
-        }
+        
         setRefresh(Math.random()); //refressaa syötteen
     }
 
@@ -90,6 +98,17 @@ export default function DicesTable() {
                 <View style={styles.center}>
                     <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
                 </View>
+                {done === 0 &&
+                <View style={styles.center}>
+                    <Pressable
+                        title='Aloita'
+                        onPress={startGame}
+                        style={styles.checkNumber}>
+                        <Text style={styles.startText}>Heitä nopat!</Text>
+                    </Pressable>
+                </View>
+                }
+                {done !== 0 &&
                 <View style={styles.LetterContainer}>
                     <View style={styles.center}>
                         <View style={styles.nextTo}>
@@ -106,7 +125,7 @@ export default function DicesTable() {
                             <Text style={styles.wrong}>{wrong}</Text>
                         </View>
                     </View>
-                </View>
+                </View>}
                 <Footer done={done} right={right} />
             </View>
         </ScrollView>
