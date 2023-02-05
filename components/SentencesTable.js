@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import styles from "../styles/styles";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
@@ -22,24 +22,22 @@ export default function SentencesTable({ sentences, time }) {
     }, [counter]);
 
     return (
-        <View style={styles.container} >
-            {senIndex <= (sentences.length - 1) &&
-                <>
-                    <View style={styles.SentencesTable}>
-                        <View style={styles.center} >
-                            <Text style={styles.showSen}>{sentences[senIndex]}</Text>
-                            <Text style={styles.plainText}>{info}</Text>
-                        </View>
+        <View style={styles.frontContainer} >
+            <View style={styles.SentencesTable} >
+                {senIndex <= (sentences.length - 1) &&
+                    <>
+                        <Text style={styles.showSen}>{sentences[senIndex]}</Text>
+                        <Text style={styles.plain}>{info}</Text>
                         <Text style={styles.Clock}>
-                        <MaterialCommunityIcons
-                            name='timer-outline'
-                            size={25}
-                            color={'black'}>
-                        </MaterialCommunityIcons>: {counter} 
-                    </Text>
-                    </View>
-                </>
-            }
+                            <MaterialCommunityIcons
+                                name='timer-outline'
+                                size={25}
+                                color={'black'}>
+                            </MaterialCommunityIcons>: {counter}
+                        </Text>
+                    </>
+                }
+                </View>
         </View>
     )
 }

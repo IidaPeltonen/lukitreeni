@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, } from "react-native";
+import { View, Text } from "react-native";
 import styles from "../styles/styles";
-import Footer from "./Footer";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
-export default function NumbersTable({numbers, time}) {
+export default function NumbersTable({ numbers, time }) {
     const [numIndex, setNumIndex] = useState(0);
     const [counter, setCounter] = useState(time) //kauanko luku näkyy
     const [info, setInfo] = useState('') //info sanoje loppumisesta
@@ -24,25 +22,25 @@ export default function NumbersTable({numbers, time}) {
     }, [counter]);
 
     return (
-        <View style={styles.NumbersTable} >
-            {numIndex <= (numbers.length - 1) &&
-                <>
-                    <View style={styles.center} >
+        <View style={styles.frontContainer}>
+            <View style={styles.NumbersTable} >
+                {numIndex <= (numbers.length - 1) &&
+                    <>
                         <Text style={styles.showWord}>{numbers[numIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
-                    </View>
-                    <Text style={styles.Clock}>
+                        {/*                     <Text style={styles.Clock}>
                         <MaterialCommunityIcons
                             name='timer-outline'
                             size={25}
                             color={'black'}>
                         </MaterialCommunityIcons>: {counter}
-                    </Text>
-                </>
-            }
+                    </Text> 
+                    Kelloa tuskin kannattaa näyttää tässä?*/}
+                    </>
+                }
+            </View>
         </View>
     )
-
 }
 
 

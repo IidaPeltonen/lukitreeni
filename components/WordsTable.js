@@ -22,22 +22,22 @@ export default function WordsTable({ words, time }) {
     }, [counter]);
 
     return (
-        <View style={styles.WordsTable} >
-            {wordIndex <= (words.length - 1) &&
-                <>
-                    <View style={styles.center} >
+        <View style={styles.frontContainer}>
+            <View style={styles.WordsTable} >
+                {wordIndex <= (words.length - 1) &&
+                    <>
                         <Text style={styles.showWord}>{words[wordIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
-                    </View>
-                    <Text style={styles.Clock}>
-                        <MaterialCommunityIcons
-                            name='timer-outline'
-                            size={25}
-                            color={'black'}>
-                        </MaterialCommunityIcons>: {counter} 
-                    </Text>
-                </>
-            }
+                        <Text style={styles.Clock}>
+                            <MaterialCommunityIcons
+                                name='timer-outline'
+                                size={25}
+                                color={'black'}>
+                            </MaterialCommunityIcons>: {counter}
+                        </Text>
+                    </>
+                }
+            </View>
         </View>
     )
 }

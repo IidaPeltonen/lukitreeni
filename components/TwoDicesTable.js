@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, TextInput, Keyboard } from "react-native";
+import { Pressable, View, Text, TextInput, Keyboard, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,6 +7,10 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
 let wrongAns = 0
+const height = (Dimensions.get('window').height)
+const ansBoxHeight = height / 100 * 25
+const marginTop = ansBoxHeight / 100 * 20
+const plusPicSize = height / 100 * 10
 
 export default function TwoDicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -24,14 +28,14 @@ export default function TwoDicesTable() {
     const plusPic =
         <MaterialCommunityIcons
             name='plus'
-            size={60}
+            size={plusPicSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
     const equalPic =
         <MaterialCommunityIcons
             name='equal'
-            size={50}
+            size={plusPicSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
@@ -44,7 +48,8 @@ export default function TwoDicesTable() {
 
     useEffect(() => {
         getData()
-        {text.length === sum.toString().length &&
+        {
+            text.length === sum.toString().length &&
             Keyboard.dismiss()
         }
     }, [text]);
@@ -66,15 +71,15 @@ export default function TwoDicesTable() {
     }
 
     function getDice() {
-
         setSum(0)
         setDone(done + 1)
         let random = randomIntFromInterval(1, 6)
         let randomName = 'dice-' + random
+        let size = height / 100 * 25
         setDice(<MaterialCommunityIcons
             name={randomName}
             key={random}
-            size={160}
+            size={size}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -84,7 +89,7 @@ export default function TwoDicesTable() {
         setDice2(<MaterialCommunityIcons
             name={randomName2}
             key={random2}
-            size={160}
+            size={size}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -125,12 +130,12 @@ export default function TwoDicesTable() {
     }
 
     return (
-<>
-            <View style={styles.container}>
-                <View style={styles.center}>
-                    <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
-                </View>
-                {done === 0 &&
+        <View style={styles.frontContainer}>
+            <View>
+             <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
+            </View>
+            <View style={styles.DiceTable}>
+            {done === 0 &&
                 <View style={styles.center}>
                     <Pressable
                         title='Aloita'
@@ -141,42 +146,48 @@ export default function TwoDicesTable() {
                 </View>
                 }
                 {done !== 0 &&
-                    <View style={styles.LetterContainer}>
-                        <View style={styles.center}>
-                            <View style={styles.nextTo}>
-                                <Text>{dice}</Text>
-                                <Text style={styles.plus}>{plusPic}</Text>
-                                <Text>{dice2}</Text>
-                            </View>
-                            <View style={styles.center}>
-                                <View style={styles.nextTo}>
-                                    <Text style={styles.equal}>{equalPic}</Text>
-                                    <TextInput
-                                        placeholder=""
-                                        value={text}
-                                        maxLength={2}
-                                        style={styles.dicesAns}
-                                        keyboardType='number-pad'
-                                        onChangeText={(text) => { onChangeText(text) }}
-                                    />
-                                    <Text style={styles.wrongPic}>{wrongPic}</Text>
-                                    <Text style={styles.wrong}>{wrong}</Text>
-                                </View>
-                                <View style={styles.center}>
-                                    <Pressable
-                                        title='Uudet'
-                                        onPress={checkDiceSum}
-                                        style={styles.checkNumber}>
-                                        <Text style={styles.startText}>Tarkista!</Text>
-                                    </Pressable>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                }
-
+                <>
+                <View style={styles.nextTo}>
+                    <Text>{dice}</Text>
+                    <Text style={style.plus}>{plusPic}</Text>
+                    <Text>{dice2}</Text>
+                    <Text style={style.plus}>{equalPic}</Text>
+                    <TextInput
+                        placeholder=""
+                        value={text}
+                        maxLength={2}
+                        style={style.input}
+                        keyboardType='number-pad'
+                        onChangeText={(text) => { onChangeText(text) }}
+                    />
+                    <Text style={styles.wrongDice}>{wrongPic} {wrong}</Text>
+                </View>
+                <Pressable
+                    title='Uudet'
+                    onPress={checkDiceSum}
+                    style={styles.checkNumber}>
+                    <Text style={styles.startText}>Tarkista!</Text>
+                </Pressable>
+</> }
             </View>
             <Footer done={done} right={right} />
-            </>
+        </View>
         );
 }
+
+const style = StyleSheet.create({
+    input: {
+        height: ansBoxHeight,
+        width: ansBoxHeight,
+        borderWidth: 2,
+        fontSize: 60,
+        justifyContent: 'center',
+        marginLeft: 40,
+        backgroundColor: 'white',
+        marginTop: marginTop,
+        textAlign: 'center'
+    },
+    plus: {
+        marginTop: marginTop + 20
+    }
+});

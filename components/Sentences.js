@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
@@ -75,50 +75,47 @@ export default function Sentences() {
   //jos tasoa ei ole valittu
   if (difficulty === 0) {
     return (
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
-          </View>
-          <View style={styles.center}>
-            <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
-            <Text style={styles.plainText}>Seuraavalla sivulla lue virkkeet ääneen</Text>
-          
-          </View>
-          <View style={styles.chooseLvl}>
-            <Text></Text>
-            <Pressable
-              title='1-2 lk'
-              onPress={() => {
-                let helper = 1
-                setDifficulty(helper)
-                getSelectedLvlSentences(helper);
-              }}>
-              <Text style={styles.choice}>1. Lyhyet virkkeet</Text>
-            </Pressable>
-            <View style={styles.line} />
-            <Pressable
-              title='3-4 lk'
-              onPress={() => {
-                let helper = 2
-                setDifficulty(helper)
-                getSelectedLvlSentences(helper);
-              }}>
-              <Text style={styles.choice}>2. Pidemmät virkkeet</Text>
-            </Pressable>
-            <View style={styles.line} />
-            <Pressable
-              title='5-6 lk'
-              onPress={() => {
-                let helper = 3
-                setDifficulty(helper)
-                getSelectedLvlSentences(helper);
-              }}>
-              <Text style={styles.choice}>3. Pitkät virkkeet</Text>
-            </Pressable>
-            <View style={styles.line} />
-          </View>
-          <Footer done={done} right={right} />
+      <View style={styles.frontContainer}>
+        <View style={styles.header}>
+          <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
+        <Text style={styles.textHeader2}>Valitse vaikeustaso</Text>
+        <Text></Text>
+        <ScrollView style={styles.chooseLvl}>
+          <Pressable
+            title='1-2 lk'
+            onPress={() => {
+              let helper = 1
+              setDifficulty(helper)
+              getSelectedLvlSentences(helper);
+            }}>
+            <Text style={styles.choice}>1. Lyhyet virkkeet</Text>
+          </Pressable>
+          <Text style={styles.line} />
+          <Pressable
+            title='3-4 lk'
+            onPress={() => {
+              let helper = 2
+              setDifficulty(helper)
+              getSelectedLvlSentences(helper);
+            }}>
+            <Text style={styles.choice}>2. Pidemmät virkkeet</Text>
+          </Pressable>
+          <Text style={styles.line} />
+          <Pressable
+            title='5-6 lk'
+            onPress={() => {
+              let helper = 3
+              setDifficulty(helper)
+              getSelectedLvlSentences(helper);
+            }}>
+            <Text style={styles.choice}>3. Pitkät virkkeet</Text>
+          </Pressable>
+          <Text style={styles.line} />
+          <Text></Text>
+        </ScrollView>
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 
@@ -126,9 +123,9 @@ export default function Sentences() {
   else if (difficulty === 1) {
     const time = 50
     return (
-        <View style={styles.container}>
-<View style={styles.right}>
-            <Pressable
+      <View style={styles.frontContainer}>
+        <View style={styles.right}>
+          <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
@@ -140,14 +137,11 @@ export default function Sentences() {
               color={'black'}
             >
             </MaterialCommunityIcons>
-            <Text style={styles.changeText}>
-              Taso
-            </Text>
           </Pressable>
         </View>
-          <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} right={right} />
-        </View>
+        <SentencesTable sentences={sentences} time={time} />
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 
@@ -155,9 +149,9 @@ export default function Sentences() {
   else if (difficulty === 2) {
     const time = 40
     return (
-        <View style={styles.container}>
-          <View style={styles.right}>
-            <Pressable
+      <View style={styles.frontContainer}>
+        <View style={styles.right}>
+          <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
@@ -169,14 +163,11 @@ export default function Sentences() {
               color={'black'}
             >
             </MaterialCommunityIcons>
-            <Text style={styles.changeText}>
-              Taso
-            </Text>
           </Pressable>
         </View>
-          <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} right={right} />
-        </View>
+        <SentencesTable sentences={sentences} time={time} />
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 
@@ -184,9 +175,9 @@ export default function Sentences() {
   else if (difficulty === 3) {
     const time = 30
     return (
-        <View style={styles.container}>
-          <View style={styles.right}>
-            <Pressable
+      <View style={styles.frontContainer}>
+        <View style={styles.right}>
+          <Pressable
             style={styles.change}
             title='change'
             onPress={() => {
@@ -198,14 +189,11 @@ export default function Sentences() {
               color={'black'}
             >
             </MaterialCommunityIcons>
-            <Text style={styles.changeText}>
-              Taso
-            </Text>
           </Pressable>
         </View>
-          <SentencesTable sentences={sentences} time={time} />
-          <Footer done={done} right={right} />
-        </View>
+        <SentencesTable sentences={sentences} time={time} />
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 }

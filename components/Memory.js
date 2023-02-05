@@ -164,34 +164,34 @@ export default function Memory() {
   }
 
   function editAnswer() {
-        let tempAnswer = []
-      if (answer.length === 2) {
-        let first = answer.substring(0, 1)
-        let second = answer.substring(1, 2)
-        tempAnswer.push(first, second)
-      }
-      if (answer.length === 3) {
-        let first = answer.substring(0, 1)
-        let second = answer.substring(1, 2)
-        let third = answer.substring(2, 3)
-        tempAnswer.push(first, second, third)
-      }
-      if (answer.length === 4) {
-        let first = answer.substring(0, 1)
-        let second = answer.substring(1, 2)
-        let third = answer.substring(2, 3)
-        let fourth = answer.substring(3, 4)
-        tempAnswer.push(first, second, third, fourth)
-      }
-      if (answer.length === 5) {
-        let first = answer.substring(0, 1)
-        let second = answer.substring(1, 2)
-        let third = answer.substring(2, 3)
-        let fourth = answer.substring(3, 4)
-        let fifth = answer.substring(4, 5)
-        tempAnswer.push(first, second, third, fourth, fifth)
-      }
-      checkNumber(tempAnswer)
+    let tempAnswer = []
+    if (answer.length === 2) {
+      let first = answer.substring(0, 1)
+      let second = answer.substring(1, 2)
+      tempAnswer.push(first, second)
+    }
+    if (answer.length === 3) {
+      let first = answer.substring(0, 1)
+      let second = answer.substring(1, 2)
+      let third = answer.substring(2, 3)
+      tempAnswer.push(first, second, third)
+    }
+    if (answer.length === 4) {
+      let first = answer.substring(0, 1)
+      let second = answer.substring(1, 2)
+      let third = answer.substring(2, 3)
+      let fourth = answer.substring(3, 4)
+      tempAnswer.push(first, second, third, fourth)
+    }
+    if (answer.length === 5) {
+      let first = answer.substring(0, 1)
+      let second = answer.substring(1, 2)
+      let third = answer.substring(2, 3)
+      let fourth = answer.substring(3, 4)
+      let fifth = answer.substring(4, 5)
+      tempAnswer.push(first, second, third, fourth, fifth)
+    }
+    checkNumber(tempAnswer)
   }
 
   function checkNumber(tempAnswer) {
@@ -224,14 +224,14 @@ export default function Memory() {
   }
 
   //tää pitäisi muokata näyttämään numerosarjaa vain tietyn ajan
-   useEffect(() => {
+  useEffect(() => {
     const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     if (counter === 0 && right <= 5) {
       checkLvl()
       chckTime()
     }
     else if (counter === 0 && right > 5) {
-        setInfo('Hyvin pelattu, olet paras!')
+      setInfo('Hyvin pelattu, olet paras!')
     }
     else if (counter === 0) {
       clearInterval(timer)
@@ -239,36 +239,30 @@ export default function Memory() {
     else {
       return () => clearInterval(timer);
     }
-}, [counter]); 
+  }, [counter]);
 
   //returnit
   //jos aloita ei ole painettu
   if (notStarted == true) {
     return (
-      <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.frontContainer}>
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <View style={styles.center}>
+        <ScrollView>
           <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-          <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja.</Text>
-          <Text style={styles.plainText}>Ajan loppuessa kirjoita se allaolevaan kenttään.</Text>
-          <Text style={styles.plainText}>Taso nousee, kun saat tarpeeksi monta oikeaa vastausta.</Text>
-          <Text style={styles.plainText}>Yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
-          <Text style={styles.plainText}></Text>
-        </View>
-        <View style={styles.center}>
+          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi </Text>
+          <Text style={styles.plain}>ja ajan loppuessa kirjoita se allaolevaan kenttään. Taso nousee pikkuhiljaa, </Text>
+          <Text style={styles.plain}>mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
           <Pressable
             title='Aloita!'
             onPress={startGame}
             style={styles.start}>
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
-        </View>
+        </ScrollView>
         <Footer done={done} right={totalRight} />
       </View>
-      </ScrollView>
     );
   }
 
@@ -276,33 +270,32 @@ export default function Memory() {
   else if (gameEnded === true) {
     return (
       <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.center}>
-          <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
-          <Text style={styles.plainText}> ja {totalRight} oikein </Text>
+        <View style={styles.frontContainer}>
           <View style={styles.center}>
-          <Pressable
-            title='Aloita alusta!'
-            onPress={startGame}
-            style={styles.start}>
-            <Text style={styles.startText}>Aloita alusta!</Text>
-          </Pressable>
+            <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
+            <Text style={styles.plainText}> ja {totalRight} oikein </Text>
+            <View style={styles.center}>
+              <Pressable
+                title='Aloita alusta!'
+                onPress={startGame}
+                style={styles.start}>
+                <Text style={styles.startText}>Aloita alusta!</Text>
+              </Pressable>
+            </View>
+          </View>
+          <Footer done={done} right={totalRight} />
         </View>
-        </View>
-        <Footer done={done} right={totalRight} />
-      </View>
       </ScrollView>
     );
   }
 
   else {
     return (
-       <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.center}>
-          <Text style={styles.numberToShow}> {numbers} </Text>
-          {counter === 0 &&
-        
+      <View style={styles.frontContainer}>
+        <View style={styles.MemoryTable}>
+          <ScrollView>
+            <Text style={styles.numberToShow}> {numbers} </Text>
+            {/* {counter === 0 && */}
             <TextInput
               placeholder=""
               value={answer}
@@ -310,32 +303,30 @@ export default function Memory() {
               keyboardType='number-pad'
               onChangeText={setAnswer}
             />
-          }
-          <Text style={styles.plainText}>{info}</Text>
-          <Text style={styles.plainText}>Vaikeustaso: {difficulty}</Text>
-          <Text style={styles.plainText}>Aika: {counter}s</Text>
-          <Text style={styles.plainText}>Oikein: {right}</Text>
-          <Text style={styles.plainText}>Väärin: {wrong}</Text>
-        </View>
-        <View style={styles.center}>
-          <View style={styles.nextTo}>
-            <Pressable
-              title='Tarkista'
-              onPress={editAnswer}
-              style={styles.checkNumber}>
-              <Text style={styles.checkNumberText}>Tarkista</Text>
-            </Pressable>
-            <Pressable
-              title='Uudet'
-              onPress={checkLvl}
-              style={styles.checkNumber}>
-              <Text style={styles.checkNumberText}>Arvo uudet</Text>
-            </Pressable> 
-          </View>
+            {/* } */}
+            <Text style={styles.plain}>{info}</Text>
+            <Text style={styles.plain}>Vaikeustaso: {difficulty}</Text>
+            <Text style={styles.plain}>Aika: {counter}s</Text>
+            <Text style={styles.plain}>Oikein: {right}</Text>
+            <Text style={styles.plain}>Väärin: {wrong}</Text>
+            <View style={styles.nextTo}>
+              <Pressable
+                title='Tarkista'
+                onPress={editAnswer}
+                style={styles.checkNumber}>
+                <Text style={styles.checkNumberText}>Tarkista</Text>
+              </Pressable>
+              <Pressable
+                title='Uudet'
+                onPress={checkLvl}
+                style={styles.checkNumber}>
+                <Text style={styles.checkNumberText}>Arvo uudet</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
         </View>
         <Footer done={done} right={totalRight} />
       </View>
-      </ScrollView>
     );
   }
 

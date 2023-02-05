@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, ScrollView, Keyboard, Pressable } from "react-native";
+import { View, Text, TextInput, ScrollView, Keyboard, Pressable, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,6 +7,9 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
 let wrongAns = 0
+const height = (Dimensions.get('window').height)
+const ansBoxHeight = height / 100 * 25
+const marginTop = ansBoxHeight / 100 * 20
 
 export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -26,10 +29,12 @@ export default function DicesTable() {
             color={'red'}>
         </MaterialCommunityIcons>
 
+    let ePicSize = height / 100 * 10
+
     const equalPic =
         <MaterialCommunityIcons
             name='equal'
-            size={60}
+            size={ePicSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
@@ -63,10 +68,11 @@ export default function DicesTable() {
     function getDice() {
         let random = randomIntFromInterval(1, 6)
         let randomName = 'dice-' + random
+        let size = height / 100 * 25
         setDice(<MaterialCommunityIcons
             name={randomName}
             key={random}
-            size={180}
+            size={size}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -100,43 +106,42 @@ export default function DicesTable() {
     }
 
     return (
-        <>
-            <View style={styles.center}>
+        <View style={styles.frontContainer}>
+            <View>
                 <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
             </View>
-            {
-                done === 0 &&
-                <View style={styles.center}>
-                    <Pressable
-                        title='Aloita'
-                        onPress={startGame}
-                        style={styles.checkNumber}>
-                        <Text style={styles.startText}>Heitä nopat!</Text>
-                    </Pressable>
+            <View style={styles.DiceTable}>
+                <View style={styles.nextTo}>
+                    <Text>{dice}</Text>
+                    <Text style={style.plus}>{equalPic}</Text>
+                    <TextInput
+                        placeholder=""
+                        value={number}
+                        maxLength={1}
+                        style={style.input}
+                        keyboardType='number-pad'
+                        onChangeNumber={onChangeNumber}
+                    />
                 </View>
-            }
-            {
-                done !== 0 &&
-                <View style={styles.DiceContainer}>
-                    <View style={styles.center}>
-                        <View style={styles.nextTo}>
-                            <Text >{dice}</Text>
-                            <Text style={styles.plus}>{equalPic}</Text>
-                            <TextInput
-                                placeholder=""
-                                value={number}
-                                maxLength={1}
-                                style={styles.dicesAns2}
-                                keyboardType='number-pad'
-                                onChangeNumber={onChangeNumber}
-                            />
-                        </View>
-                        <Text style={styles.wrongDice}>{wrongPic} {wrong}tässä</Text>
-                    </View>
-                </View>
-            }
+                <Text style={styles.wrongDice}>{wrongPic} {wrong}tässä</Text>
+            </View>
             <Footer done={done} right={right} />
-        </>
+        </View>
     );
-
 }
+
+const style = StyleSheet.create({
+    input: {
+        height: ansBoxHeight,
+        width: ansBoxHeight,
+        borderWidth: 2,
+        fontSize: 60,
+        justifyContent: 'center',
+        marginLeft: 40,
+        backgroundColor: 'white',
+        marginTop: marginTop
+    },
+    plus: {
+        marginTop: marginTop + 20
+    }
+});

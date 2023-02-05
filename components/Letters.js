@@ -55,7 +55,6 @@ export default function Letters() {
   }
 
   function getLetter() {
-    //arvotut kirjaimet nousee yhdellä
     setDone(done + 1)
     //arvo numero ja etsi siitä indksistä kirjain aakkosia on 24
     let random = Math.floor(Math.random() * 23)
@@ -64,16 +63,19 @@ export default function Letters() {
   }
 
   function checkLetter() {
-
+console.log('check')
     if (text !== '') {
+      console.log('ei oo tyhhä')
       //jos vastaus on oikein
       if (text === big.toLowerCase()) {
-        setWrong('')
+        console.log('oikein')
+        setWrong('Oikein!')
         right = right + 1
         startGame()
       }
       //jos ei 
       else {
+        console.log('väärin')
         setWrong('  Yritä uudelleen!')
         wrongAns = wrongAns + 1
         setWrongPic(alertPic)
@@ -82,67 +84,31 @@ export default function Letters() {
    
     setRefresh(Math.random()); //refressaa syötteen
   }
-
   //jos peli on juuri aloitettu
   if (notStarted == true) {
     return (
-      <ScrollView>
-        <View style={styles.container}>
+        <View style={styles.frontContainer}>
           <View style={styles.header}>
             <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
           </View>
-          <View style={styles.center}>
-            <View style={styles.center}>
-              <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
-              <Text style={styles.plainText}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
-              <Text style={styles.plainText}>Kirjoita näkemäsi iso kirjain pienellä </Text>
-              <Text style={styles.plainText}>tyhjään ruutuun </Text>
-              <View style={styles.center}>
+          <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
+          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
+          <Text style={styles.plain}>Kirjoita näkemäsi iso kirjain pienellä tyhjään ruutuun. </Text>
                 <Pressable
                   title='Aloita!'
                   onPress={startGame}
                   style={styles.start}>
                   <Text style={styles.startText}>Aloita!</Text>
                 </Pressable>
-              </View>
-            </View>
-          </View>
           <Footer done={done} right={right} />
         </View>
-      </ScrollView>
     );
   }
 
-  //jos aloita on painettu
-  //mutta yrityksiä on 15
-  else if (done === 15) {
-    return (
-     <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.LetterContainer}>
-          <View style={styles.header}>
-            <Image source={require('./logo.jpg')} style={styles.logo} />
-          </View>
-          <View style={styles.center}>
-            <View style={styles.center}>
-              <Text style={styles.textHeader2}>Peli päättyi!</Text>
-              <Text style={styles.plainText}> </Text>
-              <Text style={styles.plainText}> </Text>
-              <Text style={styles.plainText}>Sait {right} oikein!</Text>
-            </View>
-          </View>
-          <Footer done={done} right={right} />
-        </View>
-      </View>
-     </ScrollView>
-    );
-  }
   else {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.LetterContainer}>
-            <View style={styles.center}>
+        <View style={styles.frontContainer}>
+          <View style={styles.LetterTable}>
               <View style={styles.nextTo}>
                 <Text style={styles.letters}>{big}</Text>
                 <TextInput
@@ -154,18 +120,11 @@ export default function Letters() {
                   onChangeText={onChangeText}
                   >
                 </TextInput>
-
-                <Text style={styles.wrongPic}>{wrongPic}</Text>
-                <Text style={styles.wrong}>{wrong}</Text>
+                <Text style={styles.wrong}>{wrongPic} {wrong}xxxx</Text>
               </View>
-              <Text style={styles.left}>Arvauksia jäljellä tällä kerralla : {times - done}</Text>
-            </View>
-            <View style={styles.center}>
-            </View>
           </View>
           <Footer done={done} right={right} />
         </View>
-      </ScrollView>
     );
   }
 }
