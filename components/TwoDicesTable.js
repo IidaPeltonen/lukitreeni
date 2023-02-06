@@ -25,6 +25,13 @@ export default function TwoDicesTable() {
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
 
+    let alertPic =
+    <MaterialCommunityIcons
+        name='alert-decagram'
+        size={35}
+        color={'red'}>
+    </MaterialCommunityIcons>
+
     const plusPic =
         <MaterialCommunityIcons
             name='plus'
@@ -39,12 +46,12 @@ export default function TwoDicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>
 
-    let alertPic =
-        <MaterialCommunityIcons
-            name='alert-decagram'
-            size={35}
-            color={'red'}>
-        </MaterialCommunityIcons>
+let rightPic =
+<MaterialCommunityIcons
+  name='flower-poppy'
+  size={35}
+  color={'red'}>
+</MaterialCommunityIcons>
 
     useEffect(() => {
         getData()
@@ -64,7 +71,6 @@ export default function TwoDicesTable() {
             console.log('error: ' + e)
         }
     }
-
 
     function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -100,15 +106,13 @@ export default function TwoDicesTable() {
 
     function checkDiceSum() {
         setWrong('')
-        //jos vastaus on oikein
-        //varmistetaan, että syöte on numero
+        setWrongPic('')
         let userText = Number(text)
         let tempSum = diceNum + diceNum2
 
         if (userText === tempSum) {
-            setWrong('')
-            setWrongPic('')
             setWrong(' Oikein meni!')
+            setWrongPic(rightPic)
             right = right + 1
             onChangeText('')
             setDice('')
@@ -120,8 +124,6 @@ export default function TwoDicesTable() {
         }
         //jos ei 
         else {
-            setWrong('')
-            setWrongPic('')
             onChangeText('')
             wrongAns = wrongAns + 1
             setWrong('  Yritä uudelleen!')
@@ -160,7 +162,7 @@ export default function TwoDicesTable() {
                         keyboardType='number-pad'
                         onChangeText={(text) => { onChangeText(text) }}
                     />
-                    <Text style={styles.wrongDice}>{wrongPic} {wrong}</Text>
+                    <Text style={styles.wrongDice}> {wrong} {wrongPic}</Text>
                 </View>
                 <Pressable
                     title='Uudet'

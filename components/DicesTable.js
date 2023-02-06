@@ -10,12 +10,13 @@ let wrongAns = 0
 const height = (Dimensions.get('window').height)
 const ansBoxHeight = height / 100 * 25
 const marginTop = ansBoxHeight / 100 * 20
+const ePicSize = height / 100 * 10
 
 export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
     const [dice, setDice] = useState('') //näytettävä
     const [diceNum, setDiceNum] = useState('') //noppa numerona
-    const [number, onChangeNumber] = useState('') //käyttäjän syöte
+    const [text, onChangeText] = useState('') //käyttäjän syöte
     const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
@@ -29,8 +30,6 @@ export default function DicesTable() {
             color={'red'}>
         </MaterialCommunityIcons>
 
-    let ePicSize = height / 100 * 10
-
     const equalPic =
         <MaterialCommunityIcons
             name='equal'
@@ -38,12 +37,17 @@ export default function DicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>
 
+let rightPic =
+<MaterialCommunityIcons
+  name='flower-poppy'
+  size={35}
+  color={'red'}>
+</MaterialCommunityIcons>
+
     useEffect(() => {
         getData();
         Keyboard.dismiss()
-        checkDice()
-        onChangeNumber('')
-    }, [number]);
+    }, [text]);
 
     const getData = async () => {
         try {
@@ -56,16 +60,13 @@ export default function DicesTable() {
         }
     }
 
-    function startGame() {
-        setNotStart(false)
-        getDice()
-    }
-
     function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
     function getDice() {
+        onChangeText('')
+        setDone(done + 1)
         let random = randomIntFromInterval(1, 6)
         let randomName = 'dice-' + random
         let size = height / 100 * 25
@@ -79,30 +80,27 @@ export default function DicesTable() {
     }
 
     function checkDice() {
-        setDone(done + 1)
-
-        if (number !== '') {
-            console.log('syöte annettu')
-            if (number === diceNum) {
-                console.log('oikein')
-                setWrong('')
-                right = right + 1
-                startGame()
-            }
-            //jos ei 
-            else {
-                console.log('väärin')
-                setWrong('  Yritä uudelleen!')
-                wrongAns = wrongAns + 1
-                setWrongPic(alertPic)
-            }
+        console.log('check + text: ' + text)
+        let textAsNum = Number(text)
+        setWrong('')
+        setWrongPic('')
+        if (textAsNum === diceNum) {
+            setWrong(' Oikein meni!')
+            setWrongPic(rightPic)
+            right = right + 1
+            onChangeText('')
+            setDice('')
+            setDiceNum('')
+            setRefresh(Math.random()); //refressaa syötteen
+            getDice()
         }
+        //jos ei 
         else {
-            console.log('ei syötettä')
-            startGame()
+            onChangeText('')
+            wrongAns = wrongAns + 1
+            setWrong('  Yritä uudelleen!')
+            setWrongPic(alertPic)
         }
-
-        setRefresh(Math.random()); //refressaa syötteen
     }
 
     return (
@@ -111,19 +109,38 @@ export default function DicesTable() {
                 <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
             </View>
             <View style={styles.DiceTable}>
-                <View style={styles.nextTo}>
-                    <Text>{dice}</Text>
-                    <Text style={style.plus}>{equalPic}</Text>
-                    <TextInput
-                        placeholder=""
-                        value={number}
-                        maxLength={1}
-                        style={style.input}
-                        keyboardType='number-pad'
-                        onChangeNumber={onChangeNumber}
-                    />
-                </View>
-                <Text style={styles.wrongDice}>{wrongPic} {wrong}tässä</Text>
+                {done === 0 &&
+                    <View style={styles.center}>
+                        <Pressable
+                            title='Aloita'
+                            onPress={getDice}
+                            style={styles.checkNumber}>
+                            <Text style={styles.startText}>Heitä nopat!</Text>
+                        </Pressable>
+                    </View>
+                }
+                {done !== 0 &&
+                    <>
+                        <View style={styles.nextTo}>
+                            <Text>{dice}</Text>
+                            <Text style={style.plus}>{equalPic}</Text>
+                            <TextInput
+                                placeholder=""
+                                value={text}
+                                maxLength={1}
+                                style={style.input}
+                                keyboardType='number-pad'
+                                onChangeText={(text) => { onChangeText(text) }}
+                            />
+                            <Text style={styles.wrongDice}>{wrong} {wrongPic}</Text>
+                        </View>
+                        <Pressable
+                            title='Uudet'
+                            onPress={checkDice}
+                            style={styles.checkNumber}>
+                            <Text style={styles.startText}>Tarkista!</Text>
+                        </Pressable>
+                    </>}
             </View>
             <Footer done={done} right={right} />
         </View>
