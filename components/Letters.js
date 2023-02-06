@@ -17,25 +17,28 @@ export default function Letters() {
   const [big, setBig] = useState('') //näytettävä
   const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
   const [text, onChangeText] = useState('') //käyttäjän syöte
-  const [wrong, setWrong] = useState('') //käyttäjän syötteen alert-kenttä
-  const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
+  const [alert, setAlert] = useState('') //käyttäjän syötteen alert-kenttä
+  const [alertPic, setAlertPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
   const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
   const [done, setDone] = useState(0) //tehtyjen määrä
 
-  let alertPic =
+  let wrongPic =
     <MaterialCommunityIcons
       name='alert-decagram'
       size={35}
       color={'red'}>
     </MaterialCommunityIcons>
 
+let rightPic =
+<MaterialCommunityIcons
+  name='flower-poppy'
+  size={35}
+  color={'red'}>
+</MaterialCommunityIcons>
+
   useEffect(() => {
     getData();
     Keyboard.dismiss()
-    checkLetter()
-    onChangeText('')
-    setWrong('')
-    setWrongPic('')
   }, [text]);
 
   const getData = async () => {
@@ -50,12 +53,12 @@ export default function Letters() {
   }
 
   function startGame() {
+    onChangeText('')
     setNotStart(false)
     getLetter()
   }
 
   function getLetter() {
-    setDone(done + 1)
     //arvo numero ja etsi siitä indksistä kirjain aakkosia on 24
     let random = Math.floor(Math.random() * 23)
     let randomLetter = bigs[random]
@@ -63,24 +66,24 @@ export default function Letters() {
   }
 
   function checkLetter() {
-console.log('check')
-    if (text !== '') {
-      console.log('ei oo tyhhä')
+    setDone(done + 1)
+    setAlert('')
+    setAlertPic('')
       //jos vastaus on oikein
       if (text === big.toLowerCase()) {
-        console.log('oikein')
-        setWrong('Oikein!')
+        setAlert('   Oikein!')
+        setAlertPic(rightPic)
         right = right + 1
         startGame()
       }
       //jos ei 
       else {
-        console.log('väärin')
-        setWrong('  Yritä uudelleen!')
         wrongAns = wrongAns + 1
-        setWrongPic(alertPic)
+        setAlert('  Yritä uudelleen!')
+        setAlertPic(wrongPic)
+        onChangeText('')
       }
-    }
+    
    
     setRefresh(Math.random()); //refressaa syötteen
   }
@@ -117,10 +120,16 @@ console.log('check')
                   maxLength={1}
                   autoCapitalize='none'
                   style={styles.lettersAns}
-                  onChangeText={onChangeText}
+                  onChangeText={(text) => { onChangeText(text) }}
                   >
                 </TextInput>
-                <Text style={styles.wrong}>{wrongPic} {wrong}xxxx</Text>
+                <Pressable
+                    title='Uudet'
+                    onPress={checkLetter}
+                    style={styles.checkLetter}>
+                    <Text style={styles.checkLetterText}>Tarkista!</Text>
+                </Pressable>
+                <Text style={styles.wrong}>  {alert} {alertPic} </Text>
               </View>
           </View>
           <Footer done={done} right={right} />

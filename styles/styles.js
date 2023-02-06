@@ -90,7 +90,7 @@ export default StyleSheet.create({
     alignSelf: 'center'
   },
   //tasovalinnan tekstit
-    choice: {
+  choice: {
     alignSelf: 'center',
     fontSize: 14,
   },
@@ -114,9 +114,9 @@ export default StyleSheet.create({
     marginRight: 150,
     borderStyle: 'dashed',
     height: '60%'
-    },
+  },
   //arvottu sana
-   showWord: {
+  showWord: {
     fontSize: 70,
     fontFamily: 'Roboto',
     fontWeight: 'bold',
@@ -178,63 +178,63 @@ export default StyleSheet.create({
     marginRight: 150,
     borderStyle: 'dashed',
     height: '60%'
-},  
-//muistettavan numerosarjan näyttö
-MemoryTable: {
-  backgroundColor: '#c9f1fd',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: 20,
-  marginTop: 20,
-  marginLeft: 150,
-  marginRight: 150,
-  height: '80%',
-  paddingBottom: 10
-},
-//numero-sivun näytettävä numero
-numberToShow: {
-  borderWidth: 4,
-  height: '20%',
-  fontSize: 50,
-  marginTop: 20,
-  marginBottom: 20,
-  fontWeight: 'bold', 
-  minWidth: 250,
-  textAlign: 'center',
-},
-//numero-sivun käyttäjän antama numero
+  },
+  //muistettavan numerosarjan näyttö
+  MemoryTable: {
+    backgroundColor: '#c9f1fd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginTop: 20,
+    marginLeft: 150,
+    marginRight: 150,
+    height: '80%',
+    paddingBottom: 10
+  },
+  //numero-sivun näytettävä numero
+  numberToShow: {
+    borderWidth: 4,
+    height: '20%',
+    fontSize: 50,
+    marginTop: 20,
+    marginBottom: 20,
+    fontWeight: 'bold',
+    minWidth: 250,
+    textAlign: 'center',
+  },
+  //numero-sivun käyttäjän antama numero
   numberToWrite: {
-  borderWidth: 4,
-  height: '20%',
-  fontSize: 50,
-  marginBottom: 10,
-  minWidth: 250,
-  textAlign: 'center'
-},
-//vierekkäin haluttavat elementit
-nextTo: {
-  flexDirection: 'row',
-  marginRight: 15,
-  marginLeft: 15,
-  justifyContent: 'center'
-}, 
-//numero-sivun tarkista-nappi
-checkNumber: {
-  width: 200,
-  backgroundColor: '#023020',
-  alignItems: 'center',
-  borderRadius: 5,
-  marginTop: 20,
-  marginBottom: 50,
-  marginLeft: 10,
-  marginRight: 10,
-  padding: 5
+    borderWidth: 4,
+    height: '20%',
+    fontSize: 50,
+    marginBottom: 10,
+    minWidth: 250,
+    textAlign: 'center'
+  },
+  //vierekkäin haluttavat elementit
+  nextTo: {
+    flexDirection: 'row',
+    marginRight: 15,
+    marginLeft: 15,
+    justifyContent: 'center'
+  },
+  //numero-sivun tarkista-nappi
+  checkNumber: {
+    width: 200,
+    backgroundColor: '#023020',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 20,
+    marginBottom: 50,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 5
   },
   //numero-sivun tarkista-napin teksti
   checkNumberText: {
-  fontSize: 18,
-  color: 'white',
-  }, 
+    fontSize: 18,
+    color: 'white',
+  },
   //kirjain-sivun container
   LetterTable: {
     backgroundColor: '#c9f1fd',
@@ -264,27 +264,27 @@ checkNumber: {
     justifyContent: 'center',
     textAlign: 'center',
   },
-     //väärät vastaukset
-     wrong: {
-      fontSize: 20,
-      fontFamily: 'Roboto',
-      marginTop: 70,
-      color: 'red'
-    },
-       //väärät vastaukset, kuvakenttä
-   wrongPic: {
+  //väärät vastaukset
+  wrong: {
     fontSize: 20,
     fontFamily: 'Roboto',
     marginTop: 70,
     color: 'red'
   },
-     //noppien container
-     DiceTable: {
-      backgroundColor: '#c9f1fd',
-      height: 550,
-      marginTop: 30,
-      alignItems: 'center'
-    },
+  //väärät vastaukset, kuvakenttä
+  wrongPic: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    marginTop: 70,
+    color: 'red'
+  },
+  //noppien container
+  DiceTable: {
+    backgroundColor: '#c9f1fd',
+    height: 550,
+    marginTop: 30,
+    alignItems: 'center'
+  },
   //yhden nopan väärä vastaus
   wrongDice: {
     fontSize: 20,
@@ -293,6 +293,22 @@ checkNumber: {
     color: 'red',
     marginBottom: 0
   },
+  //kirjain-sivun tarkista-nappi
+  checkLetter: {
+    //width: 200,
+    backgroundColor: '#023020',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    marginTop: 40,
+    marginBottom: 40,
+    padding: 10
+  },
+  //kirjain-sivun tarkista-napin teksti
+  checkLetterText: {
+    fontSize: 18,
+    color: 'white',
+  },
 
-   
+
 });
