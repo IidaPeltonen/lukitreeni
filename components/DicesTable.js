@@ -80,7 +80,6 @@ let rightPic =
     }
 
     function checkDice() {
-        console.log('check + text: ' + text)
         let textAsNum = Number(text)
         setWrong('')
         setWrongPic('')
