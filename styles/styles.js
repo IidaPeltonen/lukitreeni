@@ -204,7 +204,7 @@ export default StyleSheet.create({
     marginRight: 10,
     padding: 5,
     alignSelf: 'center',
-    marginBottom: 15
+    marginTop: 15
   },
   //työmuisti-sivun tarkista-napin teksti
   checkNumberText: {
