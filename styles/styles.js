@@ -216,30 +216,8 @@ export default StyleSheet.create({
     backgroundColor: '#c9f1fd',
     height: '60%',
     marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  //kirjain-sivun kentät
-  letters: {
-    height: 110,
-    width: 110,
-    borderWidth: 3,
-    margin: 20,
-    fontSize: 60,
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  //kirjainten vastausboksi
-  lettersAns: {
-    backgroundColor: 'white',
-    height: 110,
-    width: 110,
-    borderWidth: 3,
-    margin: 20,
-    fontSize: 60,
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
+
   //väärät vastaukset
   wrong: {
     fontSize: 20,
@@ -269,17 +247,7 @@ export default StyleSheet.create({
     color: 'red',
     marginBottom: 0
   },
-  //kirjain-sivun tarkista-nappi
-  checkLetter: {
-    //width: 200,
-    backgroundColor: '#023020',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-    marginTop: 40,
-    marginBottom: 40,
-    padding: 10
-  },
+
   //kirjain-sivun tarkista-napin teksti
   checkLetterText: {
     fontSize: 18,

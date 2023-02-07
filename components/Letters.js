@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, ScrollView, Keyboard } from "react-native";
+import { Pressable, View, Text, Image, TextInput, StyleSheet, Keyboard, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,7 +10,12 @@ const bigs = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', '
 
 let right = 0
 let wrongAns = 0
-const times = 15 // joka kerralle 15 arvausta
+const height = (Dimensions.get('window').height)
+const boxHeight = height / 100 * 30
+const marginLeft = boxHeight / 5
+const fontSize = boxHeight / 2
+const picSize = fontSize / 2
+const wrongFontSize = fontSize / 4
 
 export default function Letters() {
   const [firstname, setFirstname] = useState('');
@@ -25,16 +30,16 @@ export default function Letters() {
   let wrongPic =
     <MaterialCommunityIcons
       name='alert-decagram'
-      size={35}
+      size={picSize}
       color={'red'}>
     </MaterialCommunityIcons>
 
-let rightPic =
-<MaterialCommunityIcons
-  name='flower-poppy'
-  size={35}
-  color={'red'}>
-</MaterialCommunityIcons>
+  let rightPic =
+    <MaterialCommunityIcons
+      name='flower-poppy'
+      size={picSize}
+      color={'red'}>
+    </MaterialCommunityIcons>
 
   useEffect(() => {
     getData();
@@ -69,71 +74,115 @@ let rightPic =
     setDone(done + 1)
     setAlert('')
     setAlertPic('')
-      //jos vastaus on oikein
-      if (text === big.toLowerCase()) {
-        setAlert('   Oikein!')
-        setAlertPic(rightPic)
-        right = right + 1
-        startGame()
-      }
-      //jos ei 
-      else {
-        wrongAns = wrongAns + 1
-        setAlert('  Yritä uudelleen!')
-        setAlertPic(wrongPic)
-        onChangeText('')
-      }
-    
-   
+    //jos vastaus on oikein
+    if (text === big.toLowerCase()) {
+      setAlert('   Oikein!')
+      setAlertPic(rightPic)
+      right = right + 1
+      startGame()
+    }
+    //jos ei 
+    else {
+      wrongAns = wrongAns + 1
+      setAlert('  Yritä uudelleen!')
+      setAlertPic(wrongPic)
+      onChangeText('')
+    }
+
+
     setRefresh(Math.random()); //refressaa syötteen
   }
   //jos peli on juuri aloitettu
   if (notStarted == true) {
     return (
-        <View style={styles.frontContainer}>
-          <View style={styles.header}>
-            <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
-          </View>
-          <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
-          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
-          <Text style={styles.plain}>Kirjoita näkemäsi iso kirjain pienellä tyhjään ruutuun. </Text>
-                <Pressable
-                  title='Aloita!'
-                  onPress={startGame}
-                  style={styles.start}>
-                  <Text style={styles.startText}>Aloita!</Text>
-                </Pressable>
-          <Footer done={done} right={right} />
+      <View style={styles.frontContainer}>
+        <View style={styles.header}>
+          <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
+        <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
+        <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
+        <Text style={styles.plain}>Kirjoita näkemäsi iso kirjain pienellä tyhjään ruutuun. </Text>
+        <Pressable
+          title='Aloita!'
+          onPress={startGame}
+          style={styles.start}>
+          <Text style={styles.startText}>Aloita!</Text>
+        </Pressable>
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 
   else {
     return (
-        <View style={styles.frontContainer}>
-          <View style={styles.LetterTable}>
-              <View style={styles.nextTo}>
-                <Text style={styles.letters}>{big}</Text>
-                <TextInput
-                  placeholder=""
-                  value={text}
-                  maxLength={1}
-                  autoCapitalize='none'
-                  style={styles.lettersAns}
-                  onChangeText={(text) => { onChangeText(text) }}
-                  >
-                </TextInput>
-                <Pressable
-                    title='Uudet'
-                    onPress={checkLetter}
-                    style={styles.checkLetter}>
-                    <Text style={styles.checkLetterText}>Tarkista!</Text>
-                </Pressable>
-                <Text style={styles.wrong}>  {alert} {alertPic} </Text>
-              </View>
+      <View style={styles.frontContainer}>
+        <View style={styles.LetterTable}>
+          <View style={styles.nextTo}>
+            <Text style={style.big}>{big}</Text>
+            <TextInput
+              placeholder=""
+              value={text}
+              maxLength={1}
+              autoCapitalize='none'
+              style={style.lettersAns}
+              onChangeText={(text) => { onChangeText(text) }}
+            >
+            </TextInput>
           </View>
-          <Footer done={done} right={right} />
+          <View style={styles.nextTo}>
+            <Pressable
+              title='Uudet'
+              onPress={checkLetter}
+              style={style.checkLetter}>
+              <Text style={styles.checkLetterText}>Tarkista!</Text>
+            </Pressable>
+            <Text style={style.wrong}>  {alert} {alertPic} </Text>
+          </View>
         </View>
+        <Footer done={done} right={right} />
+      </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  big: {
+    height: boxHeight,
+    width: boxHeight,
+    margin: marginLeft,
+    borderWidth: 4,
+    fontSize: fontSize,
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
+  lettersAns: {
+    height: boxHeight,
+    width: boxHeight,
+    margin: marginLeft,
+    borderWidth: 4,
+    fontSize: fontSize,
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'white',
+  },
+  wrong: {
+    fontSize: wrongFontSize,
+    fontFamily: 'Roboto',
+  //  marginTop: marginLeft,
+    color: 'red',
+    justifyContent: 'center'
+  },
+  checkLetter:  {
+    backgroundColor: '#023020',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    padding: marginLeft / 2
+  },
+});
