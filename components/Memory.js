@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView, TextInput, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, ScrollView, TextInput, button, ToastAndroid } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import { SvgVolumeHigh } from "react-native-materialcommunity-icons";
 
 let totalRight = 0 //kaikki oikeat yhteensä
 /*
@@ -24,8 +26,30 @@ export default function Memory() {
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
   const [info, setInfo] = useState('') //tieto oikesta ja väärästä
+  const [infoPics, setInfoPics] = useState([]) //tieto oikesta ja väärästä
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
   const [counter, setCounter] = useState(0) //kauanko lukujono näkyy, määräytyy vaikeustason mukaan
+  const [isAlertVisible, setIsAlertVisible] = useState(false) //näytettävä lukujono
+  const [isInputVisible, setIsInputVisible] = useState(false) //näytettävä input-kenttä
+  const [time, setTime] = useState(10000) //Leenan antama aika, kauanko lukujono näkyy
+  const [helper, setHelper] = useState(0) //apumuuttuja kuvien keyhyn
+  const [helper2, setHelper2] = useState(0) //apumuuttuja kuvien keyhyn
+
+  const wrongPic =
+  <MaterialCommunityIcons
+      name='alpha-x'
+      size= '20'
+      color={'red'}
+      key={helper+1}>
+  </MaterialCommunityIcons>
+
+const rightPic =
+<MaterialCommunityIcons
+    name='check'
+    size= '20'
+    color={'greeb'}
+    key={helper2+1}>
+</MaterialCommunityIcons>
 
   //käyttäjän nimen haku
   //ja lvl-tarkistus
@@ -46,19 +70,19 @@ export default function Memory() {
     }
   }
 
-  //hakee ajan vaikeuden mukaan, Leena saa mniettiä ajat
+  //hakee ajan vaikeuden mukaan, Leena saa miettiä ajat
   function chckTime() {
     if (difficulty === 2) {
-      setCounter(10)
+      setTime(10000)
     }
     if (difficulty === 3) {
-      setCounter(13)
+      setTime(13000)
     }
     if (difficulty === 4) {
-      setCounter(17)
+      setTime(17000)
     }
     if (difficulty === 5) {
-      setCounter(20)
+      setTime(20000)
     }
   }
 
@@ -85,7 +109,7 @@ export default function Memory() {
           setRight(0)
         }
         else {
-          console.log('Taso2, oikeita alle 2')
+
         }
       }
       if (difficulty === 3) {
@@ -94,7 +118,7 @@ export default function Memory() {
           setRight(0)
         }
         else {
-          console.log('Taso 3, oikeita alle 3')
+
         }
       }
       if (difficulty === 4) {
@@ -103,7 +127,7 @@ export default function Memory() {
           setRight(0)
         }
         else {
-          console.log('Taso 4, oikeita alle 4')
+
         }
       }
       if (difficulty === 5) {
@@ -112,7 +136,7 @@ export default function Memory() {
           setRight(0)
         }
         else {
-          console.log('Taso 5, oikeita alle 5')
+
         }
       }
       getNumber()
@@ -120,8 +144,7 @@ export default function Memory() {
   }
 
   function getNumber() {
-    console.log('diff: ' + difficulty)
-    console.log('oikein; ' + right)
+    setAnswer('')
     let tempNbrs = []
 
     if (difficulty === 2) {
@@ -161,6 +184,14 @@ export default function Memory() {
       tempNbrs.push(number5)
     }
     setNumbers(tempNbrs)
+    //numerokenttä näkyväksi
+    //ja niiden jälkeen input näkyviin
+    setIsAlertVisible(true);
+    setIsInputVisible(false)
+    setTimeout(() => {
+      setIsAlertVisible(false)
+      setIsInputVisible(true)
+    }, time)
   }
 
   function editAnswer() {
@@ -203,11 +234,14 @@ export default function Memory() {
         //tässä voisi muuttaa vaikka väriä tai piilottaa tai jotain
         //oikeiden määrä nousee
         oikein = oikein + 1
+        infoPics.push(rightPic)
       }
       else {
         vaarin = vaarin + 1
+        infoPics.push(wrongPic)
       }
     }
+    console.log('uvat: ' + infoPics)
     //jos koko sana on oikein
     if (oikein === numbers.length) {
       setRight(right + 1)
@@ -219,27 +253,10 @@ export default function Memory() {
       setWrong(wrong + 1)
       setInfo('Harmi, pieleen meni!')
     }
-    setAnswer('')
     setNumbers('')
   }
 
-  //tää pitäisi muokata näyttämään numerosarjaa vain tietyn ajan
-  useEffect(() => {
-    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    if (counter === 0 && right <= 5) {
-      checkLvl()
-      chckTime()
-    }
-    else if (counter === 0 && right > 5) {
-      setInfo('Hyvin pelattu, olet paras!')
-    }
-    else if (counter === 0) {
-      clearInterval(timer)
-    }
-    else {
-      return () => clearInterval(timer);
-    }
-  }, [counter]);
+
 
   //returnit
   //jos aloita ei ole painettu
@@ -294,8 +311,13 @@ export default function Memory() {
       <View style={styles.frontContainer}>
         <View style={styles.MemoryTable}>
           <ScrollView>
-            <Text style={styles.numberToShow}> {numbers} </Text>
-            {/* {counter === 0 && */}
+          <Text style={styles.plain}>Vaikeustaso: {difficulty}</Text>
+
+           {isAlertVisible && 
+              <Text style={styles.numberToShow}> {numbers} </Text>
+           }
+
+            {isInputVisible && 
             <TextInput
               placeholder=""
               value={answer}
@@ -303,12 +325,8 @@ export default function Memory() {
               keyboardType='number-pad'
               onChangeText={setAnswer}
             />
-            {/* } */}
-            <Text style={styles.plain}>{info}</Text>
-            <Text style={styles.plain}>Vaikeustaso: {difficulty}</Text>
-            <Text style={styles.plain}>Aika: {counter}s</Text>
-            <Text style={styles.plain}>Oikein: {right}</Text>
-            <Text style={styles.plain}>Väärin: {wrong}</Text>
+            } 
+            <Text style={styles.wrong}> {info} {infoPics} </Text>
             <View style={styles.nextTo}>
               <Pressable
                 title='Tarkista'

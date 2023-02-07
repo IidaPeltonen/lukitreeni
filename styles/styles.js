@@ -195,21 +195,28 @@ export default StyleSheet.create({
   numberToShow: {
     borderWidth: 4,
     height: '20%',
-    fontSize: 50,
-    marginTop: 20,
-    marginBottom: 20,
+    fontSize: 40,
+    marginTop: 40,
+    marginBottom: 40,
     fontWeight: 'bold',
-    minWidth: 250,
+    width: 200,
     textAlign: 'center',
+    paddingBottom: 20,
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   //numero-sivun käyttäjän antama numero
   numberToWrite: {
     borderWidth: 4,
     height: '20%',
-    fontSize: 50,
-    marginBottom: 10,
-    minWidth: 250,
-    textAlign: 'center'
+    fontSize: 40,
+    marginBottom: 40,
+    fontWeight: 'bold',
+    width: 200,
+    textAlign: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center'
+
   },
   //vierekkäin haluttavat elementit
   nextTo: {
