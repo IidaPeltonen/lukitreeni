@@ -44,7 +44,6 @@ const dicePicTwo =
     }
 
     function startGame() {
-        console.log('startgame')
         setNotStarted(false)
     }
 

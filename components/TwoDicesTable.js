@@ -9,8 +9,11 @@ let right = 0
 let wrongAns = 0
 const height = (Dimensions.get('window').height)
 const ansBoxHeight = height / 100 * 25
-const marginTop = ansBoxHeight / 100 * 20
+const marginTop = ansBoxHeight / 100 * 15
 const plusPicSize = height / 100 * 10
+const fontSize = ansBoxHeight / 2
+const picSize = fontSize / 2
+const wrongFontSize = fontSize / 4
 
 export default function TwoDicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -26,11 +29,11 @@ export default function TwoDicesTable() {
     const [done, setDone] = useState(0) //tehtyjen määrä
 
     let alertPic =
-    <MaterialCommunityIcons
-        name='alert-decagram'
-        size={35}
-        color={'red'}>
-    </MaterialCommunityIcons>
+        <MaterialCommunityIcons
+            name='alert-decagram'
+            size={35}
+            color={'red'}>
+        </MaterialCommunityIcons>
 
     const plusPic =
         <MaterialCommunityIcons
@@ -46,18 +49,18 @@ export default function TwoDicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>
 
-let rightPic =
-<MaterialCommunityIcons
-  name='flower-poppy'
-  size={35}
-  color={'red'}>
-</MaterialCommunityIcons>
+    let rightPic =
+        <MaterialCommunityIcons
+            name='flower-poppy'
+            size={35}
+            color={'red'}>
+        </MaterialCommunityIcons>
 
     useEffect(() => {
         getData()
         {
             text.length === sum.toString().length &&
-            Keyboard.dismiss()
+                Keyboard.dismiss()
         }
     }, [text]);
 
@@ -81,23 +84,24 @@ let rightPic =
         setDone(done + 1)
         let random = randomIntFromInterval(1, 6)
         let randomName = 'dice-' + random
-        let size = height / 100 * 25
-        setDice(<MaterialCommunityIcons
-            name={randomName}
-            key={random}
-            size={size}
-            color={'black'}>
-        </MaterialCommunityIcons>)
+        setDice(
+            <MaterialCommunityIcons
+                name={randomName}
+                key={random}
+                size={ansBoxHeight}
+                color={'black'}>
+            </MaterialCommunityIcons>)
         setDiceNum(Number(random))
 
         let random2 = randomIntFromInterval(1, 6)
         let randomName2 = 'dice-' + random2
-        setDice2(<MaterialCommunityIcons
-            name={randomName2}
-            key={random2}
-            size={size}
-            color={'black'}>
-        </MaterialCommunityIcons>)
+        setDice2(
+            <MaterialCommunityIcons
+                name={randomName2}
+                key={random2}
+                size={ansBoxHeight}
+                color={'black'}>
+            </MaterialCommunityIcons>)
         setDiceNum(Number(random))
         setDiceNum2(Number(random2))
         let tempSum1 = random + random2
@@ -134,47 +138,50 @@ let rightPic =
     return (
         <View style={styles.frontContainer}>
             <View>
-             <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
+                <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
             </View>
             <View style={styles.DiceTable}>
-            {done === 0 &&
-                <View style={styles.center}>
-                    <Pressable
-                        title='Aloita'
-                        onPress={getDice}
-                        style={styles.checkNumber}>
-                        <Text style={styles.startText}>Heitä nopat!</Text>
-                    </Pressable>
-                </View>
+                {done === 0 &&
+                    <View>
+                        <Pressable
+                            title='Aloita'
+                            onPress={getDice}
+                            style={styles.checkNumber}>
+                            <Text style={styles.startText}>Heitä nopat!</Text>
+                        </Pressable>
+                    </View>
                 }
                 {done !== 0 &&
-                <>
-                <View style={styles.nextTo}>
-                    <Text>{dice}</Text>
-                    <Text style={style.plus}>{plusPic}</Text>
-                    <Text>{dice2}</Text>
-                    <Text style={style.plus}>{equalPic}</Text>
-                    <TextInput
-                        placeholder=""
-                        value={text}
-                        maxLength={2}
-                        style={style.input}
-                        keyboardType='number-pad'
-                        onChangeText={(text) => { onChangeText(text) }}
-                    />
-                    <Text style={style.plus}> {wrong} {wrongPic}</Text>
-                </View>
-                <Pressable
-                    title='Uudet'
-                    onPress={checkDiceSum}
-                    style={styles.checkNumber}>
-                    <Text style={styles.startText}>Tarkista!</Text>
-                </Pressable>
-</> }
+                    <View>
+                        <View style={styles.nextToDices}>
+                            <Text style={style.dice}>{dice}</Text>
+                            <Text style={style.plus}>{plusPic}</Text>
+                            <Text style={style.dice}>{dice2}</Text>
+                            <Text style={style.plus}>{equalPic}</Text>
+                            <TextInput
+                                placeholder=""
+                                value={text}
+                                maxLength={2}
+                                style={style.input}
+                                keyboardType='number-pad'
+                                onChangeText={(text) => { onChangeText(text) }}
+                            />
+                        </View>
+                        <View style={styles.nextTo}>
+                            <Pressable
+                                title='Check'
+                                onPress={checkDiceSum}
+                                style={styles.checkNumber}>
+                                <Text style={styles.startText}>Tarkista!</Text>
+                            </Pressable>
+                            <Text style={style.wrong}> {wrong} {wrongPic}</Text>
+                        </View>
+                    </View>
+                }
             </View>
             <Footer done={done} right={right} />
         </View>
-        );
+    );
 }
 
 const style = StyleSheet.create({
@@ -183,14 +190,24 @@ const style = StyleSheet.create({
         width: ansBoxHeight,
         borderWidth: 2,
         fontSize: 60,
-        justifyContent: 'center',
-        marginLeft: 40,
         backgroundColor: 'white',
-        marginTop: marginTop,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: marginTop 
     },
     plus: {
-        marginTop: marginTop + 20,
+        paddingTop: marginTop*2
+    },
+    wrong: {
+        fontSize: wrongFontSize,
+        fontFamily: 'Roboto',
+        color: 'red',
+        justifyContent: 'center'
+      },
+      checkLetter:  {
+        backgroundColor: '#023020',
+        alignItems: 'center',
         justifyContent: 'center',
-    }
+        borderRadius: 5,
+        padding: marginTop / 2
+      },
 });

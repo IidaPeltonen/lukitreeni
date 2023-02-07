@@ -257,4 +257,9 @@ export default StyleSheet.create({
     infoPics: {
       textAlign: 'center'
     },
+      //vierekkäin haluttavat nopat ja välimerkit
+  nextToDices: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
 });

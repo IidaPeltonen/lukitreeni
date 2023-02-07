@@ -174,7 +174,6 @@ const style = StyleSheet.create({
   wrong: {
     fontSize: wrongFontSize,
     fontFamily: 'Roboto',
-  //  marginTop: marginLeft,
     color: 'red',
     justifyContent: 'center'
   },
