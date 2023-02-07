@@ -14,12 +14,19 @@ export default function Dices() {
     const [oneOrTwo, setOneOrTwo] = useState(0) //tehtyjen määrä
     const [notStarted, setNotStarted] = useState(true) //onko peli aloitettu
 
-    const dicePic =
+    const dicePicOne =
         <MaterialCommunityIcons
             name='dice-1'
             size={50}
             color={'black'}>
         </MaterialCommunityIcons>
+
+const dicePicTwo =
+<MaterialCommunityIcons
+    name='dice-2'
+    size={50}
+    color={'black'}>
+</MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
@@ -61,7 +68,7 @@ export default function Dices() {
                                 setOneOrTwo(helper)
                                 startGame()
                             }}>
-                            <Text style={styles.choice}> {dicePic} </Text>
+                            <Text style={styles.choice}> {dicePicOne} </Text>
                         </Pressable>
                         <Pressable
                             title='2'
@@ -70,7 +77,7 @@ export default function Dices() {
                                 setOneOrTwo(helper)
                                 startGame()
                             }}>
-                            <Text style={styles.choice}> {dicePic}{dicePic}  </Text>
+                            <Text style={styles.choice}> {dicePicTwo}{dicePicTwo}  </Text>
                         </Pressable>
                         <Text></Text>
                     </View>

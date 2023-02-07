@@ -19,6 +19,8 @@ const height = (Dimensions.get('window').height)
 const boxHeight = height / 100 * 30
 const boxWidth = boxHeight * 3
 const fontSize = boxHeight /2
+const picSize = fontSize /2
+const infoSize = picSize /2
 
 export default function Memory() {
   const [firstname, setFirstname] = useState('');
@@ -234,7 +236,7 @@ export default function Memory() {
         if (x === 0) {
           setInfoPics0(<MaterialCommunityIcons
             name='check'
-            size= {20}
+            size= {picSize}
             color={'green'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -242,7 +244,7 @@ export default function Memory() {
         if (x === 1) {
           setInfoPics1(<MaterialCommunityIcons
             name='check'
-            size= {20}
+            size= {picSize}
             color={'green'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -250,7 +252,7 @@ export default function Memory() {
         if (x === 2) {
           setInfoPics2(<MaterialCommunityIcons
             name='check'
-            size= {20}
+            size= {picSize}
             color={'green'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -258,7 +260,7 @@ export default function Memory() {
         if (x === 3) {
           setInfoPics3(<MaterialCommunityIcons
             name='check'
-            size= {20}
+            size= {picSize}
             color={'green'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -266,7 +268,7 @@ export default function Memory() {
         if (x === 4) {
           setInfoPics4(<MaterialCommunityIcons
             name='check'
-            size= {20}
+            size= {picSize}
             color={'green'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -277,7 +279,7 @@ export default function Memory() {
         if (x === 0) {
           setInfoPics0(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {20}
+            size= {picSize}
             color={'red'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -285,7 +287,7 @@ export default function Memory() {
         if (x === 1) {
           setInfoPics1(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {20}
+            size= {picSize}
             color={'red'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -293,7 +295,7 @@ export default function Memory() {
         if (x === 2) {
           setInfoPics2(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {20}
+            size= {picSize}
             color={'red'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -301,7 +303,7 @@ export default function Memory() {
         if (x === 3) {
           setInfoPics3(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {20}
+            size= {picSize}
             color={'red'}
             key={x}>
         </MaterialCommunityIcons>) 
@@ -385,26 +387,20 @@ export default function Memory() {
     return (
       <View style={styles.frontContainer}>
         <View style={styles.MemoryTable}>
-          <ScrollView>
-          <Text style={styles.plain}></Text>
-
-           {isNumberVisible && 
+            {isNumberVisible &&
               <Text style={style.numberTo}> {numbers} </Text>
-           }
-
-            {isInputVisible && 
-            <TextInput
-              placeholder=""
-              value={answer}
-              style={style.numberTo}
-              autoFocus = {true}
-              keyboardType='number-pad'
-              onChangeText={setAnswer}
-            />
-            } 
+            }
+            {isInputVisible &&
+              <TextInput
+                placeholder=""
+                value={answer}
+                style={style.numberTo2}
+                keyboardType='number-pad'
+                onChangeText={setAnswer}
+              />
+            }
             <Text style={styles.infoPics}> {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4}  </Text>
-            <Text style={styles.info}> {info}  </Text>
-            <View style={styles.nextTo}>
+            <Text style={style.info}> {info}  </Text>
               {IsCheckVisible &&
                 <Pressable
                   title='Tarkista'
@@ -421,9 +417,6 @@ export default function Memory() {
                   <Text style={styles.checkNumberText}>Arvo uudet</Text>
                 </Pressable>
               }
-
-            </View>
-          </ScrollView>
         </View>
         <Footer done={done} right={totalRight} />
       </View>
@@ -443,4 +436,22 @@ const style = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
   },
+  numberTo2: {
+    height: boxHeight,
+    width: boxWidth,
+    borderWidth: 4,
+    fontSize: fontSize,
+    marginTop: 90,
+    marginBottom: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
+    //työmuistin tekstikenttä:
+    info: {
+      fontSize: infoSize,
+      fontFamily: 'Roboto',
+      color: 'red',
+      textAlign: 'center'
+    },
 });

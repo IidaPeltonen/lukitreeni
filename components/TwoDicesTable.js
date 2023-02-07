@@ -162,7 +162,7 @@ let rightPic =
                         keyboardType='number-pad'
                         onChangeText={(text) => { onChangeText(text) }}
                     />
-                    <Text style={styles.wrongDice}> {wrong} {wrongPic}</Text>
+                    <Text style={style.plus}> {wrong} {wrongPic}</Text>
                 </View>
                 <Pressable
                     title='Uudet'
@@ -190,6 +190,7 @@ const style = StyleSheet.create({
         textAlign: 'center'
     },
     plus: {
-        marginTop: marginTop + 20
+        marginTop: marginTop + 20,
+        justifyContent: 'center',
     }
 });

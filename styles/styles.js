@@ -183,12 +183,8 @@ export default StyleSheet.create({
     backgroundColor: '#c9f1fd',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
-    marginTop: 20,
-    marginLeft: 150,
-    marginRight: 150,
     height: '80%',
-    paddingBottom: 10
+    padding: 10
   },
   //vierekkäin haluttavat elementit
   nextTo: {
@@ -197,19 +193,20 @@ export default StyleSheet.create({
     marginLeft: 15,
     justifyContent: 'center'
   },
-  //numero-sivun tarkista-nappi
+  //työmuisti-sivun tarkista-nappi
   checkNumber: {
     width: 200,
     backgroundColor: '#023020',
     alignItems: 'center',
     borderRadius: 5,
-    marginTop: 20,
-    marginBottom: 50,
+    marginBottom: 30,
     marginLeft: 10,
     marginRight: 10,
-    padding: 5
+    padding: 5,
+    alignSelf: 'center',
+    marginBottom: 15
   },
-  //numero-sivun tarkista-napin teksti
+  //työmuisti-sivun tarkista-napin teksti
   checkNumberText: {
     fontSize: 18,
     color: 'white',
@@ -287,13 +284,6 @@ export default StyleSheet.create({
   checkLetterText: {
     fontSize: 18,
     color: 'white',
-  },
-  //työmuistin tekstikenttä:
-  info: {
-    fontSize: 20,
-    fontFamily: 'Roboto',
-    color: 'red',
-    textAlign: 'center'
   },
     //työmuistin tekstikenttä:
     infoPics: {
