@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView, TextInput, button, ToastAndroid } from "react-native";
+import { Pressable, View, Text, Image, ScrollView, TextInput, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { SvgVolumeHigh } from "react-native-materialcommunity-icons";
 
-let totalRight = 0 //kaikki oikeat yhteensä
 /*
 vaikeusasteet 2 - 5
 tokasta kolmanteen tarvii saada 2 oikein
@@ -15,6 +13,12 @@ neljästä viiteen pitää saada 4 oikein
 vitosta viisi oikein -> iso palkinto? peli päättyy?
 yhteensä 8 väärin koko pelissä -> peli päättyy
 */
+
+let totalRight = 0 //kaikki oikeat yhteensä
+const height = (Dimensions.get('window').height)
+const boxHeight = height / 100 * 30
+const boxWidth = boxHeight * 3
+const fontSize = boxHeight /2
 
 export default function Memory() {
   const [firstname, setFirstname] = useState('');
@@ -32,28 +36,13 @@ export default function Memory() {
   const [infoPics3, setInfoPics3] = useState([]) //tieto oikesta ja väärästä indeksissä 3
   const [infoPics4, setInfoPics4] = useState([]) //tieto oikesta ja väärästä indeksissä 4
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
-  const [isAlertVisible, setIsAlertVisible] = useState(false) //näytettävä lukujono
+  const [isNumberVisible, setIsNumberVisible] = useState(false) //näytettävä lukujono
   const [isInputVisible, setIsInputVisible] = useState(false) //näytettävä input-kenttä
+  const [IsCheckVisible, setIsCheckVisible] = useState(false) //näytettävä tarkista-nappi
+  const [isNewVisible, setIsNewVisible] = useState(false) //näytettävä arvo uudet-nappi
   const [time, setTime] = useState(10000) //Leenan antama aika, kauanko lukujono näkyy
-  const [helper, setHelper] = useState(0) //apumuuttuja kuvien keyhyn
-  const [helper2, setHelper2] = useState(0) //apumuuttuja kuvien keyhyn
 
-  const wrongPic =
-  <MaterialCommunityIcons
-      name='alpha-x'
-      size= {20}
-      color={'red'}>
-
-  </MaterialCommunityIcons>
-
-const rightPic =
-<MaterialCommunityIcons
-    name='check'
-    size= {20}
-    color={'green'}>
-</MaterialCommunityIcons>
-
-  //käyttäjän nimen haku
+   //käyttäjän nimen haku
   //ja lvl-tarkistus
   useEffect(() => {
     getData();
@@ -191,13 +180,16 @@ const rightPic =
       tempNbrs.push(number5)
     }
     setNumbers(tempNbrs)
-    //numerokenttä näkyväksi
-    //ja niiden jälkeen input näkyviin
-    setIsAlertVisible(true);
+    //numerokenttä näkyväksi, input, tarkista ja uudet piiloon
+    setIsNumberVisible(true)
     setIsInputVisible(false)
+    setIsCheckVisible(false)
+    setIsNewVisible(false)
     setTimeout(() => {
-      setIsAlertVisible(false)
+      setIsNumberVisible(false)
       setIsInputVisible(true)
+      setIsCheckVisible(true)
+      setIsNewVisible(false)
     }, time)
   }
 
@@ -238,32 +230,90 @@ const rightPic =
     let vaarin = 0
     for (let x = 0; x < tempAnswer.length; x++) {
       if (Number(tempAnswer[x]) === Number(numbers[x])) {
-        //tässä voisi muuttaa vaikka väriä tai piilottaa tai jotain
-        //oikeiden määrä nousee
         oikein = oikein + 1
-        let tempName = 'infoPics' + (x+1)
-        console.log('tempN: ' + tempName)
         if (x === 0) {
-          setInfoPics0(rightPic) //ASETA KUVAT VASTA TÄSSÄ, NIIN KEYT MENEE OIKEIN!
+          setInfoPics0(<MaterialCommunityIcons
+            name='check'
+            size= {20}
+            color={'green'}
+            key={x}>
+        </MaterialCommunityIcons>) 
         } 
         if (x === 1) {
-          setInfoPics1(rightPic)
+          setInfoPics1(<MaterialCommunityIcons
+            name='check'
+            size= {20}
+            color={'green'}
+            key={x}>
+        </MaterialCommunityIcons>) 
         } 
         if (x === 2) {
-          setInfoPics2(rightPic)
+          setInfoPics2(<MaterialCommunityIcons
+            name='check'
+            size= {20}
+            color={'green'}
+            key={x}>
+        </MaterialCommunityIcons>) 
         } 
         if (x === 3) {
-          setInfoPics3(rightPic)
+          setInfoPics3(<MaterialCommunityIcons
+            name='check'
+            size= {20}
+            color={'green'}
+            key={x}>
+        </MaterialCommunityIcons>) 
         } 
         if (x === 4) {
-          setInfoPics4(rightPic)
+          setInfoPics4(<MaterialCommunityIcons
+            name='check'
+            size= {20}
+            color={'green'}
+            key={x}>
+        </MaterialCommunityIcons>) 
         } 
-
       }
       else {
         vaarin = vaarin + 1
-        //infoPics.push(wrongPic)
-        //setInfoPics(wrongPic)
+        if (x === 0) {
+          setInfoPics0(<MaterialCommunityIcons
+            name='alert-octagram'
+            size= {20}
+            color={'red'}
+            key={x}>
+        </MaterialCommunityIcons>) 
+        } 
+        if (x === 1) {
+          setInfoPics1(<MaterialCommunityIcons
+            name='alert-octagram'
+            size= {20}
+            color={'red'}
+            key={x}>
+        </MaterialCommunityIcons>) 
+        } 
+        if (x === 2) {
+          setInfoPics2(<MaterialCommunityIcons
+            name='alert-octagram'
+            size= {20}
+            color={'red'}
+            key={x}>
+        </MaterialCommunityIcons>) 
+        } 
+        if (x === 3) {
+          setInfoPics3(<MaterialCommunityIcons
+            name='alert-octagram'
+            size= {20}
+            color={'red'}
+            key={x}>
+        </MaterialCommunityIcons>) 
+        } 
+        if (x === 4) {
+          setInfoPics4(<MaterialCommunityIcons
+            name='alert-octagram'
+            size= {30}
+            color={'red'}
+            key={x}>
+        </MaterialCommunityIcons>) 
+        } 
       }
     }
 
@@ -279,9 +329,9 @@ const rightPic =
       setInfo('Harmi, pieleen meni!')
     }
     setNumbers('')
+    setIsNewVisible(true)
+    setIsCheckVisible(false)
   }
-
-
 
   //returnit
   //jos aloita ei ole painettu
@@ -293,8 +343,8 @@ const rightPic =
         </View>
         <ScrollView>
           <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi </Text>
-          <Text style={styles.plain}>ja ajan loppuessa kirjoita se allaolevaan kenttään. Taso nousee pikkuhiljaa, </Text>
+          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi. </Text>
+          <Text style={styles.plain}>Kun tyhjä kenttä ilmestyy, kirjoita numero siihen. Taso nousee pikkuhiljaa, </Text>
           <Text style={styles.plain}>mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
           <Pressable
             title='Aloita!'
@@ -336,35 +386,42 @@ const rightPic =
       <View style={styles.frontContainer}>
         <View style={styles.MemoryTable}>
           <ScrollView>
-          <Text style={styles.plain}>Vaikeustaso: {difficulty}</Text>
+          <Text style={styles.plain}></Text>
 
-           {isAlertVisible && 
-              <Text style={styles.numberToShow}> {numbers} </Text>
+           {isNumberVisible && 
+              <Text style={style.numberTo}> {numbers} </Text>
            }
 
             {isInputVisible && 
             <TextInput
               placeholder=""
               value={answer}
-              style={styles.numberToWrite}
+              style={style.numberTo}
+              autoFocus = {true}
               keyboardType='number-pad'
               onChangeText={setAnswer}
             />
             } 
-            <Text style={styles.wrong}> {info} {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4} </Text>
+            <Text style={styles.infoPics}> {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4}  </Text>
+            <Text style={styles.info}> {info}  </Text>
             <View style={styles.nextTo}>
-              <Pressable
-                title='Tarkista'
-                onPress={editAnswer}
-                style={styles.checkNumber}>
-                <Text style={styles.checkNumberText}>Tarkista</Text>
-              </Pressable>
-              <Pressable
-                title='Uudet'
-                onPress={checkLvl}
-                style={styles.checkNumber}>
-                <Text style={styles.checkNumberText}>Arvo uudet</Text>
-              </Pressable>
+              {IsCheckVisible &&
+                <Pressable
+                  title='Tarkista'
+                  onPress={editAnswer}
+                  style={styles.checkNumber}>
+                  <Text style={styles.checkNumberText}>Tarkista</Text>
+                </Pressable>
+              }
+              {isNewVisible &&
+                <Pressable
+                  title='Uudet'
+                  onPress={checkLvl}
+                  style={styles.checkNumber}>
+                  <Text style={styles.checkNumberText}>Arvo uudet</Text>
+                </Pressable>
+              }
+
             </View>
           </ScrollView>
         </View>
@@ -372,6 +429,18 @@ const rightPic =
       </View>
     );
   }
-
-
 }
+
+const style = StyleSheet.create({
+  numberTo: {
+    height: boxHeight,
+    width: boxWidth,
+    borderWidth: 4,
+    fontSize: fontSize,
+    marginTop: 20,
+    marginBottom: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
+});

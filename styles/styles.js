@@ -190,34 +190,6 @@ export default StyleSheet.create({
     height: '80%',
     paddingBottom: 10
   },
-  //numero-sivun näytettävä numero
-  numberToShow: {
-    borderWidth: 4,
-    height: '20%',
-    fontSize: 40,
-    marginTop: 40,
-    marginBottom: 40,
-    fontWeight: 'bold',
-    width: 200,
-    textAlign: 'center',
-    paddingBottom: 20,
-    alignSelf: 'center',
-    justifyContent: 'center'
-  },
-  //numero-sivun käyttäjän antama numero
-  numberToWrite: {
-    borderWidth: 4,
-    height: '20%',
-    fontSize: 40,
-    marginTop: 40,
-    marginBottom: 40,
-    fontWeight: 'bold',
-    width: 200,
-    textAlign: 'center',
-    paddingBottom: 10,
-    alignSelf: 'center',
-    justifyContent: 'center'
-  },
   //vierekkäin haluttavat elementit
   nextTo: {
     flexDirection: 'row',
@@ -316,6 +288,15 @@ export default StyleSheet.create({
     fontSize: 18,
     color: 'white',
   },
-
-
+  //työmuistin tekstikenttä:
+  info: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    color: 'red',
+    textAlign: 'center'
+  },
+    //työmuistin tekstikenttä:
+    infoPics: {
+      textAlign: 'center'
+    },
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, ScrollView, Keyboard, Pressable, Dimensions, StyleSheet } from "react-native";
+import { View, Text, TextInput, Keyboard, Pressable, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
