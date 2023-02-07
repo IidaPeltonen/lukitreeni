@@ -26,9 +26,12 @@ export default function Memory() {
   const [done, setDone] = useState(0) //tehtyjen määrä
   const [wrong, setWrong] = useState(0) //väärien vastausten määrä, max 8
   const [info, setInfo] = useState('') //tieto oikesta ja väärästä
-  const [infoPics, setInfoPics] = useState([]) //tieto oikesta ja väärästä
+  const [infoPics0, setInfoPics0] = useState([]) //tieto oikesta ja väärästä indeksissä 0
+  const [infoPics1, setInfoPics1] = useState([]) //tieto oikesta ja väärästä indeksissä 1
+  const [infoPics2, setInfoPics2] = useState([]) //tieto oikesta ja väärästä indeksissä 2
+  const [infoPics3, setInfoPics3] = useState([]) //tieto oikesta ja väärästä indeksissä 3
+  const [infoPics4, setInfoPics4] = useState([]) //tieto oikesta ja väärästä indeksissä 4
   const [difficulty, setDifficulty] = useState(2) //taso alkaa aina kahdesta, max on 6
-  const [counter, setCounter] = useState(0) //kauanko lukujono näkyy, määräytyy vaikeustason mukaan
   const [isAlertVisible, setIsAlertVisible] = useState(false) //näytettävä lukujono
   const [isInputVisible, setIsInputVisible] = useState(false) //näytettävä input-kenttä
   const [time, setTime] = useState(10000) //Leenan antama aika, kauanko lukujono näkyy
@@ -38,17 +41,16 @@ export default function Memory() {
   const wrongPic =
   <MaterialCommunityIcons
       name='alpha-x'
-      size= '20'
-      color={'red'}
-      key={helper+1}>
+      size= {20}
+      color={'red'}>
+
   </MaterialCommunityIcons>
 
 const rightPic =
 <MaterialCommunityIcons
     name='check'
-    size= '20'
-    color={'greeb'}
-    key={helper2+1}>
+    size= {20}
+    color={'green'}>
 </MaterialCommunityIcons>
 
   //käyttäjän nimen haku
@@ -98,6 +100,11 @@ const rightPic =
 
   function checkLvl() {
     setInfo('')
+    setInfoPics0('')
+    setInfoPics1('')
+    setInfoPics2('')
+    setInfoPics3('')
+    setInfoPics4('')
     if (wrong === 8) {
       setGameEnded(true)
       return
@@ -234,14 +241,32 @@ const rightPic =
         //tässä voisi muuttaa vaikka väriä tai piilottaa tai jotain
         //oikeiden määrä nousee
         oikein = oikein + 1
-        infoPics.push(rightPic)
+        let tempName = 'infoPics' + (x+1)
+        console.log('tempN: ' + tempName)
+        if (x === 0) {
+          setInfoPics0(rightPic) //ASETA KUVAT VASTA TÄSSÄ, NIIN KEYT MENEE OIKEIN!
+        } 
+        if (x === 1) {
+          setInfoPics1(rightPic)
+        } 
+        if (x === 2) {
+          setInfoPics2(rightPic)
+        } 
+        if (x === 3) {
+          setInfoPics3(rightPic)
+        } 
+        if (x === 4) {
+          setInfoPics4(rightPic)
+        } 
+
       }
       else {
         vaarin = vaarin + 1
-        infoPics.push(wrongPic)
+        //infoPics.push(wrongPic)
+        //setInfoPics(wrongPic)
       }
     }
-    console.log('uvat: ' + infoPics)
+
     //jos koko sana on oikein
     if (oikein === numbers.length) {
       setRight(right + 1)
@@ -326,7 +351,7 @@ const rightPic =
               onChangeText={setAnswer}
             />
             } 
-            <Text style={styles.wrong}> {info} {infoPics} </Text>
+            <Text style={styles.wrong}> {info} {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4} </Text>
             <View style={styles.nextTo}>
               <Pressable
                 title='Tarkista'

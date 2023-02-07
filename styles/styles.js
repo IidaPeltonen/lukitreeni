@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
 
 /*valitut värit
 *tausta: #c9f1fd
@@ -210,13 +209,14 @@ export default StyleSheet.create({
     borderWidth: 4,
     height: '20%',
     fontSize: 40,
+    marginTop: 40,
     marginBottom: 40,
     fontWeight: 'bold',
     width: 200,
     textAlign: 'center',
+    paddingBottom: 10,
     alignSelf: 'center',
     justifyContent: 'center'
-
   },
   //vierekkäin haluttavat elementit
   nextTo: {
