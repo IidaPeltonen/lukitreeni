@@ -58,7 +58,6 @@ const dicePicTwo =
                 <ScrollView>
                     <Text style={styles.textHeader2}>Tunnista numerot</Text>
                     <Text style={styles.plain}>Valitse montaako noppaa haluat käyttää:</Text>
-                    <Text></Text>
                     <View style={styles.chooseLvl}>
                         <Pressable
                             title='1'

@@ -10,7 +10,9 @@ let wrongAns = 0
 const height = (Dimensions.get('window').height)
 const ansBoxHeight = height / 100 * 25
 const marginTop = ansBoxHeight / 100 * 20
-const ePicSize = height / 100 * 10
+const plusPicSize = height / 100 * 10
+const fontSize = ansBoxHeight / 2
+const wrongFontSize = fontSize / 4
 
 export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -23,26 +25,26 @@ export default function DicesTable() {
     const [done, setDone] = useState(0) //tehtyjen määrä
     const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
 
-    let alertPic =
+    const alertPic =
         <MaterialCommunityIcons
             name='alert-decagram'
-            size={35}
+            size={wrongFontSize}
             color={'red'}>
         </MaterialCommunityIcons>
 
     const equalPic =
         <MaterialCommunityIcons
             name='equal'
-            size={ePicSize}
+            size={plusPicSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
-let rightPic =
-<MaterialCommunityIcons
-  name='flower-poppy'
-  size={35}
-  color={'red'}>
-</MaterialCommunityIcons>
+const rightPic =
+    <MaterialCommunityIcons
+    name='flower-poppy'
+    size={wrongFontSize}
+    color={'red'}>
+    </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
@@ -69,11 +71,10 @@ let rightPic =
         setDone(done + 1)
         let random = randomIntFromInterval(1, 6)
         let randomName = 'dice-' + random
-        let size = height / 100 * 25
         setDice(<MaterialCommunityIcons
             name={randomName}
             key={random}
-            size={size}
+            size={ansBoxHeight}
             color={'black'}>
         </MaterialCommunityIcons>)
         setDiceNum(Number(random))
@@ -109,7 +110,7 @@ let rightPic =
             </View>
             <View style={styles.DiceTable}>
                 {done === 0 &&
-                    <View style={styles.center}>
+                    <View>
                         <Pressable
                             title='Aloita'
                             onPress={getDice}
@@ -119,31 +120,34 @@ let rightPic =
                     </View>
                 }
                 {done !== 0 &&
-                    <>
-                        <View style={styles.nextTo}>
-                            <Text>{dice}</Text>
-                            <Text style={style.plus}>{equalPic}</Text>
-                            <TextInput
-                                placeholder=""
-                                value={text}
-                                maxLength={1}
-                                style={style.input}
-                                keyboardType='number-pad'
-                                onChangeText={(text) => { onChangeText(text) }}
-                            />
-                            <Text style={styles.wrongDice}>{wrong} {wrongPic}</Text>
-                        </View>
+                    <View>
+                        <View style={styles.nextToDices}>
+                        <Text style={style.dice}>{dice}</Text>
+                        <Text style={style.plus}>{equalPic}</Text>
+                        <TextInput
+                            placeholder=""
+                            value={text}
+                            maxLength={1}
+                            style={style.input}
+                            keyboardType='number-pad'
+                            onChangeText={(text) => { onChangeText(text) }}
+                        />
+                    </View>
+                    <View style={styles.nextTo}>
                         <Pressable
                             title='Uudet'
                             onPress={checkDice}
                             style={styles.checkNumber}>
                             <Text style={styles.startText}>Tarkista!</Text>
                         </Pressable>
-                    </>}
+                        <Text style={style.wrong}>{wrong} {wrongPic}</Text>
+                    </View>
             </View>
-            <Footer done={done} right={right} />
+            }
         </View>
-    );
+        <Footer done={done} right={right} />
+    </View>
+);
 }
 
 const style = StyleSheet.create({
@@ -152,12 +156,18 @@ const style = StyleSheet.create({
         width: ansBoxHeight,
         borderWidth: 2,
         fontSize: 60,
-        justifyContent: 'center',
-        marginLeft: 40,
         backgroundColor: 'white',
+        textAlign: 'center',
+        marginLeft: 40,
         marginTop: marginTop
     },
     plus: {
-        marginTop: marginTop + 20
-    }
+        marginTop: marginTop * 2
+    },
+    wrong: {
+        fontSize: wrongFontSize,
+        fontFamily: 'Roboto',
+        color: 'red',
+        justifyContent: 'center'
+    },
 });

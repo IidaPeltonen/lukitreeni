@@ -12,7 +12,6 @@ const ansBoxHeight = height / 100 * 25
 const marginTop = ansBoxHeight / 100 * 15
 const plusPicSize = height / 100 * 10
 const fontSize = ansBoxHeight / 2
-const picSize = fontSize / 2
 const wrongFontSize = fontSize / 4
 
 export default function TwoDicesTable() {
@@ -28,10 +27,10 @@ export default function TwoDicesTable() {
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
 
-    let alertPic =
+    const alertPic =
         <MaterialCommunityIcons
             name='alert-decagram'
-            size={35}
+            size={wrongFontSize}
             color={'red'}>
         </MaterialCommunityIcons>
 
@@ -49,10 +48,10 @@ export default function TwoDicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>
 
-    let rightPic =
+    const rightPic =
         <MaterialCommunityIcons
             name='flower-poppy'
-            size={35}
+            size={wrongFontSize}
             color={'red'}>
         </MaterialCommunityIcons>
 
@@ -192,22 +191,15 @@ const style = StyleSheet.create({
         fontSize: 60,
         backgroundColor: 'white',
         textAlign: 'center',
-        marginTop: marginTop 
+        marginTop: marginTop
     },
     plus: {
-        paddingTop: marginTop*2
+        paddingTop: marginTop * 2
     },
     wrong: {
         fontSize: wrongFontSize,
         fontFamily: 'Roboto',
         color: 'red',
         justifyContent: 'center'
-      },
-      checkLetter:  {
-        backgroundColor: '#023020',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-        padding: marginTop / 2
-      },
+    },
 });
