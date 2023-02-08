@@ -101,19 +101,6 @@ export default StyleSheet.create({
     fontSize: 0,
     padding: 2
   },
-  //muuttuvien sanojen näyttö
-  WordsTable: {
-    backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 5,
-    marginBottom: 20,
-    marginTop: 20,
-    marginLeft: 150,
-    marginRight: 150,
-    borderStyle: 'dashed',
-    height: '60%'
-  },
   //arvottu sana
   showWord: {
     fontSize: 70,

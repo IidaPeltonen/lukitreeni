@@ -10,10 +10,36 @@ let right = 0
 let done = 0
 
 //tarvitaan lista sanoja
-const sen1 = ['Ovi on auki.', 'Talo on iso.', 'Kissa on pieni.', 'Sinä olet kiva!']
+const sen1 = ['Koi-ra is-tuu', 'Lin-tu len-tää.', 'Kis-sa mau-kuu.', 'Sis-ko it-kee.', 'Äi-ti juok-see.']
 const sen2 = ['Kissan nimi on Mauri.', 'Koulun ovi oli lukossa.', 'Kaali maistuu hyvältä.']
-const sen3 = ['Apina söi puussa banaania.', 'Se oli hieno saavutus!', 'Kolina kuului kellarista.',
-  'Hevonen syö mielellään porkkanaa.']
+const sen3 = ['Kun aurinko paistaa kesällä, on lämmintä.', 'Se oli hieno saavutus!', 
+  'Soutuveneellä voi soutaa paremmin kuin kottikärryillä.', 'Saunassa on aina kylmempää kuin pakastimessa.', 
+  'Kuuntelemalla voi tietää, miltä jokin maistuu.', 'Kun televisio on rikki, sillä ei voi katsoa ohjelmia.',  
+  'Rikkinäiset kengät korjataan paloasemalla.', 'Suklaarasiaa säilytetään kylpyammeessa.', 
+  'Satukirjassa kerrotaan, mitä ruokaa koulussa tarjotaan.', 'Kun pudottaa kuumaan veteen jääpalan, se sulaa.',
+  'Tomaatti on pienempi kuin matkalaukku.', 'Hampaat harjataan hiustenkuivaajalla.', 
+  'Pölynimurilla tiskataan juomalasit.', 'Vaatteet puetaan päälle suihkun jälkeen.', 
+  'Laskettelija tarvitsee suksia lasketteluun. ', 'Suklaajäätelöä syödään vasaralla.', 
+  'Jos housuihin tulee tahra, ne pestään puhtaaksi', 'Päivällä on aina pimeää.', 'Välipala syödään uima-altaassa.', 
+  'Jotkut lapset pelkäävät käärmeitä.', 'Jääkaappiin laitetaan sanomalehtiä.', 'Rohkea ihminen on pelokas', 
+  'Silmälääkäriin mennään uimaan. ', 'Etana on hitaampi kuin pantteri.', 'Juna on suurempi kuin polkupyörä.', 
+  'Lämpömittari näyttää, kuinka pitkä jokin on.', 'Puutarhassa kasvaa paljon kukkia.', 
+  'Kaurakeksit tehdään voileivistä.', 'Kaikki kilpikonnat asuvat koirankopissa.', 
+  'Kun lemmikkieläin sairastuu, se viedään eläinlääkäriin', 'Iltasatuja luetaan sanomalehdestä.', 
+  'Mehupullosta tulee makaronia.', 'Tenniksen pelaamiseen tarvitaan tennismaila.', 'Jääkaapissa maito lämpenee.', 
+  'Joutsenella on pitkä kaula.', 'Hammasharjaa käytetään syömiseen.', 
+  'Polkupyörä kulkee hitaammin kuin linja-auto.', 'Paistinpannulla paistetaan lettuja.', 
+  'Linnut lentävät paremmin kuin käärmeet.', 'Suulla voi maistaa.', 'Korvista kasvaa ruohoa.', 
+  'Ilmapallot on täytetty jäätelöllä.', 'Käymme ruokakaupassa, jotta voisimme ostaa ruokaa.', 
+  'Ihmisillä on silmät vatsassa.', 'Kiikareilla voi haistaa.', 'Kynällä voi kirjoittaa.', 
+  'Jos mehulasin pudottaa pöydältä, lasi voi mennä rikki.', 'Keittoa syödään haarukalla', 'Silmällä voi haistaa.', 
+  'Junat tarvitsevat keksejä liikkuakseen.', 'Palikoilla voi rakentaa.', 'Haarukka on huonekalu.', 
+  'Suuressa koulussa on paljon lapsia.', 'Hämähäkki on eläin.', 'Kaikki pallot ovat vihreitä', 
+  'Suihku on peseytymistä varten.', 'Banaanit kasvavat nenästä.', 'Koulussa opetellaan laskemaan.', 
+  'Kukot kiekuvat aamulla.', 'Hiiri on pieni eläin.', 'Oravalla on kolme jalkaa.', 'Mehua voi juoda.', 
+  'Puukko on terävä.', 'Kaloilla on höyhenet.', 'Hevoset osaavat laukata.', 'Pumpuli on kovaa.', 
+  'Opettaja opettaa lukemaan', 'Porsaat osaavat röhkiä.', 'Tomaatit ovat sinisiä.', 'Lampaat osaavat pyöräillä.', 
+  'Suu on punainen.']
 
 export default function Sentences() {
   const [firstname, setFirstname] = useState('');
