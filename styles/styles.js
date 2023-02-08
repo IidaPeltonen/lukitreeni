@@ -126,19 +126,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     marginRight: 30,
   },
-  //muuttuvien numeroiden näyttö
-  NumbersTable: {
-    backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 5,
-    marginBottom: 20,
-    marginTop: 60,
-    marginLeft: 150,
-    marginRight: 150,
-    borderStyle: 'dashed',
-    height: '60%'
-  },
+
   //muistettavan numerosarjan näyttö
   MemoryTable: {
     backgroundColor: '#c9f1fd',

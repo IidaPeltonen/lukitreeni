@@ -130,12 +130,14 @@ export default function Letters() {
             </TextInput>
           </View>
           <View style={styles.nextTo}>
+            {text !== '' && 
             <Pressable
               title='Uudet'
               onPress={checkLetter}
               style={style.checkLetter}>
               <Text style={styles.checkLetterText}>Tarkista!</Text>
             </Pressable>
+            }
             <Text style={style.wrong}>  {alert} {alertPic} </Text>
           </View>
         </View>

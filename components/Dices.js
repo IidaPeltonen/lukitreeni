@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image } from "react-native";
+import { Pressable, View, Text, Image, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import DicesTable from "./DicesTable";
@@ -7,6 +7,10 @@ import TwoDicesTable from "./TwoDicesTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { ScrollView } from "react-native-gesture-handler";
+
+const height = (Dimensions.get('window').height)
+const tableHeight = height * 0.51
+const fontSize = tableHeight / 5
 
 export default function Dices() {
     const [firstname, setFirstname] = useState('');
@@ -21,12 +25,12 @@ export default function Dices() {
             color={'black'}>
         </MaterialCommunityIcons>
 
-const dicePicTwo =
-<MaterialCommunityIcons
-    name='dice-2'
-    size={50}
-    color={'black'}>
-</MaterialCommunityIcons>
+    const dicePicTwo =
+        <MaterialCommunityIcons
+            name='dice-2'
+            size={50}
+            color={'black'}>
+        </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
@@ -46,6 +50,11 @@ const dicePicTwo =
     function startGame() {
         setNotStarted(false)
     }
+
+      //funktio tason muuttujan nollaukseen
+  function resetLevel() {
+    setOneOrTwo(0)
+  }
 
 
     //jos peliä ei ole aloitettu
@@ -86,15 +95,45 @@ const dicePicTwo =
     }
     else if (notStarted === false && oneOrTwo === 1) {
         return (
-                <View style={styles.container}>
-                    <DicesTable />
+            <View style={styles.frontContainer}>
+                <View style={styles.right}>
+                    <Pressable
+                        style={styles.change}
+                        title='change'
+                        onPress={() => {
+                            resetLevel();
+                        }} >
+                        <MaterialCommunityIcons
+                            name='swap-vertical'
+                            size={fontSize}
+                            color={'black'}
+                        >
+                        </MaterialCommunityIcons>
+                    </Pressable>
                 </View>
+                <DicesTable />
+            </View>
         );
     }
     else if (notStarted === false && oneOrTwo === 2) {
         return (
             <ScrollView>
-                <View style={styles.container}>
+                <View style={styles.frontContainer}>
+                    <View style={styles.right}>
+                        <Pressable
+                            style={styles.change}
+                            title='change'
+                            onPress={() => {
+                                resetLevel();
+                            }} >
+                            <MaterialCommunityIcons
+                                name='swap-vertical'
+                                size={fontSize}
+                                color={'black'}
+                            >
+                            </MaterialCommunityIcons>
+                        </Pressable>
+                    </View>
                     <TwoDicesTable />
                 </View>
             </ScrollView>

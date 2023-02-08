@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+
+const height = (Dimensions.get('window').height)
+const tableHeight = height * 0.51
+const sideMargin = height / 4.7
+const fontSize = tableHeight / 4.4
 
 export default function NumbersTable({ numbers, time }) {
     const [numIndex, setNumIndex] = useState(0);
@@ -23,24 +27,35 @@ export default function NumbersTable({ numbers, time }) {
 
     return (
         <View style={styles.frontContainer}>
-            <View style={styles.NumbersTable} >
+            <View style={style.NumbersTable} >
                 {numIndex <= (numbers.length - 1) &&
                     <>
-                        <Text style={styles.showWord}>{numbers[numIndex]}</Text>
+                        <Text style={style.showWord}>{numbers[numIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
-                        {/*                     <Text style={styles.Clock}>
-                        <MaterialCommunityIcons
-                            name='timer-outline'
-                            size={25}
-                            color={'black'}>
-                        </MaterialCommunityIcons>: {counter}
-                    </Text> 
-                    Kelloa tuskin kannattaa näyttää tässä?*/}
                     </>
                 }
             </View>
         </View>
     )
 }
+
+const style = StyleSheet.create({
+    NumbersTable: {
+         height: tableHeight,
+         textAlign: 'center',
+         alignItems: 'center',
+         justifyContent: 'center',
+         borderWidth: 5,
+         marginLeft: sideMargin,
+         marginRight: sideMargin,
+         borderStyle: 'dashed',
+         marginTop: sideMargin /2
+     },
+     showWord: {
+         fontSize: fontSize,
+         fontFamily: 'Roboto',
+         fontWeight: 'bold',
+       },
+ });
 
 
