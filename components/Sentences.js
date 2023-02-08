@@ -13,19 +13,24 @@ const tableHeight = height * 0.51
 const fontSize = tableHeight / 5
 
 //tarvitaan lista sanoja
-const sen1 = ['Koi-ra is-tuu', 'Lin-tu len-tää.', 'Kis-sa mau-kuu.', 'Sis-ko it-kee.', 'Äi-ti juok-see.']
-const sen2 = ['Kissan nimi on Mauri.', 'Koulun ovi oli lukossa.', 'Kaali maistuu hyvältä.']
-const sen3 = ['Kun aurinko paistaa kesällä, on lämmintä.', 'Se oli hieno saavutus!', 
-  'Soutuveneellä voi soutaa paremmin kuin kottikärryillä.', 'Saunassa on aina kylmempää kuin pakastimessa.', 
-  'Kuuntelemalla voi tietää, miltä jokin maistuu.', 'Kun televisio on rikki, sillä ei voi katsoa ohjelmia.',  
-  'Rikkinäiset kengät korjataan paloasemalla.', 'Suklaarasiaa säilytetään kylpyammeessa.', 
-  'Satukirjassa kerrotaan, mitä ruokaa koulussa tarjotaan.', 'Kun pudottaa kuumaan veteen jääpalan, se sulaa.',
-  'Tomaatti on pienempi kuin matkalaukku.', 'Hampaat harjataan hiustenkuivaajalla.', 
-  'Pölynimurilla tiskataan juomalasit.', 'Vaatteet puetaan päälle suihkun jälkeen.', 
-  'Laskettelija tarvitsee suksia lasketteluun. ', 'Suklaajäätelöä syödään vasaralla.', 
-  'Jos housuihin tulee tahra, ne pestään puhtaaksi', 'Päivällä on aina pimeää.', 'Välipala syödään uima-altaassa.', 
-  'Jotkut lapset pelkäävät käärmeitä.', 'Jääkaappiin laitetaan sanomalehtiä.', 'Rohkea ihminen on pelokas', 
-  'Silmälääkäriin mennään uimaan. ', 'Etana on hitaampi kuin pantteri.', 'Juna on suurempi kuin polkupyörä.', 
+const sen1 = ['Koi-ra is-tuu', 'Lin-tu len-tää.', 'Kis-sa mau-kuu.', 'Sis-ko it-kee.', 'Äi-ti juok-see.',
+  'Lin-tu lau-laa.', 'Lehm-mä am-muu.', 'Mi-nä o-pin.', 'Men-nään ui-maan.', 'Is-tu a-las.', 'O-le hil-jaa', 
+  'Kat-so tä-tä.', 'Tu-le u-los.', 'A-vaa ik-ku-na.', 'A-vaa o-vi.', 'Ve-li nuk-kuu.', 'Tyy-ny hai-see.', 
+  'I-sä nau-raa.', 'Mat-to liu-kuu.', 'Tu-li polt-taa.', 'Kis-sa nuk-kuu.', 'Mi-nä lu-en.','Nu-ku hy-vin!',
+  'Tah-don u-los!','O-vi kiin-ni!','Sul-je o-vi.','A-vaa kaap-pi.','Ar-vaa ku-ka?','Äi-ti nau-raa.',
+  'Kuk-ka tuok-suu.', 'Au-to a-jaa.', 'Kel-lo so-i.', 'Ka-na mu-nii', 'Tä-ti aut-taa.']
+const sen2 = ['Tästä puuttuu lauseet.', 'Tästä puuttuu lauseet.', 'Tästä puuttuu lauseet.']
+const sen3 = ['Kun aurinko paistaa kesällä, on lämmintä.', 'Soutuveneellä voi soutaa paremmin kuin kottikärryillä.', 
+  'Saunassa on aina kylmempää kuin pakastimessa.', 'Kuuntelemalla voi tietää, miltä jokin maistuu.', 
+  'Kun televisio on rikki, sillä ei voi katsoa ohjelmia.', 'Rikkinäiset kengät korjataan paloasemalla.', 
+  'Suklaarasiaa säilytetään kylpyammeessa.', 'Satukirjassa kerrotaan, mitä ruokaa koulussa tarjotaan.', 
+  'Kun pudottaa kuumaan veteen jääpalan, se sulaa.', 'Tomaatti on pienempi kuin matkalaukku.', 
+  'Hampaat harjataan hiustenkuivaajalla.', 'Pölynimurilla tiskataan juomalasit.', 
+  'Vaatteet puetaan päälle suihkun jälkeen.', 'Laskettelija tarvitsee suksia lasketteluun. ', 
+  'Suklaajäätelöä syödään vasaralla.', 'Jos housuihin tulee tahra, ne pestään puhtaaksi', 
+  'Päivällä on aina pimeää.', 'Välipala syödään uima-altaassa.', 'Jotkut lapset pelkäävät käärmeitä.', 
+  'Jääkaappiin laitetaan sanomalehtiä.', 'Rohkea ihminen on pelokas', 'Silmälääkäriin mennään uimaan. ', 
+  'Etana on hitaampi kuin pantteri.', 'Juna on suurempi kuin polkupyörä.', 
   'Lämpömittari näyttää, kuinka pitkä jokin on.', 'Puutarhassa kasvaa paljon kukkia.', 
   'Kaurakeksit tehdään voileivistä.', 'Kaikki kilpikonnat asuvat koirankopissa.', 
   'Kun lemmikkieläin sairastuu, se viedään eläinlääkäriin', 'Iltasatuja luetaan sanomalehdestä.', 
@@ -118,7 +123,7 @@ export default function Sentences() {
               setDifficulty(helper)
               getSelectedLvlSentences(helper);
             }}>
-            <Text style={styles.choice}>1. Lyhyet virkkeet</Text>
+            <Text style={styles.choice}>1. Lyhyet virkkeet tavuviivoilla </Text>
           </Pressable>
           <Text style={styles.line} />
           <Pressable
