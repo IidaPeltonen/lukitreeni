@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, ScrollView } from "react-native";
+import { Pressable, View, Text, Image, ScrollView, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import SentencesTable from "./SentencesTable";
@@ -8,6 +8,9 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
 let done = 0
+const height = (Dimensions.get('window').height)
+const tableHeight = height * 0.51
+const fontSize = tableHeight / 5
 
 //tarvitaan lista sanoja
 const sen1 = ['Koi-ra is-tuu', 'Lin-tu len-tää.', 'Kis-sa mau-kuu.', 'Sis-ko it-kee.', 'Äi-ti juok-see.']
@@ -159,7 +162,7 @@ export default function Sentences() {
             }} >
             <MaterialCommunityIcons
               name='swap-vertical'
-              size={25}
+              size={fontSize}
               color={'black'}
             >
             </MaterialCommunityIcons>
@@ -185,7 +188,7 @@ export default function Sentences() {
             }} >
             <MaterialCommunityIcons
               name='swap-vertical'
-              size={25}
+              size={fontSize}
               color={'black'}
             >
             </MaterialCommunityIcons>
@@ -211,7 +214,7 @@ export default function Sentences() {
             }} >
             <MaterialCommunityIcons
               name='swap-vertical'
-              size={25}
+              size={fontSize}
               color={'black'}
             >
             </MaterialCommunityIcons>
@@ -223,5 +226,6 @@ export default function Sentences() {
     );
   }
 }
+
 
 

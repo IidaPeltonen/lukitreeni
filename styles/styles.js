@@ -101,19 +101,6 @@ export default StyleSheet.create({
     fontSize: 0,
     padding: 2
   },
-  //arvottu sana
-  showWord: {
-    fontSize: 70,
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-  },
-  //arvottu lause
-  showSen: {
-    fontSize: 50,
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    alignSelf: 'center'
-  },
   //timerin näyttö
   Clock: {
     fontSize: 17,
@@ -138,19 +125,6 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     marginRight: 30,
-  },
-  //lauseiden tausta
-  SentencesTable: {
-    backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 5,
-    marginBottom: 20,
-    marginTop: 20,
-    marginLeft: 150,
-    marginRight: 150,
-    borderStyle: 'dashed',
-    height: '60%'
   },
   //muuttuvien numeroiden näyttö
   NumbersTable: {

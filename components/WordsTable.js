@@ -6,9 +6,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 const height = (Dimensions.get('window').height)
 const tableHeight = height * 0.51
 const sideMargin = height / 4.7
-console.log('side: ' + sideMargin)
 const fontSize = tableHeight / 4.4
-console.log('font: ' + fontSize)
 
 export default function WordsTable({ words, time }) {
     const [wordIndex, setWordIndex] = useState(0);
@@ -33,7 +31,7 @@ export default function WordsTable({ words, time }) {
             <View style={style.WordsTable} >
                 {wordIndex <= (words.length - 1) &&
                     <>
-                        <Text style={styles.showWord}>{words[wordIndex]}</Text>
+                        <Text style={style.showWord}>{words[wordIndex]}</Text>
                         <Text style={styles.plain}>{info}</Text>
                         <Text style={styles.Clock}>
                             <MaterialCommunityIcons
