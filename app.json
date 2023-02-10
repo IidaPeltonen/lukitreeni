@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "luki",
-    "slug": "luki",
+    "slug": "iipi-6",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.iidapeltonen.iipi6"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fb735d35-01ba-4e40-9222-de6c2c19dd60"
+      }
+    },
+    "owner": "iidapeltonen"
   }
 }

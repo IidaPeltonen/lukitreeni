@@ -18,7 +18,7 @@ const sen1 = ['Koi-ra is-tuu', 'Lin-tu len-tää.', 'Kis-sa mau-kuu.', 'Sis-ko i
   'Kat-so tä-tä.', 'Tu-le u-los.', 'A-vaa ik-ku-na.', 'A-vaa o-vi.', 'Ve-li nuk-kuu.', 'Tyy-ny hai-see.', 
   'I-sä nau-raa.', 'Mat-to liu-kuu.', 'Tu-li polt-taa.', 'Kis-sa nuk-kuu.', 'Mi-nä lu-en.','Nu-ku hy-vin!',
   'Tah-don u-los!','O-vi kiin-ni!','Sul-je o-vi.','A-vaa kaap-pi.','Ar-vaa ku-ka?','Äi-ti nau-raa.',
-  'Kuk-ka tuok-suu.', 'Au-to a-jaa.', 'Kel-lo so-i.', 'Ka-na mu-nii', 'Tä-ti aut-taa.']
+  'Kuk-ka tuok-suu.', 'Au-to a-jaa.', 'Kel-lo so-i.', 'Ka-na mu-nii', 'Tä-ti aut-taa.', 'Kel-lo so-i.']
 const sen2 = ['Tästä puuttuu lauseet.', 'Tästä puuttuu lauseet.', 'Tästä puuttuu lauseet.']
 const sen3 = ['Kun aurinko paistaa kesällä, on lämmintä.', 'Soutuveneellä voi soutaa paremmin kuin kottikärryillä.', 
   'Saunassa on aina kylmempää kuin pakastimessa.', 'Kuuntelemalla voi tietää, miltä jokin maistuu.', 
