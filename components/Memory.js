@@ -343,7 +343,6 @@ export default function Memory() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-        <ScrollView>
           <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
           <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi. </Text>
           <Text style={styles.plain}>Kun tyhjä kenttä ilmestyy, kirjoita numero siihen. Taso nousee pikkuhiljaa, </Text>
@@ -354,7 +353,6 @@ export default function Memory() {
             style={styles.start}>
             <Text style={styles.startText}>Aloita!</Text>
           </Pressable>
-        </ScrollView>
         <Footer done={done} right={totalRight} />
       </View>
     );
@@ -430,7 +428,6 @@ const style = StyleSheet.create({
     width: boxWidth,
     borderWidth: 4,
     fontSize: fontSize,
-    marginTop: 20,
     marginBottom: 20,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -441,7 +438,6 @@ const style = StyleSheet.create({
     width: boxWidth,
     borderWidth: 4,
     fontSize: fontSize,
-    marginTop: 90,
     marginBottom: 20,
     fontWeight: 'bold',
     textAlign: 'center',

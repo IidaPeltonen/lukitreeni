@@ -9,10 +9,10 @@ let right = 0
 let wrongAns = 0
 const height = (Dimensions.get('window').height)
 const ansBoxHeight = height / 100 * 25
-const marginTop = ansBoxHeight / 100 * 20
+const marginTop = ansBoxHeight / 100 * 15
 const plusPicSize = height / 100 * 10
 const fontSize = ansBoxHeight / 2
-const wrongFontSize = fontSize / 4
+const wrongFontSize = fontSize / 3
 
 export default function DicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -23,7 +23,6 @@ export default function DicesTable() {
     const [wrongPic, setWrongPic] = useState('') //käyttäjän syötteen alert-kenttä, kuva
     const [refresh, setRefresh] = useState(''); // <- Add if your view not Rerender
     const [done, setDone] = useState(0) //tehtyjen määrä
-    const [notStarted, setNotStart] = useState(true) //ei vielä aloitettu
 
     const alertPic =
         <MaterialCommunityIcons
@@ -106,7 +105,7 @@ const rightPic =
     return (
         <View style={styles.frontContainer}>
             <View>
-                <Text style={styles.textHeader}>Kirjoita nopan silmäluku</Text>
+                <Text style={style.textHeader}>Kirjoita nopan silmäluku</Text>
             </View>
             <View style={styles.DiceTable}>
                 {done === 0 &&
@@ -122,7 +121,7 @@ const rightPic =
                 {done !== 0 &&
                     <View>
                         <View style={styles.nextToDices}>
-                        <Text style={style.dice}>{dice}</Text>
+                        <Text>{dice}</Text>
                         <Text style={style.plus}>{equalPic}</Text>
                         <TextInput
                             placeholder=""
@@ -137,7 +136,7 @@ const rightPic =
                         <Pressable
                             title='Uudet'
                             onPress={checkDice}
-                            style={styles.checkNumber}>
+                            style={style.checkDice}>
                             <Text style={styles.startText}>Tarkista!</Text>
                         </Pressable>
                         <Text style={style.wrong}>{wrong} {wrongPic}</Text>
@@ -153,9 +152,9 @@ const rightPic =
 const style = StyleSheet.create({
     input: {
         height: ansBoxHeight,
-        width: ansBoxHeight,
+        width: ansBoxHeight, 
         borderWidth: 2,
-        fontSize: 60,
+        fontSize: fontSize,
         backgroundColor: 'white',
         textAlign: 'center',
         marginLeft: 40,
@@ -168,6 +167,24 @@ const style = StyleSheet.create({
         fontSize: wrongFontSize,
         fontFamily: 'Roboto',
         color: 'red',
-        justifyContent: 'center'
+        marginTop: wrongFontSize *1.5
     },
+    checkDice: {
+        width: ansBoxHeight*2,
+        backgroundColor: '#023020',
+        alignItems: 'center',
+        borderRadius: 5,
+        marginBottom: 20,
+        marginRight: 10,
+        alignSelf: 'center',
+        marginTop: wrongFontSize
+      },
+      textHeader: {
+        fontSize: 20,
+        fontFamily: 'Roboto',
+        alignSelf: 'center',
+        fontWeight: 'bold',
+        margin: 0,
+        padding: 0
+      },
 });

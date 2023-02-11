@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import DicesTable from "./DicesTable";
@@ -10,7 +10,8 @@ import { ScrollView } from "react-native-gesture-handler";
 
 const height = (Dimensions.get('window').height)
 const tableHeight = height * 0.51
-const fontSize = tableHeight / 5
+const swapPicSize = tableHeight / 5
+const diceSize = tableHeight / 4
 
 export default function Dices() {
     const [firstname, setFirstname] = useState('');
@@ -21,14 +22,14 @@ export default function Dices() {
     const dicePicOne =
         <MaterialCommunityIcons
             name='dice-1'
-            size={50}
+            size={diceSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
     const dicePicTwo =
         <MaterialCommunityIcons
             name='dice-2'
-            size={50}
+            size={diceSize}
             color={'black'}>
         </MaterialCommunityIcons>
 
@@ -64,8 +65,6 @@ export default function Dices() {
                 <View style={styles.header}>
                     <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
                 </View>
-                <ScrollView>
-                    <Text style={styles.textHeader2}>Tunnista numerot</Text>
                     <Text style={styles.plain}>Valitse montaako noppaa haluat käyttää:</Text>
                     <View style={styles.chooseLvl}>
                         <Pressable
@@ -75,7 +74,7 @@ export default function Dices() {
                                 setOneOrTwo(helper)
                                 startGame()
                             }}>
-                            <Text style={styles.choice}> {dicePicOne} </Text>
+                            <Text style={style.choiceDice}> {dicePicOne} </Text>
                         </Pressable>
                         <Pressable
                             title='2'
@@ -84,11 +83,10 @@ export default function Dices() {
                                 setOneOrTwo(helper)
                                 startGame()
                             }}>
-                            <Text style={styles.choice}> {dicePicTwo}{dicePicTwo}  </Text>
+                            <Text style={style.choiceDice}> {dicePicTwo}{dicePicTwo}  </Text>
                         </Pressable>
                         <Text></Text>
                     </View>
-                </ScrollView>
                 <Footer done={done} />
             </View>
         );
@@ -105,7 +103,7 @@ export default function Dices() {
                         }} >
                         <MaterialCommunityIcons
                             name='swap-vertical'
-                            size={fontSize}
+                            size={swapPicSize}
                             color={'black'}
                         >
                         </MaterialCommunityIcons>
@@ -128,7 +126,7 @@ export default function Dices() {
                             }} >
                             <MaterialCommunityIcons
                                 name='swap-vertical'
-                                size={fontSize}
+                                size={swapPicSize}
                                 color={'black'}
                             >
                             </MaterialCommunityIcons>
@@ -140,3 +138,12 @@ export default function Dices() {
         );
     }
 }
+
+const style = StyleSheet.create({
+  choiceDice: {
+    alignSelf: 'center',
+    swapPicSize: 12,
+    marginBottom: 2
+  },
+});
+

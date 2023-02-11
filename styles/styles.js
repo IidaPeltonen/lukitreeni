@@ -26,7 +26,6 @@ export default StyleSheet.create({
     width: '90%',
     aspectRatio: 2,
     resizeMode: 'contain',
-    // marginBottom: 20,
     maxHeight: '100%'
   },
   //ohjetekstien otsikot kaikilla etusivulla
@@ -129,11 +128,9 @@ export default StyleSheet.create({
 
   //muistettavan numerosarjan näyttö
   MemoryTable: {
+    height: '60%',
     backgroundColor: '#c9f1fd',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '80%',
-    padding: 10
+    marginTop: 20
   },
   //vierekkäin haluttavat elementit
   nextTo: {
@@ -153,7 +150,6 @@ export default StyleSheet.create({
     marginRight: 10,
     padding: 5,
     alignSelf: 'center',
-    marginTop: 15
   },
   //työmuisti-sivun tarkista-napin teksti
   checkNumberText: {
@@ -185,7 +181,7 @@ export default StyleSheet.create({
   DiceTable: {
     backgroundColor: '#c9f1fd',
     height: 550,
-    marginTop: 30,
+    marginTop: 10,
     alignItems: 'center'
   },
   //yhden nopan väärä vastaus

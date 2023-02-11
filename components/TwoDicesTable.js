@@ -12,7 +12,7 @@ const ansBoxHeight = height / 100 * 25
 const marginTop = ansBoxHeight / 100 * 15
 const plusPicSize = height / 100 * 10
 const fontSize = ansBoxHeight / 2
-const wrongFontSize = fontSize / 4
+const wrongFontSize = fontSize / 3
 
 export default function TwoDicesTable() {
     const [firstname, setFirstname] = useState('');
@@ -137,7 +137,7 @@ export default function TwoDicesTable() {
     return (
         <View style={styles.frontContainer}>
             <View>
-                <Text style={styles.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
+                <Text style={style.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
             </View>
             <View style={styles.DiceTable}>
                 {done === 0 &&
@@ -153,9 +153,9 @@ export default function TwoDicesTable() {
                 {done !== 0 &&
                     <View>
                         <View style={styles.nextToDices}>
-                            <Text style={style.dice}>{dice}</Text>
+                            <Text>{dice}</Text>
                             <Text style={style.plus}>{plusPic}</Text>
-                            <Text style={style.dice}>{dice2}</Text>
+                            <Text>{dice2}</Text>
                             <Text style={style.plus}>{equalPic}</Text>
                             <TextInput
                                 placeholder=""
@@ -170,7 +170,7 @@ export default function TwoDicesTable() {
                             <Pressable
                                 title='Check'
                                 onPress={checkDiceSum}
-                                style={styles.checkNumber}>
+                                style={style.checkDice}>
                                 <Text style={styles.startText}>Tarkista!</Text>
                             </Pressable>
                             <Text style={style.wrong}> {wrong} {wrongPic}</Text>
@@ -200,6 +200,24 @@ const style = StyleSheet.create({
         fontSize: wrongFontSize,
         fontFamily: 'Roboto',
         color: 'red',
-        justifyContent: 'center'
+        marginTop: wrongFontSize *1.5
     },
+    checkDice: {
+        width: ansBoxHeight*2,
+        backgroundColor: '#023020',
+        alignItems: 'center',
+        borderRadius: 5,
+        marginBottom: 20,
+        marginRight: 10,
+        alignSelf: 'center',
+        marginTop: wrongFontSize
+      },
+      textHeader: {
+        fontSize: 20,
+        fontFamily: 'Roboto',
+        alignSelf: 'center',
+        fontWeight: 'bold',
+        margin: 0,
+        padding: 0
+      },
 });
