@@ -38,12 +38,12 @@ export default function DicesTable() {
             color={'black'}>
         </MaterialCommunityIcons>
 
-const rightPic =
-    <MaterialCommunityIcons
-    name='flower-poppy'
-    size={wrongFontSize}
-    color={'red'}>
-    </MaterialCommunityIcons>
+    const rightPic =
+        <MaterialCommunityIcons
+            name='flower-poppy'
+            size={wrongFontSize}
+            color={'red'}>
+        </MaterialCommunityIcons>
 
     useEffect(() => {
         getData();
@@ -121,38 +121,38 @@ const rightPic =
                 {done !== 0 &&
                     <View>
                         <View style={styles.nextToDices}>
-                        <Text>{dice}</Text>
-                        <Text style={style.plus}>{equalPic}</Text>
-                        <TextInput
-                            placeholder=""
-                            value={text}
-                            maxLength={1}
-                            style={style.input}
-                            keyboardType='number-pad'
-                            onChangeText={(text) => { onChangeText(text) }}
-                        />
+                            <Text>{dice}</Text>
+                            <Text style={style.plus}>{equalPic}</Text>
+                            <TextInput
+                                placeholder=""
+                                value={text}
+                                maxLength={1}
+                                style={style.input}
+                                keyboardType='number-pad'
+                                onChangeText={(text) => { onChangeText(text) }}
+                            />
+                        </View>
+                        <View style={styles.nextTo}>
+                            <Pressable
+                                title='Uudet'
+                                onPress={checkDice}
+                                style={style.checkDice}>
+                                <Text style={styles.startText}>Tarkista!</Text>
+                            </Pressable>
+                            <Text style={style.wrong}>{wrong} {wrongPic}</Text>
+                        </View>
                     </View>
-                    <View style={styles.nextTo}>
-                        <Pressable
-                            title='Uudet'
-                            onPress={checkDice}
-                            style={style.checkDice}>
-                            <Text style={styles.startText}>Tarkista!</Text>
-                        </Pressable>
-                        <Text style={style.wrong}>{wrong} {wrongPic}</Text>
-                    </View>
+                }
             </View>
-            }
+            <Footer done={done} right={right} />
         </View>
-        <Footer done={done} right={right} />
-    </View>
-);
+    );
 }
 
 const style = StyleSheet.create({
     input: {
         height: ansBoxHeight,
-        width: ansBoxHeight, 
+        width: ansBoxHeight,
         borderWidth: 2,
         fontSize: fontSize,
         backgroundColor: 'white',
@@ -167,10 +167,10 @@ const style = StyleSheet.create({
         fontSize: wrongFontSize,
         fontFamily: 'Roboto',
         color: 'red',
-        marginTop: wrongFontSize *1.5
+        marginTop: wrongFontSize * 1.5
     },
     checkDice: {
-        width: ansBoxHeight*2,
+        width: ansBoxHeight * 2,
         backgroundColor: '#023020',
         alignItems: 'center',
         borderRadius: 5,
@@ -178,13 +178,13 @@ const style = StyleSheet.create({
         marginRight: 10,
         alignSelf: 'center',
         marginTop: wrongFontSize
-      },
-      textHeader: {
+    },
+    textHeader: {
         fontSize: 20,
         fontFamily: 'Roboto',
         alignSelf: 'center',
         fontWeight: 'bold',
         margin: 0,
         padding: 0
-      },
+    },
 });

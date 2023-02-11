@@ -18,9 +18,9 @@ let totalRight = 0 //kaikki oikeat yhteensä
 const height = (Dimensions.get('window').height)
 const boxHeight = height / 100 * 30
 const boxWidth = boxHeight * 3
-const fontSize = boxHeight /2
-const picSize = fontSize /2
-const infoSize = picSize /2
+const fontSize = boxHeight / 2
+const picSize = fontSize / 2
+const infoSize = picSize / 2
 
 export default function Memory() {
   const [firstname, setFirstname] = useState('');
@@ -44,7 +44,7 @@ export default function Memory() {
   const [isNewVisible, setIsNewVisible] = useState(false) //näytettävä arvo uudet-nappi
   const [time, setTime] = useState(10000) //Leenan antama aika, kauanko lukujono näkyy
 
-   //käyttäjän nimen haku
+  //käyttäjän nimen haku
   //ja lvl-tarkistus
   useEffect(() => {
     getData();
@@ -96,7 +96,7 @@ export default function Memory() {
     setInfoPics2('')
     setInfoPics3('')
     setInfoPics4('')
-    if (wrong === 8) {
+    if (wrong === 1) {
       setGameEnded(true)
       return
     }
@@ -236,86 +236,86 @@ export default function Memory() {
         if (x === 0) {
           setInfoPics0(<MaterialCommunityIcons
             name='check'
-            size= {picSize}
+            size={picSize}
             color={'green'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 1) {
           setInfoPics1(<MaterialCommunityIcons
             name='check'
-            size= {picSize}
+            size={picSize}
             color={'green'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 2) {
           setInfoPics2(<MaterialCommunityIcons
             name='check'
-            size= {picSize}
+            size={picSize}
             color={'green'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 3) {
           setInfoPics3(<MaterialCommunityIcons
             name='check'
-            size= {picSize}
+            size={picSize}
             color={'green'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 4) {
           setInfoPics4(<MaterialCommunityIcons
             name='check'
-            size= {picSize}
+            size={picSize}
             color={'green'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
       }
       else {
         vaarin = vaarin + 1
         if (x === 0) {
           setInfoPics0(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {picSize}
+            size={picSize}
             color={'red'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 1) {
           setInfoPics1(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {picSize}
+            size={picSize}
             color={'red'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 2) {
           setInfoPics2(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {picSize}
+            size={picSize}
             color={'red'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 3) {
           setInfoPics3(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {picSize}
+            size={picSize}
             color={'red'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
         if (x === 4) {
           setInfoPics4(<MaterialCommunityIcons
             name='alert-octagram'
-            size= {30}
+            size={30}
             color={'red'}
             key={x}>
-        </MaterialCommunityIcons>) 
-        } 
+          </MaterialCommunityIcons>)
+        }
       }
     }
 
@@ -343,16 +343,16 @@ export default function Memory() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
-          <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-          <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi. </Text>
-          <Text style={styles.plain}>Kun tyhjä kenttä ilmestyy, kirjoita numero siihen. Taso nousee pikkuhiljaa, </Text>
-          <Text style={styles.plain}>mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
-          <Pressable
-            title='Aloita!'
-            onPress={startGame}
-            style={styles.start}>
-            <Text style={styles.startText}>Aloita!</Text>
-          </Pressable>
+        <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
+        <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi. </Text>
+        <Text style={styles.plain}>Kun tyhjä kenttä ilmestyy, kirjoita numero siihen. Taso nousee pikkuhiljaa, </Text>
+        <Text style={styles.plain}>mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
+        <Pressable
+          title='Aloita!'
+          onPress={startGame}
+          style={styles.start}>
+          <Text style={styles.startText}>Aloita!</Text>
+        </Pressable>
         <Footer done={done} right={totalRight} />
       </View>
     );
@@ -361,23 +361,20 @@ export default function Memory() {
   //jos aloita on painettu, mutta peli on jo loppunut
   else if (gameEnded === true) {
     return (
-      <ScrollView>
-        <View style={styles.frontContainer}>
-          <View style={styles.center}>
-            <Text style={styles.plainText}> Peli päättyi, sait 8 väärin </Text>
-            <Text style={styles.plainText}> ja {totalRight} oikein </Text>
-            <View style={styles.center}>
-              <Pressable
-                title='Aloita alusta!'
-                onPress={startGame}
-                style={styles.start}>
-                <Text style={styles.startText}>Aloita alusta!</Text>
-              </Pressable>
-            </View>
-          </View>
-          <Footer done={done} right={totalRight} />
+      <View style={styles.frontContainer}>
+        <View style={styles.MemoryTable}>
+          <Text></Text>
+          <Text style={styles.textHeader}> Peli päättyi, sait 8 väärin </Text>
+          <Text style={styles.textHeader}> ja {totalRight} oikein </Text>
+          <Pressable
+            title='Aloita alusta!'
+            onPress={startGame}
+            style={styles.start}>
+            <Text style={styles.startText}>Aloita alusta!</Text>
+          </Pressable>
         </View>
-      </ScrollView>
+        <Footer done={done} right={totalRight} />
+      </View>
     );
   }
 
@@ -385,36 +382,36 @@ export default function Memory() {
     return (
       <View style={styles.frontContainer}>
         <View style={styles.MemoryTable}>
-            {isNumberVisible &&
-              <Text style={style.numberTo}> {numbers} </Text>
-            }
-            {isInputVisible &&
-              <TextInput
-                placeholder=""
-                value={answer}
-                style={style.numberTo2}
-                keyboardType='number-pad'
-                onChangeText={setAnswer}
-              />
-            }
-            <Text style={styles.infoPics}> {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4}  </Text>
-            <Text style={style.info}> {info}  </Text>
-              {IsCheckVisible &&
-                <Pressable
-                  title='Tarkista'
-                  onPress={editAnswer}
-                  style={styles.checkNumber}>
-                  <Text style={styles.checkNumberText}>Tarkista</Text>
-                </Pressable>
-              }
-              {isNewVisible &&
-                <Pressable
-                  title='Uudet'
-                  onPress={checkLvl}
-                  style={styles.checkNumber}>
-                  <Text style={styles.checkNumberText}>Arvo uudet</Text>
-                </Pressable>
-              }
+          {isNumberVisible &&
+            <Text style={style.numberTo}> {numbers} </Text>
+          }
+          {isInputVisible &&
+            <TextInput
+              placeholder=""
+              value={answer}
+              style={style.numberTo2}
+              keyboardType='number-pad'
+              onChangeText={setAnswer}
+            />
+          }
+          <Text style={styles.infoPics}> {infoPics0} {infoPics1} {infoPics2} {infoPics3} {infoPics4}  </Text>
+          <Text style={style.info}> {info}  </Text>
+          {IsCheckVisible &&
+            <Pressable
+              title='Tarkista'
+              onPress={editAnswer}
+              style={styles.checkNumber}>
+              <Text style={styles.checkNumberText}>Tarkista</Text>
+            </Pressable>
+          }
+          {isNewVisible &&
+            <Pressable
+              title='Uudet'
+              onPress={checkLvl}
+              style={styles.checkNumber}>
+              <Text style={styles.checkNumberText}>Arvo uudet</Text>
+            </Pressable>
+          }
         </View>
         <Footer done={done} right={totalRight} />
       </View>
@@ -443,11 +440,11 @@ const style = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
   },
-    //työmuistin tekstikenttä:
-    info: {
-      fontSize: infoSize,
-      fontFamily: 'Roboto',
-      color: 'red',
-      textAlign: 'center'
-    },
+  //työmuistin tekstikenttä:
+  info: {
+    fontSize: infoSize,
+    fontFamily: 'Roboto',
+    color: 'red',
+    textAlign: 'center'
+  },
 });

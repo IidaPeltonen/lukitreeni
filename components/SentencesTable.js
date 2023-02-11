@@ -42,25 +42,25 @@ export default function SentencesTable({ sentences, time }) {
                         </Text>
                     </>
                 }
-                </View>
+            </View>
         </View>
     )
 }
 
 const style = StyleSheet.create({
     SentencesTable: {
-         height: tableHeight,
-         textAlign: 'center',
-         alignItems: 'center',
-         justifyContent: 'center',
-         borderWidth: 5,
-         marginLeft: sideMargin,
-         marginRight: sideMargin,
-         borderStyle: 'dashed',
-     },
-     showSen: {
-         fontSize: fontSize,
-         fontFamily: 'Roboto',
-         fontWeight: 'bold',
-       },
- });
+        height: tableHeight,
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 5,
+        marginLeft: sideMargin,
+        marginRight: sideMargin,
+        borderStyle: 'dashed',
+    },
+    showSen: {
+        fontSize: fontSize,
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+    },
+});

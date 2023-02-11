@@ -52,10 +52,10 @@ export default function Dices() {
         setNotStarted(false)
     }
 
-      //funktio tason muuttujan nollaukseen
-  function resetLevel() {
-    setOneOrTwo(0)
-  }
+    //funktio tason muuttujan nollaukseen
+    function resetLevel() {
+        setOneOrTwo(0)
+    }
 
 
     //jos peliä ei ole aloitettu
@@ -65,28 +65,28 @@ export default function Dices() {
                 <View style={styles.header}>
                     <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
                 </View>
-                    <Text style={styles.plain}>Valitse montaako noppaa haluat käyttää:</Text>
-                    <View style={styles.chooseLvl}>
-                        <Pressable
-                            title='1'
-                            onPress={() => {
-                                let helper = 1
-                                setOneOrTwo(helper)
-                                startGame()
-                            }}>
-                            <Text style={style.choiceDice}> {dicePicOne} </Text>
-                        </Pressable>
-                        <Pressable
-                            title='2'
-                            onPress={() => {
-                                let helper = 2
-                                setOneOrTwo(helper)
-                                startGame()
-                            }}>
-                            <Text style={style.choiceDice}> {dicePicTwo}{dicePicTwo}  </Text>
-                        </Pressable>
-                        <Text></Text>
-                    </View>
+                <Text style={styles.plain}>Valitse montaako noppaa haluat käyttää:</Text>
+                <View style={styles.chooseLvl}>
+                    <Pressable
+                        title='1'
+                        onPress={() => {
+                            let helper = 1
+                            setOneOrTwo(helper)
+                            startGame()
+                        }}>
+                        <Text style={style.choiceDice}> {dicePicOne} </Text>
+                    </Pressable>
+                    <Pressable
+                        title='2'
+                        onPress={() => {
+                            let helper = 2
+                            setOneOrTwo(helper)
+                            startGame()
+                        }}>
+                        <Text style={style.choiceDice}> {dicePicTwo}{dicePicTwo}  </Text>
+                    </Pressable>
+                    <Text></Text>
+                </View>
                 <Footer done={done} />
             </View>
         );
@@ -140,10 +140,10 @@ export default function Dices() {
 }
 
 const style = StyleSheet.create({
-  choiceDice: {
-    alignSelf: 'center',
-    swapPicSize: 12,
-    marginBottom: 2
-  },
+    choiceDice: {
+        alignSelf: 'center',
+        swapPicSize: 12,
+        marginBottom: 2
+    },
 });
 

@@ -130,13 +130,13 @@ export default function Letters() {
             </TextInput>
           </View>
           <View style={styles.nextTo}>
-            {text !== '' && 
-            <Pressable
-              title='Uudet'
-              onPress={checkLetter}
-              style={style.checkLetter}>
-              <Text style={styles.checkLetterText}>Tarkista!</Text>
-            </Pressable>
+            {text !== '' &&
+              <Pressable
+                title='Uudet'
+                onPress={checkLetter}
+                style={style.checkLetter}>
+                <Text style={styles.checkLetterText}>Tarkista!</Text>
+              </Pressable>
             }
             <Text style={style.wrong}>  {alert} {alertPic} </Text>
           </View>
@@ -179,7 +179,7 @@ const style = StyleSheet.create({
     color: 'red',
     justifyContent: 'center'
   },
-  checkLetter:  {
+  checkLetter: {
     backgroundColor: '#023020',
     alignItems: 'center',
     justifyContent: 'center',

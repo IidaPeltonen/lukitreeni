@@ -200,10 +200,10 @@ const style = StyleSheet.create({
         fontSize: wrongFontSize,
         fontFamily: 'Roboto',
         color: 'red',
-        marginTop: wrongFontSize *1.5
+        marginTop: wrongFontSize * 1.5
     },
     checkDice: {
-        width: ansBoxHeight*2,
+        width: ansBoxHeight * 2,
         backgroundColor: '#023020',
         alignItems: 'center',
         borderRadius: 5,
@@ -211,13 +211,13 @@ const style = StyleSheet.create({
         marginRight: 10,
         alignSelf: 'center',
         marginTop: wrongFontSize
-      },
-      textHeader: {
+    },
+    textHeader: {
         fontSize: 20,
         fontFamily: 'Roboto',
         alignSelf: 'center',
         fontWeight: 'bold',
         margin: 0,
         padding: 0
-      },
+    },
 });

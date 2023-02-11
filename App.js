@@ -33,7 +33,7 @@ export default function App() {
         drawerStyle: {backgroundColor: '#c9f1fd'} 
       }}>
         <Stack.Screen name="Etusivu" component={HomeScreen} style={styles.navi} />
-        <Stack.Screen name="Kokonaissanahahmotus" component={Words} style={styles.navi} />
+        <Stack.Screen name="Sanat" component={Words} style={styles.navi} />
         <Stack.Screen name="Virkkeet" component={Sentences} style={styles.navi} />
         <Stack.Screen name="Numerot" component={Numbers} style={styles.navi} />
         <Stack.Screen name="Työmuisti" component={Memory} style={styles.navi} />
@@ -41,8 +41,6 @@ export default function App() {
         <Stack.Screen name="Nopat" component={Dices} style={styles.navi} />
         <Stack.Screen name=" " component={''} />
         <Stack.Screen name="  " component={''} />
-        <Stack.Screen name="   " component={''} />
-        <Stack.Screen name="    " component={''} />
         </Drawer.Navigator>
     </NavigationContainer>
   );

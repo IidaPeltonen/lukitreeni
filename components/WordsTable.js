@@ -48,7 +48,7 @@ export default function WordsTable({ words, time }) {
 }
 
 const style = StyleSheet.create({
-   WordsTable: {
+    WordsTable: {
         height: tableHeight,
         textAlign: 'center',
         alignItems: 'center',
@@ -62,5 +62,5 @@ const style = StyleSheet.create({
         fontSize: fontSize,
         fontFamily: 'Roboto',
         fontWeight: 'bold',
-      },
+    },
 });

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
 import styles from "../styles/styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
@@ -7,30 +7,30 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 export default function Footer({ done, right }) {
   const [firstname, setFirstname] = useState('');
 
-  if(firstname === '') {
+  if (firstname === '') {
     setFirstname('Oppilas')
   }
 
-let studentPic = 
-<MaterialCommunityIcons
-    name= 'human-child'
-    size={20}
-    color={'black'}>
-</MaterialCommunityIcons>
+  let studentPic =
+    <MaterialCommunityIcons
+      name='human-child'
+      size={20}
+      color={'black'}>
+    </MaterialCommunityIcons>
 
-let donePic = 
-<MaterialCommunityIcons
-    name= 'folder-download-outline'
-    size={20}
-    color={'black'}>
-</MaterialCommunityIcons>
+  let donePic =
+    <MaterialCommunityIcons
+      name='folder-download-outline'
+      size={20}
+      color={'black'}>
+    </MaterialCommunityIcons>
 
-let rightPic = 
-<MaterialCommunityIcons
-    name= 'check'
-    size={20}
-    color={'black'}>
-</MaterialCommunityIcons>
+  let rightPic =
+    <MaterialCommunityIcons
+      name='check'
+      size={20}
+      color={'black'}>
+    </MaterialCommunityIcons>
 
   useEffect(() => {
     getData();
@@ -42,13 +42,13 @@ let rightPic =
       if (firstname !== null) {
         setFirstname(firstname);
       }
-    } catch(e) {
+    } catch (e) {
       console.log('error: ' + e)
     }
   }
 
   //jos tehtyjä ei ole
-  if (done === 0 || done === '' ) {
+  if (done === 0 || done === '') {
     return (
       <View style={styles.footer}>
         <Text style={styles.doer}> {studentPic}: {firstname}   </Text>
@@ -64,7 +64,7 @@ let rightPic =
       </View>
     )
   }
-    
+
   else {
     return (
       <View style={styles.footer}>

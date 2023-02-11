@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image } from "react-native";
+import { Pressable, View, Text, Image, Dimensions } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import NumbersTable from "./NumbersTable";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
 let done = 0
+const height = (Dimensions.get('window').height)
+const tableHeight = height * 0.51
+const swapPicSize = tableHeight / 5
 
 //tarvitaan lista numeroita
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
@@ -36,6 +40,11 @@ export default function Numbers() {
     function startGame() {
         setIsStarted(true)
         randomizeNumbers()
+    }
+
+    //funktio tason muuttujan nollaukseen
+    function resetLevel() {
+        setIsStarted(false)
     }
 
     function randomizeNumbers() {
@@ -73,6 +82,21 @@ export default function Numbers() {
     else {
         return (
             <View style={styles.frontContainer}>
+                <View style={styles.right}>
+                    <Pressable
+                        style={styles.change}
+                        title='change'
+                        onPress={() => {
+                            resetLevel();
+                        }} >
+                        <MaterialCommunityIcons
+                            name='restart'
+                            size={swapPicSize}
+                            color={'black'}
+                        >
+                        </MaterialCommunityIcons>
+                    </Pressable>
+                </View>
                 <NumbersTable numbers={number} time={time} />
                 <Footer done={done} right={right} />
             </View>

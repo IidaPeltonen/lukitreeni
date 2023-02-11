@@ -1,4 +1,4 @@
-import "react-native-gesture-handler"; 
+import "react-native-gesture-handler";
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, TextInput, Pressable, Alert } from "react-native";
 import styles from "../styles/styles";
@@ -61,22 +61,22 @@ export default function HomeScreen({ navigation }) {
           <Image source={require('./logo.jpg')}
             style={styles.logoHomepage} />
         </View>
-          <Text style={styles.textHeader}>Tervetuloa lukitreeniin!</Text>
-          <Text></Text>
-            <TextInput
-              style={styles.textHeaderInput}
-              onChangeText={setFirstname}
-              value={firstname}
-              placeholder="Kirjoita nimesi tähän"
-            />
-            <Pressable
-              title="Save firstname"
-              style={styles.start}
-              onPress={() => {
-                storeData(firstname);
-              }}>
-              <Text style={styles.startText}>Aloita!</Text>
-            </Pressable>
+        <Text style={styles.textHeader}>Tervetuloa lukitreeniin!</Text>
+        <Text></Text>
+        <TextInput
+          style={styles.textHeaderInput}
+          onChangeText={setFirstname}
+          value={firstname}
+          placeholder="Kirjoita nimesi tähän"
+        />
+        <Pressable
+          title="Save firstname"
+          style={styles.start}
+          onPress={() => {
+            storeData(firstname);
+          }}>
+          <Text style={styles.startText}>Aloita!</Text>
+        </Pressable>
       </View>
     );
   }

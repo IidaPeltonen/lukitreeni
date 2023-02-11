@@ -3,9 +3,9 @@ import { View, Text, Dimensions, StyleSheet } from "react-native";
 import styles from "../styles/styles";
 
 const height = (Dimensions.get('window').height)
-const tableHeight = height * 0.51
+const tableHeight = height * 0.4
 const sideMargin = height / 4.7
-const fontSize = tableHeight / 4.4
+const fontSize = tableHeight / 2.5
 
 export default function NumbersTable({ numbers, time }) {
     const [numIndex, setNumIndex] = useState(0);
@@ -41,21 +41,20 @@ export default function NumbersTable({ numbers, time }) {
 
 const style = StyleSheet.create({
     NumbersTable: {
-         height: tableHeight,
-         textAlign: 'center',
-         alignItems: 'center',
-         justifyContent: 'center',
-         borderWidth: 5,
-         marginLeft: sideMargin,
-         marginRight: sideMargin,
-         borderStyle: 'dashed',
-         marginTop: sideMargin /2
-     },
-     showWord: {
-         fontSize: fontSize,
-         fontFamily: 'Roboto',
-         fontWeight: 'bold',
-       },
- });
+        height: tableHeight,
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 5,
+        marginLeft: sideMargin * 3,
+        marginRight: sideMargin * 3,
+        borderStyle: 'dashed',
+    },
+    showWord: {
+        fontSize: fontSize,
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+    },
+});
 
 
