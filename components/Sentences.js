@@ -168,7 +168,7 @@ export default function Sentences() {
 
   //jos taso on 1, eli 1-2lk
   else if (difficulty === 1) {
-    const time = 50
+    const time = 15
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>
@@ -194,7 +194,7 @@ export default function Sentences() {
 
   //jos taso on 2, eli 3-4lk
   else if (difficulty === 2) {
-    const time = 40
+    const time = 15
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>

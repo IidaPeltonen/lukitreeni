@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "luki",
+    "name": "Lukitreeni",
     "slug": "iipi-6",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "landscape",
-    "icon": "./assets/icon.png",
+    "icon": "./components/kauppaLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -18,7 +18,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {

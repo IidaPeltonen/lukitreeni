@@ -42,7 +42,7 @@ export default function Memory() {
   const [isInputVisible, setIsInputVisible] = useState(false) //näytettävä input-kenttä
   const [IsCheckVisible, setIsCheckVisible] = useState(false) //näytettävä tarkista-nappi
   const [isNewVisible, setIsNewVisible] = useState(false) //näytettävä arvo uudet-nappi
-  const [time, setTime] = useState(10000) //Leenan antama aika, kauanko lukujono näkyy
+  const [time, setTime] = useState(9000) //Leenan antama aika, kauanko lukujono näkyy
 
   //käyttäjän nimen haku
   //ja lvl-tarkistus
@@ -66,16 +66,16 @@ export default function Memory() {
   //hakee ajan vaikeuden mukaan, Leena saa miettiä ajat
   function chckTime() {
     if (difficulty === 2) {
-      setTime(10000)
+      setTime(time)
     }
     if (difficulty === 3) {
-      setTime(13000)
+      setTime(time)
     }
     if (difficulty === 4) {
-      setTime(17000)
+      setTime(time)
     }
     if (difficulty === 5) {
-      setTime(20000)
+      setTime(time)
     }
   }
 
@@ -344,9 +344,8 @@ export default function Memory() {
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
         <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-        <Text style={styles.plain}>Kun painat 'Aloita', ruudulle ilmestyy numerosarja, paina se mieleesi. </Text>
-        <Text style={styles.plain}>Kun tyhjä kenttä ilmestyy, kirjoita numero siihen. Taso nousee pikkuhiljaa, </Text>
-        <Text style={styles.plain}>mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
+        <Text style={styles.plain}> Paina ruudulla näkyvä numerosarja mieleesi, ja ajan loppuessa kirjoita se tyhjään kenttään. </Text>
+        <Text style={styles.plain}> Taso nousee pikkuhiljaa,mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin. </Text>
         <Pressable
           title='Aloita!'
           onPress={startGame}

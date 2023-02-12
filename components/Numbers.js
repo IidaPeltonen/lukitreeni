@@ -20,7 +20,7 @@ export default function Numbers() {
     const [firstname, setFirstname] = useState('');
     const [number, setNumber] = useState([])
     const [isStarted, setIsStarted] = useState(false)
-    let time = 15
+    let time = 5
 
     useEffect(() => {
         getData();

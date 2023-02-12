@@ -44,7 +44,11 @@ const words4 = ['sauna', 'sonni', 'nasta', 'tassu', 'suoni', 'tunti', 'nuttu', '
   'tusina', 'unelma', 'anomus', 'lautanen', 'sininen', 'orava', 'palikka', 'seitsemän', 'räpylä', 'päärynä',
   'kattila', 'sinappi', 'rusakko', 'mansikka', 'kirjuri', 'sokkelo', 'tanssija', 'vaahtera', 'metsikkö',
   'kataja', 'lepakko', 'oppilas', 'koulutus', 'palkinto', 'retkeily', 'putkisto', 'kurpitsa']
-const words5 = ['tosipitkäsana', 'vieläpidempisana', 'lentokoneturbiini']
+const words5 = ['flamingo', 'aurinkoinen', 'suunnilleen', 'juokseminen', 'kuningaskunta', 
+'saamaisillaan', 'gerbiilit', 'langoissa', 'rautatievaunu', 'kukkakauppias', 'aurinkoinen', 
+'viherkasvien', 'kukkaruukku', 'portinavain', 'hiekkalaatikko', 'loisteputki', 'kauhallinen', 'ruusutarha',
+'mausteinen', 'tonttupuku', 'piiloleikki', 'viiruhaukka', 'kassillinen', 'flyygeli','enimmäkseen', 
+'vyötiäinen', 'päällyste', 'öljyinen', 'sadekuuro']
 const words6 = ['omu', 'letu', 'isal', 'övein', 'uumi', 'ioto', 'aksi', 'äkkö', 'vyyri', 'louki', 'ima',
   'lati', 'ysöl', 'ivoin', 'yyni', 'äitö', 'asto', 'ykke', 'vaare', 'kyöli', 'laijo', 'ratte', 'mörjä',
   'vahke', 'heitus', 'pelvas', 'niirma', 'keissy', 'pirtto', 'kursto', 'imo', 'leta', 'äsel', 'ovein',
@@ -216,7 +220,7 @@ export default function Words() {
 
   //jos taso on 1
   else if (difficulty === 1) {
-    const time = 30
+    const time = 5
     return (
       <View style={styles.frontContainer} >
         <View style={styles.right}>
@@ -242,7 +246,7 @@ export default function Words() {
 
   //jos taso on 2
   else if (difficulty === 2) {
-    const time = 20
+    const time = 2
     return (
       <View style={styles.frontContainer} >
         <View style={styles.right}>
@@ -268,7 +272,7 @@ export default function Words() {
 
   //jos taso on 3
   else if (difficulty === 3) {
-    const time = 15
+    const time = 5
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>
@@ -293,7 +297,7 @@ export default function Words() {
   }
   //jos taso on 4
   else if (difficulty === 4) {
-    const time = 15
+    const time = 5
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>
@@ -318,7 +322,7 @@ export default function Words() {
   }
   //jos taso on 5
   else if (difficulty === 5) {
-    const time = 15
+    const time = 8
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>
@@ -343,7 +347,7 @@ export default function Words() {
   }
   //jos taso on 6
   else if (difficulty === 6) {
-    const time = 15
+    const time = 8
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>
