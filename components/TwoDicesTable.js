@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, TextInput, Keyboard, Dimensions, StyleSheet } from "react-native";
+import { Pressable, View, Text, TextInput, Keyboard, Dimensions, StyleSheet, ScrollView } from "react-native";
 import styles from "../styles/styles";
-import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
 let right = 0
 let wrongAns = 0
 const height = (Dimensions.get('window').height)
-const ansBoxHeight = height / 100 * 25
+const ansBoxHeight = height / 100 * 20
 const marginTop = ansBoxHeight / 100 * 15
 const plusPicSize = height / 100 * 10
 const fontSize = ansBoxHeight / 2
@@ -135,9 +134,10 @@ export default function TwoDicesTable() {
     }
 
     return (
+        <ScrollView>
         <View style={styles.frontContainer}>
             <View>
-                <Text style={style.textHeader}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
+                <Text style={styles.textHeader2}>Kirjoita noppien yhteenlaskettu silmäluku</Text>
             </View>
             <View style={styles.DiceTable}>
                 {done === 0 &&
@@ -178,8 +178,8 @@ export default function TwoDicesTable() {
                     </View>
                 }
             </View>
-            <Footer done={done} right={right} />
         </View>
+        </ScrollView>
     );
 }
 
@@ -191,10 +191,10 @@ const style = StyleSheet.create({
         fontSize: 60,
         backgroundColor: 'white',
         textAlign: 'center',
-        marginTop: marginTop
+        marginTop: marginTop  *2.5
     },
     plus: {
-        paddingTop: marginTop * 2
+        paddingTop: marginTop * 3
     },
     wrong: {
         fontSize: wrongFontSize,
@@ -211,13 +211,5 @@ const style = StyleSheet.create({
         marginRight: 10,
         alignSelf: 'center',
         marginTop: wrongFontSize
-    },
-    textHeader: {
-        fontSize: 20,
-        fontFamily: 'Roboto',
-        alignSelf: 'center',
-        fontWeight: 'bold',
-        margin: 0,
-        padding: 0
     },
 });

@@ -22,13 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./components/kauppaLogo.png"
       },
       "package": "com.iidapeltonen.iipi6"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./components/kauppaLogo.png"
     },
     "extra": {
       "eas": {

@@ -207,4 +207,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+    //noppine otsikot
+    textHeader2: {
+      fontSize: 15,
+      fontFamily: 'Roboto',
+      alignSelf: 'center',
+      fontWeight: 'bold'
+    },
 });

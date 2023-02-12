@@ -42,7 +42,7 @@ export default function Memory() {
   const [isInputVisible, setIsInputVisible] = useState(false) //näytettävä input-kenttä
   const [IsCheckVisible, setIsCheckVisible] = useState(false) //näytettävä tarkista-nappi
   const [isNewVisible, setIsNewVisible] = useState(false) //näytettävä arvo uudet-nappi
-  const [time, setTime] = useState(9000) //Leenan antama aika, kauanko lukujono näkyy
+  const [time, setTime] = useState(7000) //Leenan antama aika, kauanko lukujono näkyy
 
   //käyttäjän nimen haku
   //ja lvl-tarkistus
@@ -65,18 +65,7 @@ export default function Memory() {
 
   //hakee ajan vaikeuden mukaan, Leena saa miettiä ajat
   function chckTime() {
-    if (difficulty === 2) {
-      setTime(time)
-    }
-    if (difficulty === 3) {
-      setTime(time)
-    }
-    if (difficulty === 4) {
-      setTime(time)
-    }
-    if (difficulty === 5) {
-      setTime(time)
-    }
+      setTime(7000)
   }
 
   function startGame() {
@@ -192,7 +181,7 @@ export default function Memory() {
       setIsInputVisible(true)
       setIsCheckVisible(true)
       setIsNewVisible(false)
-    }, time)
+    }, 7000)
   }
 
   function editAnswer() {

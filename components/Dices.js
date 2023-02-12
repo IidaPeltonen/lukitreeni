@@ -8,9 +8,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { ScrollView } from "react-native-gesture-handler";
 
+let right = 0
 const height = (Dimensions.get('window').height)
 const tableHeight = height * 0.51
-const swapPicSize = tableHeight / 5
+const swapPicSize = tableHeight / 5.5
 const diceSize = tableHeight / 4
 
 export default function Dices() {
@@ -110,12 +111,12 @@ export default function Dices() {
                     </Pressable>
                 </View>
                 <DicesTable />
+                <Footer done={done} right={right} />
             </View>
         );
     }
     else if (notStarted === false && oneOrTwo === 2) {
         return (
-            <ScrollView>
                 <View style={styles.frontContainer}>
                     <View style={styles.right}>
                         <Pressable
@@ -133,8 +134,8 @@ export default function Dices() {
                         </Pressable>
                     </View>
                     <TwoDicesTable />
+                    <Footer done={done} right={right} />
                 </View>
-            </ScrollView>
         );
     }
 }
@@ -142,8 +143,6 @@ export default function Dices() {
 const style = StyleSheet.create({
     choiceDice: {
         alignSelf: 'center',
-        swapPicSize: 12,
-        marginBottom: 2
     },
 });
 

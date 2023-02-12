@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Pressable, View, Text, Image, TextInput, StyleSheet, Keyboard, Dimensions } from "react-native";
+import { Pressable, View, Text, Image, TextInput, StyleSheet, Keyboard, Dimensions, ScrollView } from "react-native";
 import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -99,6 +99,7 @@ export default function Letters() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
+        <ScrollView>
         <Text style={styles.textHeader2}>Tunnista isot kirjaimet</Text>
         <Text style={styles.plain}>Kun painat 'Aloita', ruudulle alkaa ilmestyä isoja kirjaimia.</Text>
         <Text style={styles.plain}>Kirjoita näkemäsi iso kirjain pienellä tyhjään ruutuun. </Text>
@@ -108,6 +109,7 @@ export default function Letters() {
           style={styles.start}>
           <Text style={styles.startText}>Aloita!</Text>
         </Pressable>
+        </ScrollView>
         <Footer done={done} right={right} />
       </View>
     );

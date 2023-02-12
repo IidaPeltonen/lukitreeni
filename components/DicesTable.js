@@ -4,6 +4,7 @@ import styles from "../styles/styles";
 import Footer from "./Footer";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import { ScrollView } from "react-native-gesture-handler";
 
 let right = 0
 let wrongAns = 0
@@ -103,6 +104,7 @@ export default function DicesTable() {
     }
 
     return (
+        <ScrollView>
         <View style={styles.frontContainer}>
             <View>
                 <Text style={style.textHeader}>Kirjoita nopan silmäluku</Text>
@@ -144,8 +146,8 @@ export default function DicesTable() {
                     </View>
                 }
             </View>
-            <Footer done={done} right={right} />
         </View>
+        </ScrollView>
     );
 }
 
