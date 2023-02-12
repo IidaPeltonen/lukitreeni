@@ -7,7 +7,7 @@
     "icon": "./components/kauppaLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./components/kauppaLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -32,7 +32,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "fb735d35-01ba-4e40-9222-de6c2c19dd60"
+        "projectId": "e02e4b2a-7ebe-47bd-b64f-43387485745f"
       }
     },
     "owner": "iidapeltonen"

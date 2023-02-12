@@ -322,7 +322,7 @@ export default function Words() {
   }
   //jos taso on 5
   else if (difficulty === 5) {
-    const time = 8
+    const time = 12
     return (
       <View style={styles.frontContainer}>
         <View style={styles.right}>

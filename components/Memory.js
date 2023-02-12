@@ -343,15 +343,19 @@ export default function Memory() {
         <View style={styles.header}>
           <Image source={require('./logo.jpg')} style={styles.logoHomepage} />
         </View>
+        <ScrollView>
         <Text style={styles.textHeader2}>Testaa työmuistiasi</Text>
-        <Text style={styles.plain}> Paina ruudulla näkyvä numerosarja mieleesi, ja ajan loppuessa kirjoita se tyhjään kenttään. </Text>
-        <Text style={styles.plain}> Taso nousee pikkuhiljaa,mutta yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin. </Text>
+        <Text style={styles.plain}> Paina ruudulla näkyvä numerosarja mieleesi, ja ajan loppuessa </Text>
+        <Text style={styles.plain}> kirjoita se tyhjään kenttään. Taso nousee pikkuhiljaa, mutta  </Text>
+        <Text style={styles.plain}> yhteensä kahdeksan väärin mennyttä numerosarjaa päättää pelin.</Text>
         <Pressable
           title='Aloita!'
           onPress={startGame}
           style={styles.start}>
           <Text style={styles.startText}>Aloita!</Text>
         </Pressable>
+        <Text style={styles.plain}> </Text>
+      </ScrollView>
         <Footer done={done} right={totalRight} />
       </View>
     );
