@@ -96,7 +96,7 @@ export default function Memory() {
     setInfoPics2('')
     setInfoPics3('')
     setInfoPics4('')
-    if (wrong === 1) {
+    if (wrong === 8) {
       setGameEnded(true)
       return
     }
